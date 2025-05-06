@@ -12,19 +12,19 @@
     <br />
     <a href="https://egua.dev/idegua" target="_blank">IDEgua</a>
     ·
-    <a href="https://github.com/eguatech/egua/issues" target="_blank">Reportar Bug</a>
+    <a href="https://github.com/eguadev/egua/issues" target="_blank">Reportar Bug</a>
     <br />
     <br />
-    <img src="https://img.shields.io/github/issues/eguatech/egua" />
-    <img src="https://img.shields.io/github/stars/eguatech/egua" />
-    <img src="https://img.shields.io/github/forks/eguatech/egua" />
+    <img src="https://img.shields.io/github/issues/eguadev/egua" />
+    <img src="https://img.shields.io/github/stars/eguadev/egua" />
+    <img src="https://img.shields.io/github/forks/eguadev/egua" />
     <img src="https://img.shields.io/npm/v/egua">
-    <img src="https://img.shields.io/github/license/eguatech/egua" />
+    <img src="https://img.shields.io/github/license/eguadev/egua" />
     <br>
-    <a href="https://twitter.com/eguatech" target="_blank"> <img src="https://img.shields.io/badge/-Twitter-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=Twitter" href="https://twitter.com/eguatech">
-    <a href="https://www.instagram.com/eguatech/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-c13584?style=flat&labelColor=c13584&logo=instagram&logoColor=white">
+    <a href="https://twitter.com/eguadev" target="_blank"> <img src="https://img.shields.io/badge/-Twitter-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=Twitter" href="https://twitter.com/eguadev">
+    <a href="https://www.instagram.com/eguadev/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-c13584?style=flat&labelColor=c13584&logo=instagram&logoColor=white">
     <a href="https://www.youtube.com/channel/UCDgGUdR_6hZ6lfVaQbkQPLw" target="_blank"><img src="https://img.shields.io/badge/-YouTube-ff0000?style=flat-square&labelColor=ff0000&logo=youtube&logoColor=white">
-    <a href="https://www.linkedin.com/company/eguatech/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white"> </a>
+    <a href="https://www.linkedin.com/company/eguadev/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white"> </a>
   </p>
 </p>
 
