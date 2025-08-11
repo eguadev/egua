@@ -1,17 +1,16 @@
-const StandardFn = require("../structures/standardFn.js");
-const EguaModule = require("../structures/module.js");
+import StandardFn from "../structures/standardFn.js";
+import EguaModule from "../structures/module.js";
 
-require("./tempo.js");
-require("./matematica.js");
-require("./textos.js");
+import * as tempo from "./tempo.js";
+import * as matematica from "./matematica.js";
+import * as textos from "./textos.js";
 
-const loadModule = function (moduleName, modulePath) {
-    let moduleData = require(modulePath);
-    let newModule = new EguaModule(moduleName);
+function loadModule(moduleName, moduleData) {
+    const newModule = new EguaModule(moduleName);
 
-    let keys = Object.keys(moduleData);
+    const keys = Object.keys(moduleData);
     for (let i = 0; i < keys.length; i++) {
-        let currentItem = moduleData[keys[i]];
+        const currentItem = moduleData[keys[i]];
 
         if (typeof currentItem === "function") {
             newModule[keys[i]] = new StandardFn(
@@ -24,17 +23,16 @@ const loadModule = function (moduleName, modulePath) {
     }
 
     return newModule;
-};
+}
 
-module.exports = function (name) {
+export default function checkStdLib(name) {
     switch (name) {
         case "tempo":
-            return loadModule("tempo", "./tempo.js");
+            return loadModule("tempo", tempo);
         case "matematica":
-            return loadModule("matematica", "./matematica.js");
+            return loadModule("matematica", matematica);
         case "textos":
-            return loadModule("textos", "./textos.js");
+            return loadModule("textos", textos);
     }
-
     return null;
-};
+}

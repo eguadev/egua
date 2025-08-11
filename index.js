@@ -1,7 +1,8 @@
-const Egua = require("./src/egua.js").Egua;
+import process from "node:process";
+import Egua from "./src/egua.js";
 
 const main = function () {
-    let args = process.argv;
+    const args = process.argv;
 
     const egua = new Egua();
     if (args.length === 2) {

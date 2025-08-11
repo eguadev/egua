@@ -1,22 +1,22 @@
-const RuntimeError = require("../errors.js").RuntimeError;
+import { RuntimeError } from "../errors.js";
 
 // Retorna uma data completa
-module.exports.tempo = function () {
+export function tempo () {
 	return new Date();
 };
 
 // Retorna os segundos atuais do sistema
-module.exports.segundos = function () {
+export function segundos () {
 	return new Date().getSeconds();
 };
 
 // Retorna os minutos atuais do sistema
-module.exports.minutos = function () {
+export function minutos () {
 	return new Date().getMinutes();
 };
 
 // Retorna a hora atual do sistema
-module.exports.horas = function () {
+export function horas () {
 	return new Date().getHours();
 };
 
@@ -25,7 +25,7 @@ module.exports.horas = function () {
  * @param {string} dataComoTexto A data a ser convertida como texto, no formato DD/MM/AAAA.
  * @returns A data como um objeto Date to JavaScript.
  */
-module.exports.textoParaData = function (dataComoTexto) {
+export function textoParaData (dataComoTexto) {
 	const regex = /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\d\d$/;
 
 	if (typeof dataComoTexto !== 'string' || !regex.test(dataComoTexto)) {

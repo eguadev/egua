@@ -1,6 +1,7 @@
-const tokenTypes = require("./tokenTypes.js");
-const Expr = require("./expr.js");
-const Stmt = require("./stmt.js");
+import tokenTypes from "./tokenTypes.js";
+import * as _Stmt from "./stmt.js"
+import * as _Expr from "./expr.js"
+
 
 class ParserError extends Error { }
 
@@ -8,7 +9,7 @@ class ParserError extends Error { }
  * O avaliador sintático (Parser) é responsável por transformar tokens do Lexador em estruturas de alto nível.
  * Essas estruturas de alto nível são as partes que executam lógica de programação de fato.
  */
-module.exports = class Parser {
+export default class Parser {
     constructor(tokens, Egua) {
         this.tokens = tokens;
         this.Egua = Egua;
@@ -96,12 +97,12 @@ module.exports = class Parser {
                 tokenTypes.IDENTIFIER,
                 "Esperado nome do método da superclasse."
             );
-            return new Expr.Super(keyword, method);
+            return new _Expr.Super(keyword, method);
         }
         if (this.match(tokenTypes.LEFT_SQUARE_BRACKET)) {
             let values = [];
             if (this.match(tokenTypes.RIGHT_SQUARE_BRACKET)) {
-                return new Expr.Array([]);
+                return new _Expr.Array([]);
             }
             while (!this.match(tokenTypes.RIGHT_SQUARE_BRACKET)) {
                 let value = this.assignment();
@@ -113,13 +114,13 @@ module.exports = class Parser {
                     );
                 }
             }
-            return new Expr.Array(values);
+            return new _Expr.Array(values);
         }
         if (this.match(tokenTypes.LEFT_BRACE)) {
             let keys = [];
             let values = [];
             if (this.match(tokenTypes.RIGHT_BRACE)) {
-                return new Expr.Dictionary([], []);
+                return new _Expr.Dictionary([], []);
             }
             while (!this.match(tokenTypes.RIGHT_BRACE)) {
                 let key = this.assignment();
@@ -139,28 +140,28 @@ module.exports = class Parser {
                     );
                 }
             }
-            return new Expr.Dictionary(keys, values);
+            return new _Expr.Dictionary(keys, values);
         }
         if (this.match(tokenTypes.FUNÇÃO)) return this.functionBody("função");
-        if (this.match(tokenTypes.FALSO)) return new Expr.Literal(false);
-        if (this.match(tokenTypes.VERDADEIRO)) return new Expr.Literal(true);
-        if (this.match(tokenTypes.NULO)) return new Expr.Literal(null);
-        if (this.match(tokenTypes.ISTO)) return new Expr.Isto(this.previous());
+        if (this.match(tokenTypes.FALSO)) return new _Expr.Literal(false);
+        if (this.match(tokenTypes.VERDADEIRO)) return new _Expr.Literal(true);
+        if (this.match(tokenTypes.NULO)) return new _Expr.Literal(null);
+        if (this.match(tokenTypes.ISTO)) return new _Expr.Isto(this.previous());
 
         if (this.match(tokenTypes.IMPORTAR)) return this.importStatement();
 
         if (this.match(tokenTypes.NUMBER, tokenTypes.STRING)) {
-            return new Expr.Literal(this.previous().literal);
+            return new _Expr.Literal(this.previous().literal);
         }
 
         if (this.match(tokenTypes.IDENTIFIER)) {
-            return new Expr.Variable(this.previous());
+            return new _Expr.Variable(this.previous());
         }
 
         if (this.match(tokenTypes.LEFT_PAREN)) {
             let expr = this.expression();
             this.consume(tokenTypes.RIGHT_PAREN, "Esperado ')' após a expressão.");
-            return new Expr.Grouping(expr);
+            return new _Expr.Grouping(expr);
         }
 
         throw this.error(this.peek(), "Esperado expressão.");
@@ -182,7 +183,7 @@ module.exports = class Parser {
             "Esperado ')' após os argumentos."
         );
 
-        return new Expr.Call(callee, paren, args);
+        return new _Expr.Call(callee, paren, args);
     }
 
     call() {
@@ -196,14 +197,14 @@ module.exports = class Parser {
                     tokenTypes.IDENTIFIER,
                     "Esperado nome do método após '.'."
                 );
-                expr = new Expr.Get(expr, name);
+                expr = new _Expr.Get(expr, name);
             } else if (this.match(tokenTypes.LEFT_SQUARE_BRACKET)) {
                 let index = this.expression();
                 let closeBracket = this.consume(
                     tokenTypes.RIGHT_SQUARE_BRACKET,
                     "Esperado ']' após escrita de index."
                 );
-                expr = new Expr.Subscript(expr, index, closeBracket);
+                expr = new _Expr.Subscript(expr, index, closeBracket);
             } else {
                 break;
             }
@@ -216,7 +217,7 @@ module.exports = class Parser {
         if (this.match(tokenTypes.BANG, tokenTypes.MINUS, tokenTypes.BIT_NOT)) {
             let operator = this.previous();
             let right = this.unary();
-            return new Expr.Unary(operator, right);
+            return new _Expr.Unary(operator, right);
         }
 
         return this.call();
@@ -228,7 +229,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.STAR_STAR)) {
             let operator = this.previous();
             let right = this.unary();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -240,7 +241,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.SLASH, tokenTypes.STAR, tokenTypes.MODULUS)) {
             let operator = this.previous();
             let right = this.exponent();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -252,7 +253,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.MINUS, tokenTypes.PLUS)) {
             let operator = this.previous();
             let right = this.multiplication();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -264,7 +265,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.LESSER_LESSER, tokenTypes.GREATER_GREATER)) {
             let operator = this.previous();
             let right = this.addition();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -276,7 +277,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.BIT_AND)) {
             let operator = this.previous();
             let right = this.bitFill();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -288,7 +289,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.BIT_OR, tokenTypes.BIT_XOR)) {
             let operator = this.previous();
             let right = this.bitAnd();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -307,7 +308,7 @@ module.exports = class Parser {
         ) {
             let operator = this.previous();
             let right = this.bitOr();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -319,7 +320,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.BANG_EQUAL, tokenTypes.EQUAL_EQUAL)) {
             let operator = this.previous();
             let right = this.comparison();
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new _Expr.Binary(expr, operator, right);
         }
 
         return expr;
@@ -331,7 +332,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.EM)) {
             let operator = this.previous();
             let right = this.equality();
-            expr = new Expr.Logical(expr, operator, right);
+            expr = new _Expr.Logical(expr, operator, right);
         }
 
         return expr;
@@ -343,7 +344,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.E)) {
             let operator = this.previous();
             let right = this.em();
-            expr = new Expr.Logical(expr, operator, right);
+            expr = new _Expr.Logical(expr, operator, right);
         }
 
         return expr;
@@ -355,7 +356,7 @@ module.exports = class Parser {
         while (this.match(tokenTypes.OU)) {
             let operator = this.previous();
             let right = this.e();
-            expr = new Expr.Logical(expr, operator, right);
+            expr = new _Expr.Logical(expr, operator, right);
         }
 
         return expr;
@@ -368,14 +369,14 @@ module.exports = class Parser {
             let equals = this.previous();
             let value = this.assignment();
 
-            if (expr instanceof Expr.Variable) {
+            if (expr instanceof _Expr.Variable) {
                 let name = expr.name;
-                return new Expr.Assign(name, value);
-            } else if (expr instanceof Expr.Get) {
+                return new _Expr.Assign(name, value);
+            } else if (expr instanceof _Expr.Get) {
                 let get = expr;
-                return new Expr.Set(get.object, get.name, value);
-            } else if (expr instanceof Expr.Subscript) {
-                return new Expr.Assignsubscript(expr.callee, expr.index, value);
+                return new _Expr.Set(get.object, get.name, value);
+            } else if (expr instanceof _Expr.Subscript) {
+                return new _Expr.Assignsubscript(expr.callee, expr.index, value);
             }
             this.error(equals, "Tarefa de atribuição inválida");
         }
@@ -401,13 +402,13 @@ module.exports = class Parser {
         );
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após o valor.");
 
-        return new Stmt.Escreva(value);
+        return new _Stmt. Escreva(value);
     }
 
     expressionStatement() {
         let expr = this.expression();
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após expressão.");
-        return new Stmt.Expression(expr);
+        return new _Stmt. Expression(expr);
     }
 
     block() {
@@ -450,7 +451,7 @@ module.exports = class Parser {
             elseBranch = this.statement();
         }
 
-        return new Stmt.Se(condition, thenBranch, elifBranches, elseBranch);
+        return new _Stmt. Se(condition, thenBranch, elifBranches, elseBranch);
     }
 
     whileStatement() {
@@ -462,7 +463,7 @@ module.exports = class Parser {
             this.consume(tokenTypes.RIGHT_PAREN, "Esperado ')' após condicional.");
             let body = this.statement();
 
-            return new Stmt.Enquanto(condition, body);
+            return new _Stmt. Enquanto(condition, body);
         } finally {
             this.loopDepth -= 1;
         }
@@ -502,7 +503,7 @@ module.exports = class Parser {
 
             let body = this.statement();
 
-            return new Stmt.Para(initializer, condition, increment, body);
+            return new _Stmt. Para(initializer, condition, increment, body);
         } finally {
             this.loopDepth -= 1;
         }
@@ -514,7 +515,7 @@ module.exports = class Parser {
         }
 
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após 'pausa'.");
-        return new Stmt.Pausa();
+        return new _Stmt. Pausa();
     }
 
     continueStatement() {
@@ -523,7 +524,7 @@ module.exports = class Parser {
         }
 
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após 'continua'.");
-        return new Stmt.Continua();
+        return new _Stmt. Continua();
     }
 
     returnStatement() {
@@ -535,7 +536,7 @@ module.exports = class Parser {
         }
 
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após o retorno.");
-        return new Stmt.Retorna(keyword, value);
+        return new _Stmt. Retorna(keyword, value);
     }
 
     switchStatement() {
@@ -614,7 +615,7 @@ module.exports = class Parser {
                 }
             }
 
-            return new Stmt.Escolha(condition, branches, defaultBranch);
+            return new _Stmt. Escolha(condition, branches, defaultBranch);
         } finally {
             this.loopDepth -= 1;
         }
@@ -630,7 +631,7 @@ module.exports = class Parser {
             "Esperado ')' após declaração."
         );
 
-        return new Stmt.Importar(path, closeBracket);
+        return new _Stmt. Importar(path, closeBracket);
     }
 
     tryStatement() {
@@ -668,7 +669,7 @@ module.exports = class Parser {
             finallyBlock = this.block();
         }
 
-        return new Stmt.Tente(tryBlock, catchBlock, elseBlock, finallyBlock);
+        return new _Stmt. Tente(tryBlock, catchBlock, elseBlock, finallyBlock);
     }
 
     doStatement() {
@@ -693,7 +694,7 @@ module.exports = class Parser {
                 "Esperado ')' após declaração do 'enquanto'."
             );
 
-            return new Stmt.Fazer(doBranch, whileCondition);
+            return new _Stmt. Fazer(doBranch, whileCondition);
         } finally {
             this.loopDepth -= 1;
         }
@@ -710,7 +711,7 @@ module.exports = class Parser {
         if (this.match(tokenTypes.ENQUANTO)) return this.whileStatement();
         if (this.match(tokenTypes.SE)) return this.ifStatement();
         if (this.match(tokenTypes.ESCREVA)) return this.printStatement();
-        if (this.match(tokenTypes.LEFT_BRACE)) return new Stmt.Block(this.block());
+        if (this.match(tokenTypes.LEFT_BRACE)) return new _Stmt. Block(this.block());
 
         return this.expressionStatement();
     }
@@ -726,12 +727,12 @@ module.exports = class Parser {
             tokenTypes.SEMICOLON,
             "Esperado ';' após a declaração da variável."
         );
-        return new Stmt.Var(name, initializer);
+        return new _Stmt. Var(name, initializer);
     }
 
     function(kind) {
         let name = this.consume(tokenTypes.IDENTIFIER, `Esperado nome ${kind}.`);
-        return new Stmt.Função(name, this.functionBody(kind));
+        return new _Stmt. Função(name, this.functionBody(kind));
     }
 
     functionBody(kind) {
@@ -773,7 +774,7 @@ module.exports = class Parser {
 
         let body = this.block();
 
-        return new Expr.Função(parameters, body);
+        return new _Expr.Função(parameters, body);
     }
 
     classDeclaration() {
@@ -782,7 +783,7 @@ module.exports = class Parser {
         let superclass = null;
         if (this.match(tokenTypes.HERDA)) {
             this.consume(tokenTypes.IDENTIFIER, "Esperado nome da superclasse.");
-            superclass = new Expr.Variable(this.previous());
+            superclass = new _Expr.Variable(this.previous());
         }
 
         this.consume(tokenTypes.LEFT_BRACE, "Esperado '{' antes do escopo da classe.");
@@ -793,7 +794,7 @@ module.exports = class Parser {
         }
 
         this.consume(tokenTypes.RIGHT_BRACE, "Esperado '}' após o escopo da classe.");
-        return new Stmt.Classe(name, superclass, methods);
+        return new _Stmt. Classe(name, superclass, methods);
     }
 
     declaration() {
