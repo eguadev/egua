@@ -45,7 +45,7 @@
 
 - Para acessar nossa documentação, visite o [site de documentação](https://egua.dev/egua).
 
-## Contruibuições
+## Contribuições
 
 * Para contribuições, por favor, leia o nosso [Guia de Contribuição](.github/CONTRIBUTING.md) antes de submeter uma Pull Request.
 
