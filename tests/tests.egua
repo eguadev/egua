@@ -1050,3 +1050,62 @@ escolha (2) {
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_t) + " erro(s)!");
 escreva("----------------------------");
+
+escreva("--------------------------------");
+escreva("Testes Internos - Biblioteca Requisicao");
+escreva("--------------------------------");
+escreva("|");
+
+var erros_r = 0;
+
+função testa_requisicao_modulo() {
+  var r = importar("requisicao");
+
+  se (r == nulo) {
+    escreva("TESTE: modulo requisicao: falhou ao importar!");
+    erros_r = erros_r + 1;
+    retorna;
+  }
+  escreva("TESTE: modulo requisicao: importado com sucesso!");
+}
+
+função testa_requisicao_funcoes() {
+  var r = importar("requisicao");
+
+  var fnObter = r.obter;
+  se (fnObter == nulo) {
+    escreva("TESTE: requisicao.obter: nao encontrado!");
+    erros_r = erros_r + 1;
+    retorna;
+  }
+
+  var fnEnviar = r.enviar;
+  se (fnEnviar == nulo) {
+    escreva("TESTE: requisicao.enviar: nao encontrado!");
+    erros_r = erros_r + 1;
+    retorna;
+  }
+
+  var fnAtualizar = r.atualizar;
+  se (fnAtualizar == nulo) {
+    escreva("TESTE: requisicao.atualizar: nao encontrado!");
+    erros_r = erros_r + 1;
+    retorna;
+  }
+
+  var fnExcluir = r.excluir;
+  se (fnExcluir == nulo) {
+    escreva("TESTE: requisicao.excluir: nao encontrado!");
+    erros_r = erros_r + 1;
+    retorna;
+  }
+
+  escreva("TESTE: funcoes obter, enviar, atualizar, excluir: OK!");
+}
+
+testa_requisicao_modulo();
+testa_requisicao_funcoes();
+
+escreva("----------------------------");
+escreva("  terminado com " + texto(erros_r) + " erro(s)!");
+escreva("----------------------------");
