@@ -1023,6 +1023,112 @@ testa_substituir();
 testa_busca();
 testa_apara();
 
+// Testes das novas funções da biblioteca textos
+função testa_caractereEm() {
+  var obtido = t.caractereEm("egua", 1);
+  var esperado = "g";
+  se (obtido != esperado) {
+    escreva("TESTE: função caractereEm(): falhou!");
+    escreva("| esperado: '" + esperado + "'");
+    escreva("| obtido: '" + obtido + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função caractereEm(): passou!");
+}
+
+função testa_codigoEm() {
+  var obtido = t.codigoEm("A", 0);
+  var esperado = 65;
+  se (obtido != esperado) {
+    escreva("TESTE: função codigoEm(): falhou!");
+    escreva("| esperado: '" + texto(esperado) + "'");
+    escreva("| obtido: '" + texto(obtido) + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função codigoEm(): passou!");
+}
+
+função testa_fatiar() {
+  var obtido = t.fatiar("programacao", 0, 7);
+  var esperado = "program";
+  se (obtido != esperado) {
+    escreva("TESTE: função fatiar(): falhou!");
+    escreva("| esperado: '" + esperado + "'");
+    escreva("| obtido: '" + obtido + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função fatiar(): passou!");
+}
+
+função testa_comecaCom() {
+  var obtido = t.comecaCom("egua linguagem", "egua");
+  se (obtido != verdadeiro) {
+    escreva("TESTE: função comecaCom(): falhou!");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  var obtido2 = t.comecaCom("egua linguagem", "python");
+  se (obtido2 != falso) {
+    escreva("TESTE: função comecaCom() (negativo): falhou!");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função comecaCom(): passou!");
+}
+
+função testa_terminaCom() {
+  var obtido = t.terminaCom("linguagem egua", "egua");
+  se (obtido != verdadeiro) {
+    escreva("TESTE: função terminaCom(): falhou!");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  var obtido2 = t.terminaCom("linguagem egua", "python");
+  se (obtido2 != falso) {
+    escreva("TESTE: função terminaCom() (negativo): falhou!");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função terminaCom(): passou!");
+}
+
+função testa_preenchaInicio() {
+  var obtido = t.preenchaInicio("42", 5, "0");
+  var esperado = "00042";
+  se (obtido != esperado) {
+    escreva("TESTE: função preenchaInicio(): falhou!");
+    escreva("| esperado: '" + esperado + "'");
+    escreva("| obtido: '" + obtido + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função preenchaInicio(): passou!");
+}
+
+função testa_preenchaFim() {
+  var obtido = t.preenchaFim("42", 5, ".");
+  var esperado = "42...";
+  se (obtido != esperado) {
+    escreva("TESTE: função preenchaFim(): falhou!");
+    escreva("| esperado: '" + esperado + "'");
+    escreva("| obtido: '" + obtido + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função preenchaFim(): passou!");
+}
+
+testa_caractereEm();
+testa_codigoEm();
+testa_fatiar();
+testa_comecaCom();
+testa_terminaCom();
+testa_preenchaInicio();
+testa_preenchaFim();
+
 // Exemplo: Imprime "correspondente à opção 2"
 escolha (1) {
   caso "1":
