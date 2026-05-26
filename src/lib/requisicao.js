@@ -1,5 +1,4 @@
 const RuntimeError = require("../errors.js").RuntimeError;
-const { spawnSync } = require("child_process");
 
 function _requisicao(url, metodo, dados) {
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -17,39 +16,53 @@ function _requisicao(url, metodo, dados) {
         corpoDados = typeof dados === "object" ? JSON.stringify(dados) : String(dados);
     }
 
-    const script = `
-var http = require('http');
-var https = require('https');
-var u = new URL(process.argv[1]);
-var mod = u.protocol === 'https:' ? https : http;
-var dados = process.argv[3] || '';
-var opcoes = {
-    hostname: u.hostname,
-    port: u.port || (u.protocol === 'https:' ? 443 : 80),
-    path: u.pathname + u.search,
-    method: process.argv[2],
-    headers: dados ? {
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(dados)
-    } : {}
-};
-var req = mod.request(opcoes, function(res) {
-    var corpo = '';
-    res.on('data', function(c) { corpo += c; });
-    res.on('end', function() { console.log(corpo); });
-});
-req.on('error', function(e) { console.error('ERRO:' + e.message); process.exit(1); });
-if (dados) req.write(dados);
-req.end();
-`;
+    if (typeof process !== "undefined" && process.versions && process.versions.node) {
+        return _requisicaoNode(url, metodo, corpoDados);
+    }
 
-    const resultado = spawnSync(process.execPath, ["-e", script, url, metodo, corpoDados], {
+    if (typeof XMLHttpRequest !== "undefined") {
+        return _requisicaoNavegador(url, metodo, corpoDados);
+    }
+
+    throw new Error("Ambiente nao suportado para requisicoes HTTP.");
+}
+
+function _requisicaoNode(url, metodo, corpoDados) {
+    var spawnSync = require("child_process").spawnSync;
+
+    var script = '\
+var http = require("http");\n\
+var https = require("https");\n\
+var u = new URL(process.argv[1]);\n\
+var mod = u.protocol === "https:" ? https : http;\n\
+var dados = process.argv[3] || "";\n\
+var opcoes = {\n\
+    hostname: u.hostname,\n\
+    port: u.port || (u.protocol === "https:" ? 443 : 80),\n\
+    path: u.pathname + u.search,\n\
+    method: process.argv[2],\n\
+    headers: dados ? {\n\
+        "Content-Type": "application/json",\n\
+        "Content-Length": Buffer.byteLength(dados)\n\
+    } : {}\n\
+};\n\
+var req = mod.request(opcoes, function(res) {\n\
+    var corpo = "";\n\
+    res.on("data", function(c) { corpo += c; });\n\
+    res.on("end", function() { console.log(corpo); });\n\
+});\n\
+req.on("error", function(e) { console.error("ERRO:" + e.message); process.exit(1); });\n\
+if (dados) req.write(dados);\n\
+req.end();\n\
+';
+
+    var resultado = spawnSync(process.execPath, ["-e", script, url, metodo, corpoDados], {
         encoding: "utf-8",
         timeout: 30000
     });
 
     if (resultado.status !== 0 || resultado.stderr) {
-        const msg = resultado.stderr ? resultado.stderr.replace("ERRO:", "").trim() : "Erro desconhecido na requisicao.";
+        var msg = resultado.stderr ? resultado.stderr.replace("ERRO:", "").trim() : "Erro desconhecido na requisicao.";
         throw new Error(msg);
     }
 
@@ -57,6 +70,31 @@ req.end();
         return JSON.parse(resultado.stdout.trim());
     } catch (e) {
         return resultado.stdout.trim();
+    }
+}
+
+function _requisicaoNavegador(url, metodo, corpoDados) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(metodo, url, false);
+
+    if (corpoDados) {
+        xhr.setRequestHeader("Content-Type", "application/json");
+    }
+
+    try {
+        xhr.send(corpoDados || null);
+    } catch (e) {
+        throw new Error("Erro na requisicao: " + e.message);
+    }
+
+    if (xhr.status < 200 || xhr.status >= 300) {
+        throw new Error("Erro na requisicao: status " + xhr.status);
+    }
+
+    try {
+        return JSON.parse(xhr.responseText);
+    } catch (e) {
+        return xhr.responseText;
     }
 }
 
