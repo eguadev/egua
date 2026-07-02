@@ -34,6 +34,8 @@ module.exports = function (name) {
             return loadModule("matematica", "./matematica.js");
         case "textos":
             return loadModule("textos", "./textos.js");
+        case "requisicao":
+            return loadModule("requisicao", "./requisicao.js");
     }
 
     return null;
