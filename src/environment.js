@@ -1,6 +1,6 @@
-const RuntimeError = require("./errors.js").RuntimeError;
+import { RuntimeError } from "./errors.js";
 
-module.exports = class Environment {
+export default class Environment {
     constructor(enclosing) {
         this.enclosing = enclosing || null;
         this.values = {};

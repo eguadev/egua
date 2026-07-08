@@ -1,11 +1,10 @@
-const RuntimeError = require("../errors.js").RuntimeError,
-    EguaFunction = require("../structures/function.js"),
-    EguaInstance = require("../structures/instance.js"),
-    StandardFn = require("../structures/standardFn.js"),
-    EguaClass = require("../structures/class.js");
+import { RuntimeError } from "../errors.js";
+import EguaFunction from "../structures/function.js";
+import EguaInstance from "../structures/instance.js";
+import StandardFn from "../structures/standardFn.js";
+import EguaClass from "../structures/class.js";
 
-
-module.exports = function (interpreter, globals) {
+export default function loadGlobalLib (interpreter, globals) {
     // Retorna um número aleatório entre 0 e 1.
     globals.defineVar(
         "aleatorio",
