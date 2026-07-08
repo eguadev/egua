@@ -402,7 +402,7 @@ export default class Parser {
         );
         this.consume(tokenTypes.SEMICOLON, "Esperado ';' após o valor.");
 
-        return new _Stmt. Escreva(value);
+        return new _Stmt.Escreva(value);
     }
 
     expressionStatement() {
