@@ -268,7 +268,7 @@ export function apara(texto) {
         );
     }
     return texto.trim();
-};
+}
 
 /**
  * Retorna o caractere na posicao informada do texto.
@@ -277,7 +277,7 @@ export function apara(texto) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {string} o caractere na posicao informada.
  */
-module.exports.caractereEm = function (texto, posicao) {
+export function caractereEm(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -291,7 +291,7 @@ module.exports.caractereEm = function (texto, posicao) {
         );
     }
     return texto.charAt(posicao);
-};
+}
 
 /**
  * Retorna o codigo Unicode do caractere na posicao informada.
@@ -300,7 +300,7 @@ module.exports.caractereEm = function (texto, posicao) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {number} o codigo Unicode do caractere.
  */
-module.exports.codigoEm = function (texto, posicao) {
+export function codigoEm(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -314,7 +314,7 @@ module.exports.codigoEm = function (texto, posicao) {
         );
     }
     return texto.charCodeAt(posicao);
-};
+}
 
 /**
  * Retorna uma fatia do texto entre as posicoes inicio e fim.
@@ -324,7 +324,7 @@ module.exports.codigoEm = function (texto, posicao) {
  * @param {number} fim a posicao final (opcional).
  * @returns {string} a fatia do texto.
  */
-module.exports.fatiar = function (texto, inicio, fim) {
+export function fatiar(texto, inicio, fim) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -338,7 +338,7 @@ module.exports.fatiar = function (texto, inicio, fim) {
         );
     }
     return texto.slice(inicio, fim);
-};
+}
 
 /**
  * Verifica se o texto comeca com o prefixo informado.
@@ -347,7 +347,7 @@ module.exports.fatiar = function (texto, inicio, fim) {
  * @param {string} prefixo o prefixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto comeca com o prefixo.
  */
-module.exports.comecaCom = function (texto, prefixo) {
+export function comecaCom(texto, prefixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -361,7 +361,7 @@ module.exports.comecaCom = function (texto, prefixo) {
         );
     }
     return texto.startsWith(prefixo);
-};
+}
 
 /**
  * Verifica se o texto termina com o sufixo informado.
@@ -370,7 +370,7 @@ module.exports.comecaCom = function (texto, prefixo) {
  * @param {string} sufixo o sufixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto termina com o sufixo.
  */
-module.exports.terminaCom = function (texto, sufixo) {
+export function terminaCom(texto, sufixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -384,7 +384,7 @@ module.exports.terminaCom = function (texto, sufixo) {
         );
     }
     return texto.endsWith(sufixo);
-};
+}
 
 /**
  * Preenche o inicio do texto com o caractere informado ate o tamanho desejado.
@@ -394,7 +394,7 @@ module.exports.terminaCom = function (texto, sufixo) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
+export function preenchaInicio(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -417,7 +417,7 @@ module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
         );
     }
     return texto.padStart(tamanho, preenchimento);
-};
+}
 
 /**
  * Preenche o fim do texto com o caractere informado ate o tamanho desejado.
@@ -427,7 +427,7 @@ module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-module.exports.preenchaFim = function (texto, tamanho, preenchimento) {
+export function preenchaFim(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -450,4 +450,4 @@ module.exports.preenchaFim = function (texto, tamanho, preenchimento) {
         );
     }
     return texto.padEnd(tamanho, preenchimento);
-};
+}

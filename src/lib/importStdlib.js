@@ -4,6 +4,7 @@ import EguaModule from "../structures/module.js";
 import * as tempo from "./tempo.js";
 import * as matematica from "./matematica.js";
 import * as textos from "./textos.js";
+import * as requisicao from "./requisicao.js";
 
 function loadModule(moduleName, moduleData) {
     const newModule = new EguaModule(moduleName);
@@ -32,9 +33,9 @@ export default function checkStdLib(name) {
         case "matematica":
             return loadModule("matematica", matematica);
         case "textos":
-            return loadModule("textos", "./textos.js");
+            return loadModule("textos", textos);
         case "requisicao":
-            return loadModule("requisicao", "./requisicao.js");
+            return loadModule("requisicao", requisicao);
     }
     return null;
 }
