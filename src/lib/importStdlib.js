@@ -32,7 +32,9 @@ export default function checkStdLib(name) {
         case "matematica":
             return loadModule("matematica", matematica);
         case "textos":
-            return loadModule("textos", textos);
+            return loadModule("textos", "./textos.js");
+        case "requisicao":
+            return loadModule("requisicao", "./requisicao.js");
     }
     return null;
 }

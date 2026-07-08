@@ -268,4 +268,186 @@ export function apara(texto) {
         );
     }
     return texto.trim();
-}
+};
+
+/**
+ * Retorna o caractere na posicao informada do texto.
+ *
+ * @param {string} texto o texto original.
+ * @param {number} posicao a posicao do caractere (inicia em 0).
+ * @returns {string} o caractere na posicao informada.
+ */
+module.exports.caractereEm = function (texto, posicao) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em caractereEm(texto, posicao)."
+        );
+    }
+    if (typeof posicao !== "number") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'posicao' deve ser um numero em caractereEm(texto, posicao)."
+        );
+    }
+    return texto.charAt(posicao);
+};
+
+/**
+ * Retorna o codigo Unicode do caractere na posicao informada.
+ *
+ * @param {string} texto o texto original.
+ * @param {number} posicao a posicao do caractere (inicia em 0).
+ * @returns {number} o codigo Unicode do caractere.
+ */
+module.exports.codigoEm = function (texto, posicao) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em codigoEm(texto, posicao)."
+        );
+    }
+    if (typeof posicao !== "number") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'posicao' deve ser um numero em codigoEm(texto, posicao)."
+        );
+    }
+    return texto.charCodeAt(posicao);
+};
+
+/**
+ * Retorna uma fatia do texto entre as posicoes inicio e fim.
+ *
+ * @param {string} texto o texto original.
+ * @param {number} inicio a posicao inicial.
+ * @param {number} fim a posicao final (opcional).
+ * @returns {string} a fatia do texto.
+ */
+module.exports.fatiar = function (texto, inicio, fim) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em fatiar(texto, inicio, fim)."
+        );
+    }
+    if (typeof inicio !== "number") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'inicio' deve ser um numero em fatiar(texto, inicio, fim)."
+        );
+    }
+    return texto.slice(inicio, fim);
+};
+
+/**
+ * Verifica se o texto comeca com o prefixo informado.
+ *
+ * @param {string} texto o texto original.
+ * @param {string} prefixo o prefixo a ser verificado.
+ * @returns {boolean} verdadeiro se o texto comeca com o prefixo.
+ */
+module.exports.comecaCom = function (texto, prefixo) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em comecaCom(texto, prefixo)."
+        );
+    }
+    if (typeof prefixo !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'prefixo' deve ser um texto em comecaCom(texto, prefixo)."
+        );
+    }
+    return texto.startsWith(prefixo);
+};
+
+/**
+ * Verifica se o texto termina com o sufixo informado.
+ *
+ * @param {string} texto o texto original.
+ * @param {string} sufixo o sufixo a ser verificado.
+ * @returns {boolean} verdadeiro se o texto termina com o sufixo.
+ */
+module.exports.terminaCom = function (texto, sufixo) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em terminaCom(texto, sufixo)."
+        );
+    }
+    if (typeof sufixo !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'sufixo' deve ser um texto em terminaCom(texto, sufixo)."
+        );
+    }
+    return texto.endsWith(sufixo);
+};
+
+/**
+ * Preenche o inicio do texto com o caractere informado ate o tamanho desejado.
+ *
+ * @param {string} texto o texto original.
+ * @param {number} tamanho o tamanho final do texto.
+ * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
+ * @returns {string} o texto preenchido.
+ */
+module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em preenchaInicio(texto, tamanho, preenchimento)."
+        );
+    }
+    if (typeof tamanho !== "number") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'tamanho' deve ser um numero em preenchaInicio(texto, tamanho, preenchimento)."
+        );
+    }
+    if (preenchimento === undefined) {
+        preenchimento = " ";
+    }
+    if (typeof preenchimento !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'preenchimento' deve ser um texto em preenchaInicio(texto, tamanho, preenchimento)."
+        );
+    }
+    return texto.padStart(tamanho, preenchimento);
+};
+
+/**
+ * Preenche o fim do texto com o caractere informado ate o tamanho desejado.
+ *
+ * @param {string} texto o texto original.
+ * @param {number} tamanho o tamanho final do texto.
+ * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
+ * @returns {string} o texto preenchido.
+ */
+module.exports.preenchaFim = function (texto, tamanho, preenchimento) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'texto' deve ser um texto em preenchaFim(texto, tamanho, preenchimento)."
+        );
+    }
+    if (typeof tamanho !== "number") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'tamanho' deve ser um numero em preenchaFim(texto, tamanho, preenchimento)."
+        );
+    }
+    if (preenchimento === undefined) {
+        preenchimento = " ";
+    }
+    if (typeof preenchimento !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro 'preenchimento' deve ser um texto em preenchaFim(texto, tamanho, preenchimento)."
+        );
+    }
+    return texto.padEnd(tamanho, preenchimento);
+};
