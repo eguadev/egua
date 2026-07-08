@@ -1,6 +1,6 @@
-const RuntimeError = require("../errors.js").RuntimeError;
+import { RuntimeError } from "../errors.js";
 
-module.exports.graus = function (angle) {
+export function graus(angle) {
   if (isNaN(angle) || angle === null)
     throw new RuntimeError(
       this.token,
@@ -8,9 +8,9 @@ module.exports.graus = function (angle) {
     );
 
   return angle * (180 / Math.PI);
-};
+}
 
-module.exports.mediana = function (a) {
+export function mediana(a) {
   if (isNaN(a) || a === null)
     throw new RuntimeError(
       this.token,
@@ -20,14 +20,14 @@ module.exports.mediana = function (a) {
   a.sort(function (a, b) { return a - b; });
   const mid = a.length / 2;
   return mid % 1 ? a[mid - 0.5] : (a[mid - 1] + a[mid]) / 2;
-};
+}
 
 /**
  * Calcula a moda de um vetor.
  * @param {inteiro[]} vetor Vetor de inteiros.
  * @returns Valor inteiro da moda.
  */
-module.exports.moda = function (numbers) {
+export function moda(numbers) {
   if (!Array.isArray(numbers))
     throw new RuntimeError(
       this.token,
@@ -40,9 +40,9 @@ module.exports.moda = function (numbers) {
       "Todos os elementos de `vetor` deve ser numéricos na função moda(vetor)."
     );
 
-  let modes = [], count = [], i, number, maxIndex = 0;
+  let modes = [], count = [], i = 0, number = 0, maxIndex = 0;
 
-  for (i = 0; i < numbers.length; i += 1) {
+  for (let i = 0; i < numbers.length; i += 1) {
     number = numbers[i];
     count[number] = (count[number] || 0) + 1;
     if (count[number] > maxIndex) {
@@ -60,9 +60,9 @@ module.exports.moda = function (numbers) {
   return modes;
 }
 
-module.exports.pi = Math.PI;
+export const pi = Math.PI;
 
-module.exports.radiano = function (angulo) {
+export function radiano(angulo) {
   if (!Number.isInteger(angulo))
     throw new RuntimeError(
       this.token,
@@ -70,7 +70,7 @@ module.exports.radiano = function (angulo) {
     );
 
   return angulo * (Math.PI / 180);
-};
+}
 
 //FUNÇÃO AFIM E QUADRÁTICA
 /**
@@ -81,7 +81,7 @@ module.exports.radiano = function (angulo) {
  * @returns Um vetor, contendo o número de pontos informado ou definido por padrão em uma abscissa.
  *          Se o número informado é par, um ponto negativo a mais é gerado.
  */
-module.exports.gerarPontosAbscissa = function (distancia, valorPontoCentral, numeroPontos) {
+export function gerarPontosAbscissa(distancia, valorPontoCentral, numeroPontos) {
   if (!Number.isInteger(distancia))
     throw new RuntimeError(
       this.token,
@@ -105,20 +105,20 @@ module.exports.gerarPontosAbscissa = function (distancia, valorPontoCentral, num
   }
 
   return x;
-};
+}
 
 //Raíz da Função Afim
-module.exports.fun1R = function (a, b) {
+export function fun1R(a, b) {
   if (isNaN(a) || a === null || isNaN(b) || b === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para fun1R(valor1,valor2)."
     );
   return (-1 * b) / a;
-};
+}
 
 //Intervalo Preenchido
-module.exports.linspace = function (startValue, stopValue, cardinality) {
+export function linspace(startValue, stopValue, cardinality) {
   if (
     isNaN(startValue) || startValue === null ||
     isNaN(stopValue) || stopValue === null ||
@@ -130,31 +130,31 @@ module.exports.linspace = function (startValue, stopValue, cardinality) {
     );
   const lista = [];
   const step = (stopValue - startValue) / (cardinality - 1);
-  for (var i = 0; i < cardinality; i++) {
-    arr.push(startValue + (step * i));
+  for (let i = 0; i < cardinality; i++) {
+    lista.push(startValue + (step * i));
   }
   return lista;
-};
+}
 
 //Raízes da Função Quadrática
-module.exports.fun2R = function (a, b, c) {
+export function fun2R(a, b, c) {
   if (isNaN(a) || a === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para fun2R(a,b,c)."
     );
 
-  const r1 = (-1 * b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
-  const r2 = (-1 * b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+  // const r1 = (-1 * b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+  // const r2 = (-1 * b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
 
   const xv = (-1 * b) / (2 * a);
   const yv = (-1 * (Math.pow(b, 2) - (4 * a * c))) / 4 * a;
 
   return [xv, yv];
-};
+}
 
 //Aproximação de valores
-module.exports.aprox = function (x, z) {
+export function aprox(x, z) {
   if (isNaN(x) || x === null || isNaN(z) || z === null)
     throw new RuntimeError(
       this.token,
@@ -173,10 +173,10 @@ module.exports.aprox = function (x, z) {
       }
     }
   return x;
-};
+}
 
 //Parâmetros da Função
-module.exports.matrizn = function (z) {
+export function matrizn(z) {
   if (isNaN(z) || z === null)
     throw new RuntimeError(
       this.token,
@@ -186,10 +186,10 @@ module.exports.matrizn = function (z) {
   const data = Array.from(Array(1), () => new Array(n));
   for (let i = 0; i < n; i++) { data[0][i] = arguments[i]; }
   return matriz(data);
-};
+}
 
 //Vetor de pontos aleatórios
-module.exports.pontosAleatorios = function (n) {
+export function pontosAleatorios(n) {
   if (isNaN(n) || n === null)
     throw new RuntimeError(
       this.token,
@@ -203,10 +203,10 @@ module.exports.pontosAleatorios = function (n) {
   }
   const xx = aprox(x, 2);
   return xx;
-};
+}
 
 //Intervalo A-B
-module.exports.vet = function (a, b) {
+export function vet(a, b) {
   if (isNaN(a) || a === null || isNaN(b) || b === null)
     throw new RuntimeError(
       this.token,
@@ -218,7 +218,7 @@ module.exports.vet = function (a, b) {
     data[0][i] = a + i;
   }
   return matrizn(data);
-};
+}
 
 
 /**
@@ -227,7 +227,7 @@ module.exports.vet = function (a, b) {
  * @param {qualquer} valor Valor a ser encontrado no vetor
  * @returns Valor inteiro, com o número de vezes que `valor` foi encontrado em `vetor`.
  */
-module.exports.numeroOcorrencias = function (vetor, valor) {
+export function numeroOcorrencias(vetor, valor) {
   if (!Array.isArray(vetor))
     throw new RuntimeError(
       this.token,
@@ -235,7 +235,7 @@ module.exports.numeroOcorrencias = function (vetor, valor) {
     );
 
   return vetor.filter((v) => (v === valor)).length;
-};
+}
 
 /* ESTATÍSTICA */
 
@@ -244,7 +244,7 @@ module.exports.numeroOcorrencias = function (vetor, valor) {
  * @param {inteiro[]} vetor Um vetor de números inteiros.
  * @returns O maior número encontrado em um vetor.
  */
-module.exports.max = function (vetor) {
+export function max(vetor) {
   if (!Array.isArray(vetor))
     throw new RuntimeError(
       this.token,
@@ -258,14 +258,14 @@ module.exports.max = function (vetor) {
     );
 
   return Math.max.apply(null, vetor);
-};
+}
 
 /**
  * Encontra o elemento mínimo em um vetor.
  * @param {inteiro[]} vetor Um vetor de números inteiros.
  * @returns O menor número encontrado em um vetor.
  */
-module.exports.min = function (vetor) {
+export function min(vetor) {
   if (!Array.isArray(vetor))
     throw new RuntimeError(
       this.token,
@@ -279,10 +279,10 @@ module.exports.min = function (vetor) {
     );
 
   return Math.min.apply(null, vetor);
-};
+}
 
 //Soma de determinada matriz
-module.exports.smtr = function (a) {
+export function smtr(a) {
   if (isNaN(a) || a === null)
     throw new RuntimeError(
       this.token,
@@ -301,10 +301,10 @@ module.exports.smtr = function (a) {
   }
 
   return aprox(z, 2);
-};
+}
 
 // Retorna a média de um vetor de números
-module.exports.media = function () {
+export function media() {
   const argumentsLength = Object.keys(arguments).length;
 
   if (argumentsLength <= 0) {
@@ -355,10 +355,10 @@ module.exports.media = function () {
 
   // Faz o cáculo da média em si e retorna.
   return (valoresSomados / args.length);
-};
+}
 
 //Média aritmética de uma matriz
-module.exports.ve = function (a) {
+export function ve(a) {
   if (isNaN(a) || a === null)
     throw new RuntimeError(
       this.token,
@@ -368,29 +368,29 @@ module.exports.ve = function (a) {
   if (a.length == 1) { return aprox(smtr(a) / a[0].length, 4); } // a is a row array
   if (a[0].length == 1) { return aprox(smtr(a) / a.length, 4); } // a is a column array
   if (a[0].length == undefined) { return aprox(smtr(a) / a.length, 4); }
-};
+}
 
 //Soma dos quadrados dos resíduos (sqr) de uma matriz
-module.exports.sqr = function (a) {
+export function sqr(a) {
   if (isNaN(a) || a === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para sqr(a)."
     );
 
-  const mean = ve(array);
+  const mean = ve(a);
   let sum = 0;
-  let i = array.length;
+  let i = a.length;
   let tmp;
   while (--i >= 0) {
-    tmp = array[i] - mean;
+    tmp = a[i] - mean;
     sum += tmp * tmp;
   }
   return sum;
-};
+}
 
 //Variação de uma matriz
-module.exports.variancia = function (array, flag) {
+export function variancia(array, flag) {
   if (isNaN(array) || array === null || isNaN(flag) || flag === null)
     throw new RuntimeError(
       this.token,
@@ -399,28 +399,28 @@ module.exports.variancia = function (array, flag) {
 
   if (flag == undefined) { flag = 1; }
   return sqr(array) / (array.length - (flag ? 1 : 0));
-};
+}
 
 //Covariância de duas matrizes
-module.exports.covar = function (array1, array2) {
+export function covar(array1, array2) {
   if (isNaN(array1) || array1 === null || isNaN(array1) || array2 === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para covar(matriz1, matriz2)."
     );
 
-  var u = ve(array1);
-  var v = ve(array2);
-  var arr1Len = array1.length;
-  var sq_dev = new Array(arr1Len);
-  for (var i = 0; i < arr1Len; i++)
+  const u = ve(array1);
+  const v = ve(array2);
+  const arr1Len = array1.length;
+  const sq_dev = new Array(arr1Len);
+  for (let i = 0; i < arr1Len; i++)
     sq_dev[i] = (array1[i] - u) * (array2[i] - v);
   return smtr(sq_dev) / (arr1Len - 1);
-};
+}
 
 /*TRIGONOMETRIA*/
 //Seno de um número
-module.exports.sen = function (x) {
+export function sen(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -428,10 +428,10 @@ module.exports.sen = function (x) {
     );
 
   return Math.sin(x);
-};
+}
 
 //Cosseno de um número
-module.exports.cos = function (x) {
+export function cos(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -439,10 +439,10 @@ module.exports.cos = function (x) {
     );
 
   return Math.cos(x);
-};
+}
 
 //Tangente de um número
-module.exports.tan = function (x) {
+export function tan(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -450,10 +450,10 @@ module.exports.tan = function (x) {
     );
 
   return Math.tan(x);
-};
+}
 
 //Arco cosseno de um número
-module.exports.arcos = function (x) {
+export function arcos(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -461,10 +461,10 @@ module.exports.arcos = function (x) {
     );
 
   return Math.acos(x);
-};
+}
 
 //Arco seno de um número
-module.exports.arsen = function (x) {
+export function arsen(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -472,10 +472,10 @@ module.exports.arsen = function (x) {
     );
 
   return Math.asin(x);
-};
+}
 
 //Arco tangente de um número
-module.exports.artan = function (x) {
+export function artan(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -483,10 +483,10 @@ module.exports.artan = function (x) {
     );
 
   return Math.atan(x)
-};
+}
 
 //Exponencial
-module.exports.exp = function (x) {
+export function exp(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -494,10 +494,10 @@ module.exports.exp = function (x) {
     );
 
   return Math.exp(x);
-};
+}
 
 //Logaritmo natural
-module.exports.log = function (x) {
+export function log(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -505,10 +505,10 @@ module.exports.log = function (x) {
     );
 
   return Math.log(x);
-};
+}
 
 // Retorna a base elevada ao expoente
-module.exports.potencia = function (base, expoente) {
+export function potencia(base, expoente) {
   if (typeof base !== 'number' || typeof expoente !== 'number') {
     throw new RuntimeError(
       this.token,
@@ -517,10 +517,10 @@ module.exports.potencia = function (base, expoente) {
   }
 
   return Math.pow(base, expoente);
-};
+}
 
 //Raíz quadrada
-module.exports.raizq = function (x) {
+export function raizq(x) {
   if (isNaN(x) || x === null)
     throw new RuntimeError(
       this.token,
@@ -528,12 +528,12 @@ module.exports.raizq = function (x) {
     );
 
   return Math.sqrt(x);
-};
+}
 
 /*CINEMÁTICA*/
 
 //Velocidade média
-module.exports.velocidadeMedia = function (s, t) {
+export function velocidadeMedia(s, t) {
   if (isNaN(s) || s === null || isNaN(t) || t === null)
     throw new RuntimeError(
       this.token,
@@ -541,32 +541,32 @@ module.exports.velocidadeMedia = function (s, t) {
     );
 
   return (s / t);
-};
+}
 
 //Espaço percorrido
-module.exports.deltaS = function (s0, s) {
+export function deltaS(s0, s) {
   if (isNaN(s0) || s0 === null || isNaN(s) || s === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para deltas(e0,e1)."
     );
-  ds = s - s0;
+  const ds = s - s0;
   return ds;
-};
+}
 
 //Tempo Percorrido
-module.exports.deltaT = function (t0, t) {
+export function deltaT(t0, t) {
   if (isNaN(t0) || t0 === null || isNaN(t) || t === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para deltat(t0,t1)."
     );
-  dt = t - t0;
+  const dt = t - t0;
   return dt;
-};
+}
 
 // Cálculo de aceleração
-module.exports.aceleracao = function (
+export function aceleracao(
   velocidadeFinal, velocidadeInicial, tempoFinal, tempoInicial) {
 
   if (
@@ -594,28 +594,28 @@ module.exports.aceleracao = function (
   }
 
   return (velocidadeFinal - velocidadeInicial) / (tempoFinal - tempoInicial);
-};
+}
 
 //Função Horária da Posição (M.R.U)
-module.exports.mrufh = function (s0, v, t) {
+export function mrufh(s0, v, t) {
   if (isNaN(s0) || s0 === null)
     throw new RuntimeError(
       this.token,
       "Você deve prover valores para mrufh(s0,v,t)."
     );
   t = t + 1;
-  const s = new Array();
+  let s = new Array([]);
   let index = 0;
-  for (var i = 0; i < t; i++) {
+  for (let i = 0; i < t; i++) {
     s[index] = s0 + v * i;
     index++;
   }
 
   return ["Função: " + s0 + "+(" + v + ")*t" + "<br>" + "Posições: " + s];
-};
+}
 
 //Gráfico da velocidade (M.R.U.V)
-module.exports.mruv = function (s0, s, a) {
+export function mruv(s0, s, a) {
   if (
     isNaN(s0) || s0 === null ||
     isNaN(s) || s === null ||
@@ -625,22 +625,22 @@ module.exports.mruv = function (s0, s, a) {
       this.token,
       "Você deve prover valores para mruv(Pi, Vf, A)."
     );
-  const vf = new Array();
-  const x = new Array();
-  let v = new Array();
+  const vf = new Array([]);
+  const x = new Array([]);
+  // let v = new Array([]);
   let index = 0;
-  for (var i = 0; i < s; i++) {
-    v = index;
+  for (let i = 0; i < s; i++) {
+    // v = index;
     vf[index] = Math.sqrt(2 * a * (index - s0));
     x[index] = i;
     index++;
   }
 
   return vf;
-};
+}
 
 /*Controle e Servomecanismos*/
-module.exports.pid = function (Mo, t, K, T1, T2) {
+export function pid(Mo, t, K, T1, T2) {
   if (
     isNaN(Mo) || Mo === null ||
     isNaN(t) || t === null ||
@@ -653,28 +653,28 @@ module.exports.pid = function (Mo, t, K, T1, T2) {
       "Você deve prover valores para pid(Ov, Ts, K, T1, T2)."
     );
   }
-  pi = Math.PI;//Pi da bilbioteca Math.js
+  const pi = Math.PI;//Pi da biblioteca Math.js
 
   //Amortecimento Relativo
-  csi = (-1 * (Math.log((Mo / 100)))) / (Math.sqrt(Math.pow(pi, 2) + (pot((Math.log((Mo / 100))), 2))));
+  const csi = (-1 * (Math.log((Mo / 100)))) / (Math.sqrt(Math.pow(pi, 2) + (Math.pow((Math.log((Mo / 100))), 2))));
 
   //Frequência Natural
-  Wn = (4) / (t * csi);
+  const Wn = (4) / (t * csi);
 
   //Controlador Proporcional (P)
-  Kp = 20 * (Math.pow(csi, 2) * Math.pow(Wn, 2) * T1 * T2) + ((Math.pow(Wn, 2) * T1 * T2) - 1) / (K);
+  const Kp = 20 * (Math.pow(csi, 2) * Math.pow(Wn, 2) * T1 * T2) + ((Math.pow(Wn, 2) * T1 * T2) - 1) / (K);
 
   //Controlador Integral (I)
-  Ki = (10 * csi * (Math.pow(Wn, 3)) * T1 * T2) / (K);
+  const Ki = (10 * csi * (Math.pow(Wn, 3)) * T1 * T2) / (K);
 
   //Controlador Derivativo (D)
-  Kd = (12 * csi * Wn * T1 * T2 - T1 - T2) / (K);
+  const Kd = (12 * csi * Wn * T1 * T2 - T1 - T2) / (K);
 
   return [csi, Wn, Kp, Ki, Kd];
-};
+}
 
 // Retorna o comprimento de um vetor
-module.exports.comp = function (array) {
+export function comp(array) {
 
   if (!Array.isArray(array)) {
     throw new RuntimeError(
@@ -684,10 +684,10 @@ module.exports.comp = function (array) {
   }
 
   return array.length;
-};
+}
 
 // Retorna o menor número inteiro dentre o valor de "value"
-module.exports.minaprox = function (value) {
+export function minaprox(value) {
 
   if (typeof value !== 'number') {
     throw new RuntimeError(
@@ -697,4 +697,4 @@ module.exports.minaprox = function (value) {
   }
 
   return Math.floor(value);
-};
+}

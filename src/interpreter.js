@@ -1,30 +1,26 @@
-const tokenTypes = require("./tokenTypes.js"),
-    Environment = require("./environment.js"),
-    Egua = require("./egua.js"),
-    loadGlobalLib = require("./lib/globalLib.js"),
-    path = require("path"),
-    fs = require("fs"),
-    checkStdLib = require("./lib/importStdlib.js");
-
-const Callable = require("./structures/callable.js"),
-    StandardFn = require("./structures/standardFn.js"),
-    EguaClass = require("./structures/class.js"),
-    EguaFunction = require("./structures/function.js"),
-    EguaInstance = require("./structures/instance.js"),
-    EguaModule = require("./structures/module.js");
-
-const {
-    RuntimeError,
-    ContinueException,
-    BreakException,
-    ReturnException
-} = require("./errors.js");
+import tokenTypes from "./tokenTypes.js";
+import Environment from "./environment.js";
+import Egua from "./egua.js";
+import loadGlobalLib from "./lib/globalLib.js"
+import fs from "node:process"
+import path from "node:path"
+import checkStdLib from "./lib/importStdlib.js"
+import Callable from "./structures/callable.js";
+import StandardFn from "./structures/standardFn.js";
+import EguaClass from "./structures/class.js";
+import EguaFunction from "./structures/function.js";
+import EguaInstance from "./structures/instance.js";
+import EguaModule from "./structures/module.js";
+import { RuntimeError } from "./errors.js";
+import { ContinueException } from "./errors.js";
+import { BreakException } from "./errors.js";
+import ReturnException from "./errors.js";
 
 /**
  * O Interpretador (Interpreter) visita todos os elementos complexos gerados pelo analisador sintático (Parser)
  * e de fato executa a lógica de programação descrita no código.
  */
-module.exports = class Interpreter {
+export default class Interpreter {
     constructor(Egua, baseDir) {
         this.Egua = Egua;
         this.baseDir = baseDir;
@@ -465,7 +461,7 @@ module.exports = class Interpreter {
 
         data = fs.readFileSync(totalPath).toString();
 
-        const egua = new Egua.Egua(filename);
+        const egua = new Egua(filename);
         const interpreter = new Interpreter(egua, totalFolder);
 
         egua.run(data, interpreter);
@@ -474,6 +470,9 @@ module.exports = class Interpreter {
 
         const isDict = obj => obj.constructor === Object;
 
+        console.log("Exported: ", exported)
+        console.log("Dict: ", isDict(exported))
+        
         if (isDict(exported)) {
             let newModule = new EguaModule();
 
@@ -522,11 +521,11 @@ module.exports = class Interpreter {
         return null;
     }
 
-    visitContinueStmt(stmt) {
+    visitContinueStmt(_stmt) {
         throw new ContinueException();
     }
 
-    visitBreakStmt(stmt) {
+    visitBreakStmt(_stmt) {
         throw new BreakException();
     }
 
@@ -542,9 +541,9 @@ module.exports = class Interpreter {
     }
 
     visitAssignsubscriptExpr(expr) {
-        let obj = this.evaluate(expr.obj);
-        let index = this.evaluate(expr.index);
-        let value = this.evaluate(expr.value);
+        const obj = this.evaluate(expr.obj);
+        const index = this.evaluate(expr.index);
+        const value = this.evaluate(expr.value);
 
         if (Array.isArray(obj)) {
             if (index < 0 && obj.length !== 0) {
@@ -711,7 +710,7 @@ module.exports = class Interpreter {
     }
 
     visitGetExpr(expr) {
-        let object = this.evaluate(expr.object);
+        const object = this.evaluate(expr.object);
         if (object instanceof EguaInstance) {
             return object.get(expr.name) || null;
         } else if (object.constructor === Object) {

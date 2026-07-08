@@ -56,7 +56,7 @@ const LoopType = {
  * Exemplo: uma classe A declara dois métodos chamados M e N. Todas as variáveis declaradas dentro de M não podem ser vistas por N, e vice-versa.
  * No entanto, todas as variáveis declaradas dentro da classe A podem ser vistas tanto por M quanto por N.
  */
-module.exports = class Resolver {
+export default class Resolver {
     constructor(interpreter, egua) {
         this.interpreter = interpreter;
         this.egua = egua;

@@ -1,8 +1,8 @@
-class Expr {
-    accept(visitor) { }
+export default class Expr {
+    accept(_visitor) { }
 }
 
-class Assign extends Expr {
+export class Assign extends Expr {
     constructor(name, value) {
         super();
         this.name = name;
@@ -14,7 +14,7 @@ class Assign extends Expr {
     }
 }
 
-class Binary extends Expr {
+export class Binary extends Expr {
     constructor(left, operator, right) {
         super();
         this.left = left;
@@ -27,7 +27,7 @@ class Binary extends Expr {
     }
 }
 
-class Função extends Expr {
+export class Função extends Expr {
     constructor(params, body) {
         super();
         this.params = params;
@@ -39,7 +39,7 @@ class Função extends Expr {
     }
 }
 
-class Call extends Expr {
+export class Call extends Expr {
     constructor(callee, paren, args) {
         super();
         this.callee = callee;
@@ -52,7 +52,7 @@ class Call extends Expr {
     }
 }
 
-class Get extends Expr {
+export class Get extends Expr {
     constructor(object, name) {
         super();
         this.object = object;
@@ -64,7 +64,7 @@ class Get extends Expr {
     }
 }
 
-class Grouping extends Expr {
+export class Grouping extends Expr {
     constructor(expression) {
         super();
         this.expression = expression;
@@ -75,7 +75,7 @@ class Grouping extends Expr {
     }
 }
 
-class Literal extends Expr {
+export class Literal extends Expr {
     constructor(value) {
         super();
         this.value = value;
@@ -86,7 +86,7 @@ class Literal extends Expr {
     }
 }
 
-class Array extends Expr {
+export class Array extends Expr {
     constructor(values) {
         super();
         this.values = values;
@@ -97,7 +97,7 @@ class Array extends Expr {
     }
 }
 
-class Dictionary extends Expr {
+export class Dictionary extends Expr {
     constructor(keys, values) {
         super();
         this.keys = keys;
@@ -109,7 +109,7 @@ class Dictionary extends Expr {
     }
 }
 
-class Subscript extends Expr {
+export class Subscript extends Expr {
     constructor(callee, index, closeBracket) {
         super();
         this.callee = callee;
@@ -122,7 +122,7 @@ class Subscript extends Expr {
     }
 }
 
-class Assignsubscript extends Expr {
+export class Assignsubscript extends Expr {
     constructor(obj, index, value) {
         super();
         this.obj = obj;
@@ -135,7 +135,7 @@ class Assignsubscript extends Expr {
     }
 }
 
-class Logical extends Expr {
+export class Logical extends Expr {
     constructor(left, operator, right) {
         super();
         this.left = left;
@@ -148,7 +148,7 @@ class Logical extends Expr {
     }
 }
 
-class Set extends Expr {
+export class Set extends Expr {
     constructor(object, name, value) {
         super();
         this.object = object;
@@ -161,7 +161,7 @@ class Set extends Expr {
     }
 }
 
-class Super extends Expr {
+export class Super extends Expr {
     constructor(keyword, method) {
         super();
         this.keyword = keyword;
@@ -173,7 +173,7 @@ class Super extends Expr {
     }
 }
 
-class Isto extends Expr {
+export class Isto extends Expr {
     constructor(keyword) {
         super();
         this.keyword = keyword;
@@ -184,7 +184,7 @@ class Isto extends Expr {
     }
 }
 
-class Unary extends Expr {
+export class Unary extends Expr {
     constructor(operator, right) {
         super();
         this.operator = operator;
@@ -196,7 +196,7 @@ class Unary extends Expr {
     }
 }
 
-class Variable extends Expr {
+export class Variable extends Expr {
     constructor(name) {
         super();
         this.name = name;
@@ -206,23 +206,3 @@ class Variable extends Expr {
         return visitor.visitVariableExpr(this);
     }
 }
-
-module.exports = {
-    Assign,
-    Binary,
-    Função,
-    Call,
-    Get,
-    Grouping,
-    Literal,
-    Array,
-    Dictionary,
-    Subscript,
-    Assignsubscript,
-    Logical,
-    Set,
-    Super,
-    Isto,
-    Unary,
-    Variable
-};

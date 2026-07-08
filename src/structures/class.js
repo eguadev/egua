@@ -1,7 +1,7 @@
-const Callable = require("./callable.js");
-const EguaInstance = require("./instance.js");
+import Callable from "./callable.js";
+import EguaInstance from "./instance.js";
 
-module.exports = class EguaClass extends Callable {
+export default class EguaClass extends Callable {
     constructor(name, superclass, methods) {
         super();
         this.name = name;

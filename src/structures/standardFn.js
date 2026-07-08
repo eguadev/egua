@@ -1,6 +1,6 @@
-const Callable = require("./callable.js");
+import Callable from "./callable.js";
 
-module.exports = class StandardFn extends Callable {
+export default class StandardFn extends Callable {
     constructor(arityValue, func) {
         super();
         this.arityValue = arityValue;
