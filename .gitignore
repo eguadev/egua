@@ -1,6 +1,17 @@
-# node modules
-node_modules
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Editors
 .idea
 .vscode
+
+# Build output
+dist/
+egua.min.js
+
+# VitePress (apps/site)
+.vitepress/cache/
+.vite/
