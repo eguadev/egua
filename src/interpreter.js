@@ -1,9 +1,8 @@
 import tokenTypes from "./tokenTypes.js";
 import Environment from "./environment.js";
-import Egua from "./egua.js";
 import loadGlobalLib from "./lib/globalLib.js"
-import fs from "node:process"
-import path from "node:path"
+import fs from "fs"
+import path from "path"
 import checkStdLib from "./lib/importStdlib.js"
 import Callable from "./structures/callable.js";
 import StandardFn from "./structures/standardFn.js";
@@ -461,7 +460,7 @@ export default class Interpreter {
 
         data = fs.readFileSync(totalPath).toString();
 
-        const egua = new Egua(filename);
+        const egua = new this.Egua.constructor(filename);
         const interpreter = new Interpreter(egua, totalFolder);
 
         egua.run(data, interpreter);

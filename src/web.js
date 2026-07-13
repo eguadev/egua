@@ -1,10 +1,10 @@
-const Lexer = require("./lexer.js");
-const Parser = require("./parser.js");
-const Resolver = require("./resolver.js");
-const Interpreter = require("./interpreter.js");
-const tokenTypes = require("./tokenTypes.js");
+import Lexer from "./lexer.js";
+import Parser from "./parser.js";
+import Resolver from "./resolver.js";
+import Interpreter from "./interpreter.js";
+import tokenTypes from "./tokenTypes.js";
 
-module.exports.Egua = class Egua {
+export class Egua {
   constructor(filename) {
     this.filename = filename;
 
@@ -67,4 +67,6 @@ module.exports.Egua = class Egua {
     }
     this.hadRuntimeError = true;
   }
-};
+}
+
+export default Egua;
