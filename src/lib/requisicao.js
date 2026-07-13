@@ -1,4 +1,5 @@
-const RuntimeError = require("../errors.js").RuntimeError;
+import { RuntimeError } from "../errors.js";
+import childProcess from "child_process";
 
 function _requisicao(url, metodo, dados) {
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -28,9 +29,9 @@ function _requisicao(url, metodo, dados) {
 }
 
 function _requisicaoNode(url, metodo, corpoDados) {
-    var spawnSync = require("child_process").spawnSync;
+    const spawnSync = childProcess.spawnSync;
 
-    var script = '\
+    const script = '\
 var http = require("http");\n\
 var https = require("https");\n\
 var u = new URL(process.argv[1]);\n\
@@ -56,13 +57,13 @@ if (dados) req.write(dados);\n\
 req.end();\n\
 ';
 
-    var resultado = spawnSync(process.execPath, ["-e", script, url, metodo, corpoDados], {
+    const resultado = spawnSync(process.execPath, ["-e", script, url, metodo, corpoDados], {
         encoding: "utf-8",
         timeout: 30000
     });
 
     if (resultado.status !== 0 || resultado.stderr) {
-        var msg = resultado.stderr ? resultado.stderr.replace("ERRO:", "").trim() : "Erro desconhecido na requisicao.";
+        const msg = resultado.stderr ? resultado.stderr.replace("ERRO:", "").trim() : "Erro desconhecido na requisicao.";
         throw new Error(msg);
     }
 
@@ -74,7 +75,7 @@ req.end();\n\
 }
 
 function _requisicaoNavegador(url, metodo, corpoDados) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open(metodo, url, false);
 
     if (corpoDados) {
@@ -103,7 +104,7 @@ function _requisicaoNavegador(url, metodo, corpoDados) {
  * @param {string} url A URL para a requisicao.
  * @returns O corpo da resposta (objeto JSON ou texto).
  */
-module.exports.obter = function (url) {
+export function obter(url) {
     if (typeof url !== "string") {
         throw new RuntimeError(
             this.token,
@@ -115,7 +116,7 @@ module.exports.obter = function (url) {
     } catch (e) {
         throw new RuntimeError(this.token, e.message);
     }
-};
+}
 
 /**
  * Realiza uma requisicao HTTP POST.
@@ -123,7 +124,7 @@ module.exports.obter = function (url) {
  * @param {any} dados Os dados a serem enviados (objeto ou texto).
  * @returns O corpo da resposta (objeto JSON ou texto).
  */
-module.exports.enviar = function (url, dados) {
+export function enviar(url, dados) {
     if (typeof url !== "string") {
         throw new RuntimeError(
             this.token,
@@ -135,7 +136,7 @@ module.exports.enviar = function (url, dados) {
     } catch (e) {
         throw new RuntimeError(this.token, e.message);
     }
-};
+}
 
 /**
  * Realiza uma requisicao HTTP PUT.
@@ -143,7 +144,7 @@ module.exports.enviar = function (url, dados) {
  * @param {any} dados Os dados a serem enviados (objeto ou texto).
  * @returns O corpo da resposta (objeto JSON ou texto).
  */
-module.exports.atualizar = function (url, dados) {
+export function atualizar(url, dados) {
     if (typeof url !== "string") {
         throw new RuntimeError(
             this.token,
@@ -155,14 +156,14 @@ module.exports.atualizar = function (url, dados) {
     } catch (e) {
         throw new RuntimeError(this.token, e.message);
     }
-};
+}
 
 /**
  * Realiza uma requisicao HTTP DELETE.
  * @param {string} url A URL para a requisicao.
  * @returns O corpo da resposta (objeto JSON ou texto).
  */
-module.exports.excluir = function (url) {
+export function excluir(url) {
     if (typeof url !== "string") {
         throw new RuntimeError(
             this.token,
@@ -174,4 +175,4 @@ module.exports.excluir = function (url) {
     } catch (e) {
         throw new RuntimeError(this.token, e.message);
     }
-};
+}

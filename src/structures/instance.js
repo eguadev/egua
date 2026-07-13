@@ -1,6 +1,6 @@
-const RuntimeError = require("../errors.js").RuntimeError;
+import { RuntimeError } from "../errors.js";
 
-module.exports = class EguaInstance {
+export default class EguaInstance {
     constructor(creatorClass) {
         this.creatorClass = creatorClass;
         this.fields = {};

@@ -1,4 +1,4 @@
-module.exports = {
+const tokenTypes = {
     LEFT_PAREN: "LEFT_PAREN",
     RIGHT_PAREN: "RIGHT_PAREN",
     LEFT_BRACE: "LEFT_BRACE",
@@ -63,3 +63,5 @@ module.exports = {
     FINALMENTE: "FINALMENTE",
     EOF: "EOF"
 };
+
+export default tokenTypes;

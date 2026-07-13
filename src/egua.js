@@ -1,13 +1,15 @@
-const Lexer = require("./lexer.js");
-const Parser = require("./parser.js");
-const Resolver = require("./resolver.js");
-const Interpreter = require("./interpreter.js");
-const tokenTypes = require("./tokenTypes.js");
-const fs = require("fs");
-const path = require("path");
-const readline = require("readline");
+import process from "node:process";
+import Lexer from "./lexer.js";
+import Parser from "./parser.js";
+import Resolver from "./resolver.js";
+import Interpreter from "./interpreter.js";
+import tokenTypes from "./tokenTypes.js";
+// import fs from "node:process"
+import fs from 'node:fs';
+import path from "node:path"
+import readline from "node:readline" 
 
-module.exports.Egua = class Egua {
+export default class Egua {
     constructor(filename) {
         this.filename = filename;
 
@@ -87,7 +89,9 @@ module.exports.Egua = class Egua {
     }
 
     runtimeError(error) {
-        let line = error.token.line;
+        console.log(error)
+        console.log(error.message)
+        const line = error.token.line;
         if (error.token && line) {
             if (this.fileName)
                 console.error(

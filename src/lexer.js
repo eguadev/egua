@@ -1,4 +1,4 @@
-const tokenTypes = require("./tokenTypes.js");
+import tokenTypes from "./tokenTypes.js";
 
 const reservedWords = {
     e: tokenTypes.E,
@@ -51,7 +51,7 @@ class Token {
  * Também é responsável por mapear as palavras reservadas da linguagem, que não podem ser usadas por outras
  * estruturas, tais como nomes de variáveis, funções, literais, classes e assim por diante.
  */
-module.exports = class Lexer {
+export default class Lexer {
     constructor(code, Egua) {
         this.Egua = Egua;
         this.code = code;

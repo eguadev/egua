@@ -1,5 +1,5 @@
-module.exports = class Callable {
+export default class Callable {
     arity() {
         return this.arityValue;
     }
-};
+}

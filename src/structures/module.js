@@ -1,4 +1,4 @@
-module.exports = class EguaModule {
+export default class EguaModule {
     constructor(name) {
         if (name !== undefined) this.name = name;
     }
