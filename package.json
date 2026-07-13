@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build-web": "browserify src/web.js -p esmify --s Egua -o web/dist.js",
+    "build-web": "browserify src/web.js -p esmify --s Egua -o ./apps/idegua/egua.min.js",
     "test": "./bin/egua tests/tests.egua"
   },
   "repository": {

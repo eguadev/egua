@@ -1,0 +1,39 @@
+<html lang="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+
+  <title>Programar - Linguagem Égua</title>
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="container">
+    <div id="left"><select id="demoSelector"></select></div>
+    <div id="middle"><img src="./assets/egua.png" alt="egua" width="100px" height="auto"></div>
+    <div id="right"><button id="runBtn">Executar</button></div>
+  </div>
+
+  <div id="editor"></div>
+  <div id="output" aria-live="polite"></div>
+
+  <!-- Linguagem Égua em CDN -->
+  <script src="./egua.min.js"></script>
+
+  <!-- Framework do editor do código -->
+  <script src="./js/codeflask.min.js"></script>
+
+  <!-- Core da IDE -->
+  <script src="./js/demos.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
