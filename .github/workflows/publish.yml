@@ -10,11 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: '10.x'
+        node-version: '18.x'
         registry-url: 'https://registry.npmjs.org'
 
     - name: Testando binário
@@ -34,8 +33,10 @@ jobs:
     needs: publish
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
 
     - name: Funcionamento de pacote
       run: |
