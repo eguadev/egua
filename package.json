@@ -4,6 +4,11 @@
   "description": "Linguagem de programação simples e moderna em português",
   "main": "index.js",
   "type": "module",
+  "files": [
+    "bin",
+    "src",
+    "index.js"
+  ],
   "scripts": {
     "build-web": "browserify src/web.js -p esmify --s Egua -o ./apps/idegua/js/egua.min.js",
     "test": "./bin/egua tests/tests.egua"
