@@ -20,21 +20,21 @@ export default defineConfig({
             translations: {
               button: {
                 buttonText: 'Pesquisar',
-                buttonAriaLabel: 'teste1',
+                buttonAriaLabel: 'Pesquisar',
               },
               modal: {
                 displayDetails: 'Mostrar detalhes',
                 resetButtonTitle: 'Apagar busca',
-                backButtonTitle: 'teste3',
+                backButtonTitle: 'Voltar',
                 noResultsText: 'Sem resultados para',
                 footer: {
                   selectText: 'Selecionar',
-                  selectKeyAriaLabel: 'teste4',
+                  selectKeyAriaLabel: 'Enter',
                   navigateText: 'Navegar',
-                  navigateUpKeyAriaLabel: 'teste5',
-                  navigateDownKeyAriaLabel: 'teste6',
+                  navigateUpKeyAriaLabel: 'Seta para cima',
+                  navigateDownKeyAriaLabel: 'Seta para baixo',
                   closeText: 'Sair',
-                  closeKeyAriaLabel: 'esc'
+                  closeKeyAriaLabel: 'Esc'
                 }
               }
             }
