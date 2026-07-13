@@ -1,8 +1,8 @@
-const Callable = require("./callable.js");
-const Environment = require("../environment.js");
-const ReturnExpection = require("../errors.js").ReturnException;
+import Callable from "./callable.js";
+import Environment from "../environment.js";
+import ReturnException from "../errors.js";
 
-module.exports = class EguaFunction extends Callable {
+export default class EguaFunction extends Callable {
     constructor(name, declaration, closure, isInitializer = false) {
         super();
         this.name = name;
@@ -21,12 +21,12 @@ module.exports = class EguaFunction extends Callable {
     }
 
     call(interpreter, args) {
-        let environment = new Environment(this.closure);
-        let params = this.declaration.params;
+        const environment = new Environment(this.closure);
+        const params = this.declaration.params;
         for (let i = 0; i < params.length; i++) {
-            let param = params[i];
+            const param = params[i];
 
-            let name = param["name"].lexeme;
+            const name = param["name"].lexeme;
             let value = args[i];
             if (args[i] === null) {
                 value = param["default"] ? param["default"].value : null;
@@ -37,7 +37,7 @@ module.exports = class EguaFunction extends Callable {
         try {
             interpreter.executeBlock(this.declaration.body, environment);
         } catch (error) {
-            if (error instanceof ReturnExpection) {
+            if (error instanceof ReturnException) {
                 if (this.isInitializer) return this.closure.getVarAt(0, "isto");
                 return error.value;
             } else {

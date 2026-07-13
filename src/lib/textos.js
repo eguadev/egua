@@ -8,44 +8,44 @@
  * @since  1.3.7
  */
 
-const RuntimeError = require("../errors.js").RuntimeError;
+import { RuntimeError } from "../errors.js";
 
 // Constantes úteis
 
 /**
- * Conjunto de todas as letraas minúsculas
+ * Conjunto de todas as letras minúsculas
  */
-module.exports.letras_minusculas = "abcdefghijklmnopqrstuvwxyz";
+export const letras_minusculas = "abcdefghijklmnopqrstuvwxyz";
 
 /**
- * Conjunto de todas as letraas maiúsculas
+ * Conjunto de todas as letras maiúsculas
  */
-module.exports.letras_maiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+export const letras_maiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /**
- * Conjunto de todas as letraas
+ * Conjunto de todas as letras
  */
-module.exports.letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+export const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /**
- * Conjunto de todas os dígitos
+ * Conjunto de todos os dígitos
  */
-module.exports.digitos = "0123456789";
+export const digitos = "0123456789";
 
 /**
- * Conjuto de pontuções
+ * Conjunto de pontuações
  */
-module.exports.pontuacoes = '!"' + "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+export const pontuacoes = '!"' + "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 // Funções de Manipulação de textos.
 
 /**
- * Converte otexto passado para maiúsculo.
+ * Converte o texto passado para maiúsculo.
  *
  * @param {string} texto  o texto a ser convertido.
  * @return {string} a string convertida.
  */
-module.exports.maiusculo = function (texto) {
+export function maiusculo(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -53,7 +53,7 @@ module.exports.maiusculo = function (texto) {
         );
     }
     return texto.toUpperCase();
-};
+}
 
 /**
  * Converte o texto passado para minúsculo.
@@ -61,7 +61,7 @@ module.exports.maiusculo = function (texto) {
  * @param {string} texto  o texto a ser convertido.
  * @return {string} a string convertida.
  */
-module.exports.minusculo = function (texto) {
+export function minusculo(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -69,16 +69,16 @@ module.exports.minusculo = function (texto) {
         );
     }
     return texto.toLowerCase();
-};
+}
 
 /**
  * Verifica se um texto possui um subtexto.
  *
  * @param {string} texto  o texto a ser checado.
- * @param {string} subtexto  o subtexto a ser proucurado.
+ * @param {string} subtexto  o subtexto a ser procurado.
  * @return {boolean} verdadeiro se o texto possui o subtexto falso caso contrário.
  */
-module.exports.contem = function (texto, subtexto) {
+export function contem(texto, subtexto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -92,7 +92,7 @@ module.exports.contem = function (texto, subtexto) {
         );
     }
     return texto.includes(subtexto);
-};
+}
 
 /**
  * Posiciona os argumentos fornecidos no texto.
@@ -106,7 +106,7 @@ module.exports.contem = function (texto, subtexto) {
  * @param {any[]} argumentos  vetor de argumentos a serem posicionados.
  * @return {string} o texto formatado.
  */
-module.exports.formate = function (texto, ...argumentos) {
+export function formate(texto, ...argumentos) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -127,10 +127,10 @@ module.exports.formate = function (texto, ...argumentos) {
         texto = texto.replace("{}", value);
     }
     return texto;
-};
+}
 
 /**
- * Divide o texto passado no em um vetor de subtextos.
+ * Divide o texto passado em um vetor de subtextos.
  *
  * @param {string} texto o texto a ser dividido.
  * @param {string} separador o texto usado para a divisão.
@@ -138,7 +138,7 @@ module.exports.formate = function (texto, ...argumentos) {
  *
  * @returns {string[]} um vetor contendo os textos divididos.
  */
-module.exports.dividir = function (
+export function dividir(
     texto,
     separador = "",
     limite = Number.MAX_SAFE_INTEGER
@@ -162,7 +162,7 @@ module.exports.dividir = function (
         );
     }
     return texto.split(separador, limite);
-};
+}
 
 /**
  * Retorna o tamanho de um texto.
@@ -170,7 +170,7 @@ module.exports.dividir = function (
  * @param {string} texto o texto para obter o tamanho.
  * @return {number} o tamanho do texto.
  */
-module.exports.tamanho = function (texto) {
+export function tamanho(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -178,7 +178,7 @@ module.exports.tamanho = function (texto) {
         );
     }
     return texto.length;
-};
+}
 
 /**
  * Repete um texto fornecido.
@@ -187,7 +187,7 @@ module.exports.tamanho = function (texto) {
  * @param {number} contador o número de cópias.
  * @return {string} um texto com o número de cópias do texto fornecido.
  */
-module.exports.repita = function (texto, contador = 0) {
+export function repita(texto, contador = 0) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -201,7 +201,7 @@ module.exports.repita = function (texto, contador = 0) {
         );
     }
     return texto.repeat(contador);
-};
+}
 
 /**
  * Substitui em um texto fornecido o padrão indicado por um novo valor.
@@ -211,7 +211,7 @@ module.exports.repita = function (texto, contador = 0) {
  * @param {string} novo_texto o novo texto para substituição.
  * @return {string} um novo texto com os valores substituídos.
  */
-module.exports.substituir = function (texto, texto_buscado, novo_texto) {
+export function substituir(texto, texto_buscado, novo_texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -228,7 +228,7 @@ module.exports.substituir = function (texto, texto_buscado, novo_texto) {
         throw new RuntimeError(this.token, "O novo valor deve ser um texto");
     }
     return texto.replace(texto_buscado, novo_texto);
-};
+}
 
 /**
  *  Busca um subtexto em um texto.
@@ -238,7 +238,7 @@ module.exports.substituir = function (texto, texto_buscado, novo_texto) {
  *
  * @returns {number} o índice da primeira ocorrência no texto fornecido ou -1 caso contrário.
  */
-module.exports.busca = function (texto, texto_buscado) {
+export function busca(texto, texto_buscado) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -252,15 +252,15 @@ module.exports.busca = function (texto, texto_buscado) {
         );
     }
     return texto.search(texto_buscado);
-};
+}
 
 /**
  * Remove espaços em branco no começo e no fim do texto.
  *
  * @param {string} texto o texto original.
- * @returns {number} um texto sem espaços em ambos os lados.
+ * @returns {string} um texto sem espaços em ambos os lados.
  */
-module.exports.apara = function (texto) {
+export function apara(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -268,7 +268,7 @@ module.exports.apara = function (texto) {
         );
     }
     return texto.trim();
-};
+}
 
 /**
  * Retorna o caractere na posicao informada do texto.
@@ -277,7 +277,7 @@ module.exports.apara = function (texto) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {string} o caractere na posicao informada.
  */
-module.exports.caractereEm = function (texto, posicao) {
+export function caractereEm(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -291,7 +291,7 @@ module.exports.caractereEm = function (texto, posicao) {
         );
     }
     return texto.charAt(posicao);
-};
+}
 
 /**
  * Retorna o codigo Unicode do caractere na posicao informada.
@@ -300,7 +300,7 @@ module.exports.caractereEm = function (texto, posicao) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {number} o codigo Unicode do caractere.
  */
-module.exports.codigoEm = function (texto, posicao) {
+export function codigoEm(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -314,7 +314,7 @@ module.exports.codigoEm = function (texto, posicao) {
         );
     }
     return texto.charCodeAt(posicao);
-};
+}
 
 /**
  * Retorna uma fatia do texto entre as posicoes inicio e fim.
@@ -324,7 +324,7 @@ module.exports.codigoEm = function (texto, posicao) {
  * @param {number} fim a posicao final (opcional).
  * @returns {string} a fatia do texto.
  */
-module.exports.fatiar = function (texto, inicio, fim) {
+export function fatiar(texto, inicio, fim) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -338,7 +338,7 @@ module.exports.fatiar = function (texto, inicio, fim) {
         );
     }
     return texto.slice(inicio, fim);
-};
+}
 
 /**
  * Verifica se o texto comeca com o prefixo informado.
@@ -347,7 +347,7 @@ module.exports.fatiar = function (texto, inicio, fim) {
  * @param {string} prefixo o prefixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto comeca com o prefixo.
  */
-module.exports.comecaCom = function (texto, prefixo) {
+export function comecaCom(texto, prefixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -361,7 +361,7 @@ module.exports.comecaCom = function (texto, prefixo) {
         );
     }
     return texto.startsWith(prefixo);
-};
+}
 
 /**
  * Verifica se o texto termina com o sufixo informado.
@@ -370,7 +370,7 @@ module.exports.comecaCom = function (texto, prefixo) {
  * @param {string} sufixo o sufixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto termina com o sufixo.
  */
-module.exports.terminaCom = function (texto, sufixo) {
+export function terminaCom(texto, sufixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -384,7 +384,7 @@ module.exports.terminaCom = function (texto, sufixo) {
         );
     }
     return texto.endsWith(sufixo);
-};
+}
 
 /**
  * Preenche o inicio do texto com o caractere informado ate o tamanho desejado.
@@ -394,7 +394,7 @@ module.exports.terminaCom = function (texto, sufixo) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
+export function preenchaInicio(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -417,7 +417,7 @@ module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
         );
     }
     return texto.padStart(tamanho, preenchimento);
-};
+}
 
 /**
  * Preenche o fim do texto com o caractere informado ate o tamanho desejado.
@@ -427,7 +427,7 @@ module.exports.preenchaInicio = function (texto, tamanho, preenchimento) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-module.exports.preenchaFim = function (texto, tamanho, preenchimento) {
+export function preenchaFim(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -450,4 +450,4 @@ module.exports.preenchaFim = function (texto, tamanho, preenchimento) {
         );
     }
     return texto.padEnd(tamanho, preenchimento);
-};
+}

@@ -1,8 +1,8 @@
-class Stmt {
+export default class Stmt {
     accept(visitor) { }
 }
 
-class Expression extends Stmt {
+export class Expression extends Stmt {
     constructor(expression) {
         super();
         this.expression = expression;
@@ -13,7 +13,7 @@ class Expression extends Stmt {
     }
 }
 
-class Função extends Stmt {
+export class Função extends Stmt {
     constructor(name, func) {
         super();
         this.name = name;
@@ -25,7 +25,7 @@ class Função extends Stmt {
     }
 }
 
-class Retorna extends Stmt {
+export class Retorna extends Stmt {
     constructor(keyword, value) {
         super();
         this.keyword = keyword;
@@ -37,7 +37,7 @@ class Retorna extends Stmt {
     }
 }
 
-class Classe extends Stmt {
+export class Classe extends Stmt {
     constructor(name, superclass, methods) {
         super();
         this.name = name;
@@ -50,7 +50,7 @@ class Classe extends Stmt {
     }
 }
 
-class Block extends Stmt {
+export class Block extends Stmt {
     constructor(statements) {
         super();
         this.statements = statements;
@@ -61,7 +61,7 @@ class Block extends Stmt {
     }
 }
 
-class Escreva extends Stmt {
+export class Escreva extends Stmt {
     constructor(expression) {
         super();
         this.expression = expression;
@@ -72,7 +72,7 @@ class Escreva extends Stmt {
     }
 }
 
-class Importar extends Stmt {
+export class Importar extends Stmt {
     constructor(path, closeBracket) {
         super();
         this.path = path;
@@ -84,7 +84,7 @@ class Importar extends Stmt {
     }
 }
 
-class Fazer extends Stmt {
+export class Fazer extends Stmt {
     constructor(doBranch, whileCondition) {
         super();
         this.doBranch = doBranch;
@@ -96,7 +96,7 @@ class Fazer extends Stmt {
     }
 }
 
-class Enquanto extends Stmt {
+export class Enquanto extends Stmt {
     constructor(condition, body) {
         super();
         this.condition = condition;
@@ -108,7 +108,7 @@ class Enquanto extends Stmt {
     }
 }
 
-class Para extends Stmt {
+export class Para extends Stmt {
     constructor(initializer, condition, increment, body) {
         super();
         this.initializer = initializer;
@@ -122,7 +122,7 @@ class Para extends Stmt {
     }
 }
 
-class Tente extends Stmt {
+export class Tente extends Stmt {
     constructor(tryBranch, catchBranch, elseBranch, finallyBranch) {
         super();
         this.tryBranch = tryBranch;
@@ -136,7 +136,7 @@ class Tente extends Stmt {
     }
 }
 
-class Se extends Stmt {
+export class Se extends Stmt {
     constructor(condition, thenBranch, elifBranches, elseBranch) {
         super();
         this.condition = condition;
@@ -150,7 +150,7 @@ class Se extends Stmt {
     }
 }
 
-class Escolha extends Stmt {
+export class Escolha extends Stmt {
     constructor(condition, branches, defaultBranch) {
         super();
         this.condition = condition;
@@ -163,7 +163,7 @@ class Escolha extends Stmt {
     }
 }
 
-class Pausa extends Stmt {
+export class Pausa extends Stmt {
     constructor() {
         super();
     }
@@ -173,7 +173,7 @@ class Pausa extends Stmt {
     }
 }
 
-class Continua extends Stmt {
+export class Continua extends Stmt {
     constructor() {
         super();
     }
@@ -183,7 +183,7 @@ class Continua extends Stmt {
     }
 }
 
-class Var extends Stmt {
+export class Var extends Stmt {
     constructor(name, initializer) {
         super();
         this.name = name;
@@ -194,22 +194,3 @@ class Var extends Stmt {
         return visitor.visitVarStmt(this);
     }
 }
-
-module.exports = {
-    Expression,
-    Função,
-    Retorna,
-    Classe,
-    Block,
-    Escreva,
-    Importar,
-    Fazer,
-    Enquanto,
-    Para,
-    Tente,
-    Se,
-    Escolha,
-    Pausa,
-    Continua,
-    Var
-};
