@@ -3,7 +3,7 @@ name: Commit e PR - Main
 on:
   push:
     branches:
-       - "*"
+      - "*"
   pull_request:
     branches:
       - "*"
@@ -23,3 +23,21 @@ jobs:
 
     - name: Teste binário
       run: npm run test
+
+    - name: Build do bundle da IDE (egua.min.js)
+      run: npm run build-web
+
+  site:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Build do site (VitePress)
+      working-directory: apps/site
+      run: |
+        npm ci
+        npm run build
