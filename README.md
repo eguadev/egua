@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-  <img src="./assets/egua.png" alt="egua" width="auto" height="80px">
+  <img src="https://raw.githubusercontent.com/eguadev/egua/main/assets/egua.png" alt="egua" width="auto" height="80px">
 
   <h3 align="center">Linguagem Egua</h3>
 

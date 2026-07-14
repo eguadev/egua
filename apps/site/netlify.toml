@@ -1,0 +1,11 @@
+# Site de documentação (egua.dev)
+# Este arquivo vale para o site Netlify cujo "base directory" é apps/site.
+# A Netlify instala as dependências (npm ci) automaticamente antes do comando de build.
+# O caminho de publish é relativo ao base directory.
+
+[build]
+  command = "npm run build"
+  publish = ".vitepress/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
