@@ -1,0 +1,12 @@
+# Site do IDEgua (programar.egua.dev)
+# Este arquivo vale para o site Netlify cujo "base directory" é a raiz do repositório.
+# A Netlify instala as dependências (npm ci) automaticamente antes do comando de build.
+# O site de docs (egua.dev) usa apps/site/netlify.toml, que tem precedência quando o
+# base directory do site é apps/site.
+
+[build]
+  command = "npm run build-web"
+  publish = "apps/idegua"
+
+[build.environment]
+  NODE_VERSION = "22"
