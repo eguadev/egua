@@ -8,9 +8,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
-    # Trusted Publishing (OIDC): o npm aceita o publish deste workflow sem token,
-    # conforme configurado em npmjs.com > pacote egua > Settings > Trusted Publisher.
     permissions:
       contents: read
       id-token: write
@@ -19,7 +16,6 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        # Node 24 traz npm >= 11.5.1, requisito do Trusted Publishing
         node-version: '24.x'
         registry-url: 'https://registry.npmjs.org'
 
