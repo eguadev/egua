@@ -32,9 +32,9 @@ features:
 
 ## O que é a linguagem Égua?
 
-**Égua** é uma linguagem de programação livre e de código aberto, totalmente em português — palavras-chave, mensagens de erro e documentação, sem depender de termos em inglês. Aqui "Égua" é sempre o nome da linguagem de programação, não o animal.
+**Égua** é uma linguagem de programação livre, de código aberto e totalmente em português — palavras-chave, mensagens de erro e documentação, sem depender de termos em inglês. Foi criada para ensinar lógica de programação e os primeiros passos da programação a estudantes e iniciantes no Brasil.
 
-Ela foi criada para ensinar lógica de programação e os primeiros passos da programação a estudantes e iniciantes no Brasil. Roda direto no navegador, então não é preciso instalar nada: abra o [Programar](https://programar.egua.dev) e comece a escrever código Égua imediatamente.
+Ela roda direto no navegador, então não é preciso instalar nada: abra o [Programar](https://programar.egua.dev) e comece a escrever código na linguagem Égua imediatamente.
 
 - **Nunca programou?** Comece pela [Introdução à Lógica de Programação](/logica/).
 - **Já conhece o básico?** Vá direto para a [Introdução à Linguagem Égua](/egua/).
