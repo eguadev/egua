@@ -117,8 +117,3 @@ escreva("123" + texto(testeNumero));
 ```
 
 Essas funções internas são apenas algumas das muitas ferramentas disponíveis no Égua para ajudar na resolução de problemas e manipulação de dados. Ao explorar e entender essas funções, você terá mais recursos para criar programas poderosos e eficientes.
-
-## Veja também
-
-- [Funções](/egua/funcao) — como criar suas próprias funções, além das integradas.
-- [Bibliotecas](/egua/bibliotecas) — funcionalidades adicionais que podem ser importadas.

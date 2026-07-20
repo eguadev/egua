@@ -41,8 +41,3 @@ var idade = 10; // Outro comentário de linha única
 ```
 
 Os comentários são úteis para tornar o código mais compreensível, documentar funcionalidades e facilitar a colaboração entre desenvolvedores. Eles não são executados e não afetam o funcionamento do programa.
-
-## Veja também
-
-- [Variáveis](/egua/variaveis) — o próximo passo depois do "Olá, Mundo!".
-- [Introdução à Lógica de Programação](/logica/) — se você ainda não conhece os conceitos básicos de lógica, comece por aqui.

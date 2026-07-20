@@ -36,8 +36,3 @@ Antes de ver um algoritmo em código, vale entender que você já segue algoritm
 5. Retire o bolo pronto (saída).
 
 Um programa de computador funciona da mesma forma: ele recebe uma entrada, segue uma sequência de instruções — algumas condicionais, algumas repetidas — e produz uma saída. A diferença é que, em programação, essas instruções precisam ser escritas de forma exata o suficiente para que um computador, que não interpreta ambiguidades, consiga executá-las.
-
-## Veja também
-
-- [Glossário de Lógica de Programação](/logica/glossario) — definições rápidas dos termos usados nesta página.
-- [Introdução à Linguagem Égua](/egua/) — o próximo passo depois de entender a lógica: colocar a mão no código.

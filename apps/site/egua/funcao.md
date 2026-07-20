@@ -78,8 +78,3 @@ exibeA(); // Saída: A
 ```
 
 Nesse exemplo, a função `exibeA` exibe a letra "A" e, em seguida, a instrução `retorna` interrompe a execução da função, fazendo com que a linha `escreva("B")` nunca seja alcançada.
-
-## Veja também
-
-- [Funções Integradas](/egua/funcoes-integradas) — funções prontas da linguagem, como `mapear()`.
-- [Fluxo de Controle](/egua/fluxo-controle) — condicionais e loops para usar dentro de funções.

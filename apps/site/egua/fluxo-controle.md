@@ -199,8 +199,3 @@ tente {
 ```
 
 Essas são as principais instruções de controle de fluxo em Égua. Com o entendimento dessas instruções, você pode criar programas mais complexos e controlar o fluxo de execução de maneira eficiente.
-
-## Veja também
-
-- [Operadores](/egua/operadores) — os operadores lógicos e de comparação usados nas condições acima.
-- [Funções](/egua/funcao) — organize blocos de código repetidos em funções reutilizáveis.

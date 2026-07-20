@@ -108,8 +108,3 @@ Os operadores têm uma ordem clara de prioridade, semelhante à matemática, ond
 - `>` e `<`
 - `==` e `!=`
 - `em`, `e` e `ou`
-
-## Veja também
-
-- [Tipos de Dados](/egua/tipos-dados) — os valores que os operadores manipulam.
-- [Fluxo de Controle](/egua/fluxo-controle) — como usar operadores em condições e loops.
