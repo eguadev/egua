@@ -1,3 +1,7 @@
+---
+description: Como declarar, atribuir e usar variáveis na linguagem de programação Égua, incluindo escopo global e local, com exemplos práticos.
+---
+
 # Variáveis
 
 As variáveis são uma das primeiras estruturas de dados que todo programador aprende ao começar a programar. Elas são caracterizadas por terem um nome e armazenarem valores em memória.
@@ -67,3 +71,8 @@ escreva(a); // exibe 1
 ```
 
 Entender o conceito de variáveis e escopo é fundamental para o desenvolvimento de programas mais complexos. À medida que você avança na sua jornada de programação, outros tipos de variáveis e escopos também podem ser explorados.
+
+## Veja também
+
+- [Tipos de Dados](/egua/tipos-dados) — quais valores uma variável pode armazenar.
+- [Fluxo de Controle](/egua/fluxo-controle) — como usar variáveis em condições e loops.

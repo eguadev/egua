@@ -1,3 +1,7 @@
+---
+description: Funções integradas da linguagem Égua, como aleatorioEntre, mapear, ordenar e tamanho, prontas para usar em seus programas.
+---
+
 # Funções Integradas
 
 As funções integradas da linguagem égua são ferramentas poderosas que podem ser usadas para realizar tarefas específicas. Aqui estão algumas funções internas comuns e suas descrições:
@@ -113,3 +117,8 @@ escreva("123" + texto(testeNumero));
 ```
 
 Essas funções internas são apenas algumas das muitas ferramentas disponíveis no Égua para ajudar na resolução de problemas e manipulação de dados. Ao explorar e entender essas funções, você terá mais recursos para criar programas poderosos e eficientes.
+
+## Veja também
+
+- [Funções](/egua/funcao) — como criar suas próprias funções, além das integradas.
+- [Bibliotecas](/egua/bibliotecas) — funcionalidades adicionais que podem ser importadas.

@@ -1,3 +1,7 @@
+---
+description: Os tipos de dados da linguagem Égua — texto, números, listas, dicionários, nulo e booleanos — explicados com exemplos de código.
+---
+
 # Tipos de dados
 Ao iniciar sua jornada na programação, você será apresentado a um conceito fundamental: os tipos de dados. Os tipos de dados desempenham um papel essencial em qualquer linguagem de programação, pois determinam como a informação é armazenada e manipulada em um programa.
 
@@ -104,3 +108,8 @@ var variavel0 = falso;
 ```
 
 Compreender e utilizar corretamente esses tipos de dados é fundamental na programação, pois eles são os blocos de construção básicos para o desenvolvimento de programas mais complexos.
+
+## Veja também
+
+- [Variáveis](/egua/variaveis) — como armazenar esses tipos de dados em variáveis.
+- [Operadores](/egua/operadores) — como manipular e comparar valores desses tipos.
