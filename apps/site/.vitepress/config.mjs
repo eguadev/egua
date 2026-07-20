@@ -137,11 +137,6 @@ export default defineConfig({
       { text: 'Sobre', link: '/sobre' },
     ],
 
-    editLink: {
-      pattern: 'https://github.com/eguadev/egua/edit/main/apps/site/:path',
-      text: 'Editar esta página no GitHub'
-    },
-
     sidebar: [
       {
         text: 'Aprender Lógica',

@@ -137,8 +137,3 @@ var a = B("13/12/1981");
 ```
 
 Neste exemplo, a classe `B` herda da classe `A` e chama o método `data` da classe pai usando `super.data(data)` no construtor da classe `B`. Isso permite reutilizar o código existente na classe pai dentro da classe filha.
-
-## Veja também
-
-- [Funções](/egua/funcao) — a base para entender métodos de classe.
-- [Bibliotecas](/egua/bibliotecas) — como importar funcionalidades prontas para usar em suas classes.

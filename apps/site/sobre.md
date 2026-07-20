@@ -22,8 +22,3 @@ A linguagem Égua é desenvolvida pela comunidade **eguadev**, um grupo de desen
 ## Contato
 
 Para dúvidas, sugestões ou parcerias (por exemplo, uso em sala de aula), entre em contato pelo e-mail [lucaspompeuneves@gmail.com](mailto:lucaspompeuneves@gmail.com).
-
-## Veja também
-
-- [Introdução à Lógica de Programação](/logica/) — comece por aqui se nunca programou.
-- [Introdução à Linguagem Égua](/egua/) — comece por aqui se já conhece o básico de programação.

@@ -108,8 +108,3 @@ var variavel0 = falso;
 ```
 
 Compreender e utilizar corretamente esses tipos de dados é fundamental na programação, pois eles são os blocos de construção básicos para o desenvolvimento de programas mais complexos.
-
-## Veja também
-
-- [Variáveis](/egua/variaveis) — como armazenar esses tipos de dados em variáveis.
-- [Operadores](/egua/operadores) — como manipular e comparar valores desses tipos.
