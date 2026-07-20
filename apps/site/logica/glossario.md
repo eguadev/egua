@@ -1,3 +1,7 @@
+---
+description: Glossário de lógica de programação em português — definições simples de algoritmo, variável, função, loop e outros termos essenciais.
+---
+
 # Glossário
 Aqui estão alguns termos comuns na programação explicados de forma simples para iniciantes.
 
@@ -39,4 +43,9 @@ O escopo define a visibilidade e acessibilidade de variáveis e funções em dif
 
 ---
 Ter uma compreensão básica desses termos é essencial para iniciar a jornada na programação. À medida que você avança no aprendizado, encontrará mais termos e conceitos que irão expandir seu conhecimento e capacidade de criar soluções mais complexas.
+
+## Veja também
+
+- [Introdução à Lógica de Programação](/logica/) — o contexto completo por trás destes termos.
+- [Introdução à Linguagem Égua](/egua/) — veja esses conceitos aplicados em código de verdade.
 

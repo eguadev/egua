@@ -9,3 +9,30 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# O VitePress (cleanUrls: true) gera URLs sem ".html", mas o Netlify também
+# serve o arquivo bruto na URL com ".html", criando conteúdo duplicado sem
+# canonical. Estes redirects consolidam tudo na URL limpa.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/egua/index.html"
+  to = "/egua/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/logica/index.html"
+  to = "/logica/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*.html"
+  to = "/:splat"
+  status = 301
+  force = true

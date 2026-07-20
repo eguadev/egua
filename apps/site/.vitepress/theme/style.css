@@ -155,3 +155,21 @@
 div[class*="language-"] > span.lang {
   display: none !important;
 }
+
+/**
+ * Touch targets on mobile/tablet — bump interactive elements closer to the
+ * ~44px minimum recommended tap size without changing desktop sizing.
+ * -------------------------------------------------------------------------- */
+@media (max-width: 959px) {
+  .VPButton.medium {
+    line-height: 44px;
+  }
+
+  .VPSidebarItem .link .text {
+    padding: 10px 0;
+  }
+
+  .VPLocalNavOutlineDropdown button {
+    line-height: 44px;
+  }
+}

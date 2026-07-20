@@ -1,3 +1,7 @@
+---
+description: Programação orientada a objetos na linguagem Égua — criação de classes, métodos, construtor e herança — com exemplos de código.
+---
+
 # Classes
 
 A linguagem Égua suporta a orientação a objetos de forma nativa, permitindo a criação e manipulação de classes, objetos, métodos e herança.
@@ -133,3 +137,8 @@ var a = B("13/12/1981");
 ```
 
 Neste exemplo, a classe `B` herda da classe `A` e chama o método `data` da classe pai usando `super.data(data)` no construtor da classe `B`. Isso permite reutilizar o código existente na classe pai dentro da classe filha.
+
+## Veja também
+
+- [Funções](/egua/funcao) — a base para entender métodos de classe.
+- [Bibliotecas](/egua/bibliotecas) — como importar funcionalidades prontas para usar em suas classes.
