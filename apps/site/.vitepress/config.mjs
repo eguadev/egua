@@ -43,7 +43,6 @@ export default defineConfig({
   ],
   appearance: false,
   cleanUrls: true,
-  lastUpdated: true,
 
   sitemap: {
     hostname: siteUrl
