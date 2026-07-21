@@ -133,7 +133,6 @@ export default defineConfig({
       { text: 'Lógica', link: '/logica/' },
       { text: 'Aprender', link: '/egua/' },
       { text: 'Programar', link: 'https://programar.egua.dev' },
-      { text: 'Sobre', link: '/sobre' },
     ],
 
     sidebar: [
