@@ -71,6 +71,20 @@ export default defineConfig({
       ['meta', { name: 'twitter:image', content: `${siteUrl}/egua.png` }]
     ]
 
+    if (path === '/') {
+      head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: 'Égua: Desmistificando Programação e Democratizando Acesso Tecnológico | Lucas Pompeu | TEDxBlumenau',
+        description: 'Palestra no TEDx Blumenau sobre a linguagem de programação Égua e como programar em português pode democratizar o acesso à tecnologia.',
+        embedUrl: 'https://www.youtube.com/embed/1hlkRcK0rVc',
+        contentUrl: 'https://www.youtube.com/watch?v=1hlkRcK0rVc',
+        thumbnailUrl: 'https://i.ytimg.com/vi/1hlkRcK0rVc/hqdefault.jpg',
+        uploadDate: '2023-08-25',
+        inLanguage: 'pt-BR'
+      })])
+    }
+
     const isEguaDoc = path.startsWith('/egua/') && path !== '/egua/'
     const isLogicaDoc = path.startsWith('/logica/') && path !== '/logica/'
     if (isEguaDoc || isLogicaDoc) {
