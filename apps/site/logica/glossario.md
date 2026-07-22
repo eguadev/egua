@@ -1,3 +1,7 @@
+---
+description: Glossário de lógica de programação em português — definições simples de algoritmo, variável, função, loop e outros termos essenciais.
+---
+
 # Glossário
 Aqui estão alguns termos comuns na programação explicados de forma simples para iniciantes.
 

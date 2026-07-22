@@ -1,3 +1,7 @@
+---
+description: Estruturas de fluxo de controle na linguagem Égua — se/senão, enquanto, para, escolha-caso e tente-pegue-finalmente — com exemplos.
+---
+
 # Fluxo de Controle
 
 A programação envolve o controle de fluxo, que determina a ordem em que as instruções são executadas em um programa. A linguagem de programação égua oferece uma variedade de opções de controle de fluxo que permitem tomar decisões, repetir a execução de blocos de código e lidar com erros.

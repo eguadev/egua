@@ -1,3 +1,7 @@
+---
+description: Como criar e usar funções na linguagem Égua — funções padrão, funções anônimas, parâmetros e retorno — com exemplos práticos.
+---
+
 # Funções
 
 As funções são blocos de código que podem ser chamados e executados em diferentes partes de um programa. Elas ajudam a organizar o código, evitar repetições e facilitar a reutilização de trechos específicos de lógica.

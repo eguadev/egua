@@ -1,3 +1,7 @@
+---
+description: Introdução à linguagem de programação Égua, em português, com sintaxe simplificada, execução no navegador e seu primeiro programa "Olá, Mundo!".
+---
+
 # Égua
 
 Ao aprender a programar em égua, você estará adquirindo uma base sólida de conhecimentos fundamentais que são aplicáveis ​​a várias outras linguagens de programação. Através da linguagem égua, você aprenderá conceitos como variáveis, estruturas de controle (como condicionais e laços de repetição) e funções. Esses são blocos de construção essenciais em programação e são usados em várias linguagens.
@@ -10,7 +14,7 @@ Além disso, a IDEgua (interface online de prgramação da linguagem) oferece um
 A linguagem Egua pode ser executada de maneira online via navegador.
 
 <a href="https://programar.egua.dev" target="_blank">
-    <img src="https://img.shields.io/badge/Égua-Online-red?style=for-the-badge&logo=appveyor">
+    <img src="https://img.shields.io/badge/Égua-Online-red?style=for-the-badge&logo=appveyor" alt="Selo indicando que a linguagem Égua pode ser executada online" width="180" height="28">
 </a>
 
 ## Olá mundo

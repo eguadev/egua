@@ -1,3 +1,7 @@
+---
+description: Programação orientada a objetos na linguagem Égua — criação de classes, métodos, construtor e herança — com exemplos de código.
+---
+
 # Classes
 
 A linguagem Égua suporta a orientação a objetos de forma nativa, permitindo a criação e manipulação de classes, objetos, métodos e herança.
