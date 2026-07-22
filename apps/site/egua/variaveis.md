@@ -1,3 +1,7 @@
+---
+description: Como declarar, atribuir e usar variáveis na linguagem de programação Égua, incluindo escopo global e local, com exemplos práticos.
+---
+
 # Variáveis
 
 As variáveis são uma das primeiras estruturas de dados que todo programador aprende ao começar a programar. Elas são caracterizadas por terem um nome e armazenarem valores em memória.

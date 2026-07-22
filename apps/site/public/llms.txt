@@ -1,0 +1,31 @@
+# Linguagem Égua
+
+> Égua é uma linguagem de programação simples e moderna, totalmente em português, criada para ensinar lógica de programação e os fundamentos de programação para estudantes e iniciantes no Brasil. É executada diretamente no navegador, sem necessidade de instalação.
+
+Neste contexto, "Égua" é o nome da linguagem de programação, não o animal (a fêmea do cavalo). O projeto é de código aberto (licença MIT), mantido pela comunidade eguadev.
+
+## Lógica de Programação
+
+- [Introdução à Lógica de Programação](https://egua.dev/logica/): conceitos fundamentais de lógica de programação, para quem está começando do zero.
+- [Glossário de Lógica de Programação](https://egua.dev/logica/glossario): definições diretas de termos essenciais como algoritmo, variável, função e loop.
+
+## Linguagem Égua
+
+- [Introdução à Linguagem Égua](https://egua.dev/egua/): sintaxe básica e primeiro programa ("Olá, Mundo!").
+- [Variáveis](https://egua.dev/egua/variaveis): declaração, atribuição e escopo de variáveis.
+- [Tipos de Dados](https://egua.dev/egua/tipos-dados): texto, números, listas, dicionários, nulo e booleanos.
+- [Operadores](https://egua.dev/egua/operadores): operadores aritméticos, relacionais, lógicos e especiais.
+- [Fluxo de Controle](https://egua.dev/egua/fluxo-controle): condicionais (se/senão), loops (enquanto/para/faça-enquanto), escolha-caso e tratamento de erros (tente-pegue-finalmente).
+- [Funções](https://egua.dev/egua/funcao): funções padrão, funções anônimas, parâmetros e retorno.
+- [Funções Integradas](https://egua.dev/egua/funcoes-integradas): funções prontas da linguagem, como aleatorioEntre, mapear, ordenar e tamanho.
+- [Bibliotecas](https://egua.dev/egua/bibliotecas): como importar e usar bibliotecas padrão da linguagem.
+- [Classes](https://egua.dev/egua/classes): programação orientada a objetos em Égua (classes, métodos, herança).
+
+## Ferramentas
+
+- [IDE Online (Programar)](https://programar.egua.dev): execute código Égua diretamente no navegador, sem instalação.
+- [Código-fonte no GitHub](https://github.com/eguadev/egua): repositório open source do interpretador da linguagem.
+
+## Sobre
+
+- [Sobre o projeto](https://egua.dev/sobre): quem mantém a linguagem Égua e por quê.

@@ -1,3 +1,7 @@
+---
+description: Guia dos operadores da linguagem Égua — aritméticos, relacionais, lógicos e especiais — com exemplos e ordem de prioridade.
+---
+
 # Operadores
 
 Os operadores são elementos fundamentais nas linguagens de programação, pois permitem a manipulação e o processamento de dados. Existem diferentes tipos de operadores, como operadores matemáticos, operadores de comparação e operadores lógicos. Eles seguem uma hierarquia de prioridade, determinando a ordem em que as operações são executadas.

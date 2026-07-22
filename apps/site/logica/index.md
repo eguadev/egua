@@ -1,3 +1,7 @@
+---
+description: Aprenda lógica de programação do zero, em português — algoritmos, sequência, decisão e repetição — antes de aprender a linguagem Égua.
+---
+
 # Lógica de Programação
 
 ## Introdução
@@ -20,3 +24,15 @@ Para desenvolver uma lógica de programação sólida, é importante entender al
 Ao desenvolver a lógica de programação, é importante ter um bom entendimento do problema em questão, identificar as entradas e saídas necessárias, e planejar a sequência de passos necessários para resolver o problema de forma eficaz.
 
 Dominar a lógica de programação é essencial para escrever programas eficientes e de qualidade. Com uma boa base em lógica, será mais fácil aprender e utilizar diferentes linguagens de programação, bem como resolver problemas complexos de maneira estruturada e eficiente.
+
+## Um algoritmo do dia a dia
+
+Antes de ver um algoritmo em código, vale entender que você já segue algoritmos todos os dias. Uma receita de bolo, por exemplo, é um algoritmo: uma sequência de passos que, se seguidos na ordem certa, sempre leva ao mesmo resultado.
+
+1. Separe os ingredientes (entrada).
+2. Misture os ingredientes na ordem indicada (sequência).
+3. Se a massa estiver homogênea, leve ao forno; senão, continue misturando (decisão).
+4. Espere o tempo de forno indicado, verificando o ponto a cada poucos minutos (repetição).
+5. Retire o bolo pronto (saída).
+
+Um programa de computador funciona da mesma forma: ele recebe uma entrada, segue uma sequência de instruções — algumas condicionais, algumas repetidas — e produz uma saída. A diferença é que, em programação, essas instruções precisam ser escritas de forma exata o suficiente para que um computador, que não interpreta ambiguidades, consiga executá-las.

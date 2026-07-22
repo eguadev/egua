@@ -1,3 +1,7 @@
+---
+description: Como importar e usar bibliotecas padrão na linguagem Égua para estender as funcionalidades do seu programa.
+---
+
 # Bibliotecas
 As bibliotecas padrão são conjuntos de funcionalidades internas à linguagem que podem ser utilizadas para estender suas capacidades. No entanto, essas bibliotecas não são carregadas automaticamente, é necessário importá-las explicitamente para utilizá-las. Isso ajuda a manter a linguagem mais leve e permite que você escolha quais recursos deseja usar em cada programa.
 
