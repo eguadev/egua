@@ -199,6 +199,18 @@ div[class*="language-"] > span.lang {
   align-items: center;
 }
 
+/* Grid items default to min-width auto, so a wide code block would stretch
+   the column past the viewport and cause horizontal page scroll on mobile. */
+.home-section-grid > * {
+  min-width: 0;
+}
+
+.home-section-code div[class*="language-"] {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 @media (min-width: 768px) {
   .home-section-grid {
     grid-template-columns: 1fr 1fr;
@@ -224,12 +236,24 @@ div[class*="language-"] > span.lang {
   border: 0;
 }
 
-/* Grid of documentation link cards */
+/* Grid of documentation link cards — a numbered learning path */
 .home-links {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+  .home-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .home-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .home-link-card {
@@ -240,11 +264,44 @@ div[class*="language-"] > span.lang {
   background-color: var(--vp-c-bg-soft);
   text-decoration: none !important;
   font-weight: 400;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .home-link-card:hover {
   border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.home-link-num {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--vp-c-brand-1);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile: tighter cards, number inline with the title */
+@media (max-width: 639px) {
+  .home-links {
+    gap: 12px;
+  }
+
+  .home-link-card {
+    padding: 14px 16px;
+  }
+
+  .home-link-num {
+    display: inline;
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+
+  .home-link-title {
+    display: inline;
+  }
 }
 
 .home-link-title {
@@ -259,6 +316,54 @@ div[class*="language-"] > span.lang {
   font-size: 14px;
   line-height: 1.6;
   color: var(--vp-c-text-2);
+}
+
+/* Grid of published research paper cards */
+.home-papers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .home-papers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.home-paper-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background-color: var(--vp-c-bg-soft);
+}
+
+.home-paper-org {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.home-section .home-paper-title {
+  margin: 12px 0 16px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  line-height: 1.5;
+}
+
+.home-paper-btn {
+  margin-top: auto;
+  padding: 0 16px;
+  line-height: 36px;
+  font-size: 13px;
 }
 
 /* Final call-to-action */
