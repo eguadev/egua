@@ -5,6 +5,17 @@
 	font-family: "Roboto Mono", monospace;
 }
 
+/* O CSS injetado pelo CodeFlask sobrescreve a fonte das camadas internas
+   (textarea, pre e numeração) com uma pilha de fontes do sistema; forçamos
+   a Roboto Mono para o editor renderizar igual ao resto da página. */
+.codeflask__flatten,
+.codeflask__textarea,
+.codeflask__pre,
+.codeflask__pre code,
+.codeflask__lines {
+	font-family: "Roboto Mono", monospace !important;
+}
+
 .codeflask__flatten {
 	font-size: 17px !important;
 }

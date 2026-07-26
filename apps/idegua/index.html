@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Programar - Linguagem Égua</title>
   <meta name="description" content="IDE online e gratuita da linguagem de programação Égua. Escreva e execute código Égua diretamente no navegador, sem instalação.">
@@ -15,18 +16,31 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="container">
-    <div id="left"><select id="demoSelector"></select></div>
-    <div id="middle"><img src="./assets/egua.png" alt="egua" width="100px" height="auto"></div>
-    <div id="right"><button id="runBtn">Executar</button></div>
-  </div>
+  <header class="topbar">
+    <a class="brand" href="https://egua.dev" title="Voltar ao site da Linguagem Égua">
+      <img src="./assets/egua-logo.png" alt="Linguagem Égua">
+      <span class="brand-name">Linguagem Égua</span>
+    </a>
+    <div class="topbar-actions">
+      <select id="demoSelector" aria-label="Escolher exemplo"></select>
+      <button id="runBtn">Executar</button>
+    </div>
+  </header>
 
-  <div id="editor"></div>
-  <div id="output" aria-live="polite"></div>
+  <main class="workspace">
+    <section class="panel">
+      <h2 class="panel-head">Editor</h2>
+      <div id="editor"></div>
+    </section>
+    <section class="panel">
+      <h2 class="panel-head">Saída</h2>
+      <div id="output" aria-live="polite"></div>
+    </section>
+  </main>
 
   <!-- Linguagem Égua -->
   <script src="./js/egua.min.js"></script>

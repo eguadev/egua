@@ -1,134 +1,260 @@
-html, body, button, select {
-    font-family: 'Roboto Mono', monospace;
-    color: black;
-}
+@charset "UTF-8";
 
-#runBtn {
-    background-color: #ff4b55;
-    color: white;
-    border: 2px;
-    margin-bottom: 3px;
-    display: inline-block;
-    border-radius: 9999px;
-    padding: 15px 20px;
-    float: right;
-    margin-right: 10px;
-}
+/**
+ * Visual da IDE alinhado ao site (egua.dev), que usa o tema padrão do
+ * VitePress customizado: fundo branco, cards cinza-claro com bordas suaves
+ * e raio de 12px, botões em formato de pílula na cor da marca e labels em
+ * caixa alta. Os tokens abaixo replicam essa paleta.
+ */
 
-#demoSelector {
-    background-color: #ff4b55;
-    color: white;
-    border: 2px;
-    margin-bottom: 3px;
-    display: inline-block;
-    border-radius: 9999px;
-    padding: 15px 20px;
-    border-right: 7px solid transparent;
-    margin-left: 10px;
-}
+:root {
+  --brand-1: #FF4B55;
+  --brand-2: #D72638;
+  --brand-3: #E63946;
 
-#editor {
-    width: 65%;
-    height: calc(100% - 65px);
-    left: 0;
-    position: fixed;
-    border-right: 2px solid grey;
-    border-top: 2px solid grey;
-}
+  --c-bg: #ffffff;
+  --c-bg-alt: #f6f6f7;
+  --c-divider: rgba(60, 60, 67, 0.12);
+  --c-text-1: rgba(60, 60, 67, 1);
+  --c-text-2: rgba(60, 60, 67, 0.78);
+  --c-text-3: rgba(60, 60, 67, 0.56);
+  --c-gray-soft: rgba(142, 150, 170, 0.14);
+  --c-gray-soft-hover: rgba(142, 150, 170, 0.25);
 
-@media only screen and (max-width: 768px) {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-    #editor {
-        width: 100% !important;
-        height: 70% !important;
-        position: relative !important;
-    }
-
-    #output {
-        width: 100% !important;
-        height: 29% !important;
-        position: relative !important;
-    }
-
-    .output {
-        font-size: 13px !important;
-    }
-
-
-    #runBtn {
-        width: 100px;
-        font-size: 11px;
-    }
-
-    #demoSelector {
-        width: 108px;
-        font-size: 11px;
-    }
-}
-
-#output {
-    width: calc(35% - 4px);
-    height: calc(100% - 65px);
-    right: 0;
-    position: fixed;
-    border-right: 2px solid grey;
-    border-top: 2px solid grey;
-    overflow-y: scroll;
-}
-
-.output {
-    margin: 1px 10px;
-    padding-top: 0;
-    font-size: 15px;
+  --radius: 12px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#container {
-    height: auto;
-    width: 100%;
-    font-size: 0;
-    margin-bottom: 7px;
-    margin-top: 7px;
+html {
+  height: 100%;
 }
 
-#left,
-#middle,
-#right {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    vertical-align: middle;
-    font-size: 12px;
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  font-family: var(--font-sans);
+  color: var(--c-text-1);
+  background-color: var(--c-bg-alt);
+  -webkit-font-smoothing: antialiased;
 }
 
-#left {
-    width: 25%;
+/**
+ * Barra superior — mesmo desenho da navbar do site: fundo branco, divisor
+ * de 1px, logo à esquerda e ações à direita.
+ */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 64px;
+  padding: 0 24px;
+  flex-shrink: 0;
+  background-color: var(--c-bg);
+  border-bottom: 1px solid var(--c-divider);
 }
 
-#middle {
-    width: 50%;
-    text-align: center;
-    display: inline-block;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-decoration: none;
 }
 
-#middle img {
+.brand img {
+  height: 32px;
+  width: auto;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-#right {
-    width: 25%;
-    text-align: center;
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-text-1);
+  white-space: nowrap;
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-    height: 55%
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/**
+ * Botões em pílula, iguais aos do site: primário na cor da marca e
+ * alternativo cinza-suave.
+ */
+#runBtn,
+#demoSelector {
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+#runBtn {
+  background-color: var(--brand-3);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#runBtn:hover {
+  background-color: var(--brand-2);
+}
+
+#runBtn:active {
+  background-color: var(--brand-1);
+}
+
+#demoSelector {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--c-gray-soft);
+  color: var(--c-text-1);
+  font-weight: 500;
+  padding: 0 36px 0 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%233c3c43' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+}
+
+#demoSelector:hover {
+  background-color: var(--c-gray-soft-hover);
+}
+
+#runBtn:focus-visible,
+#demoSelector:focus-visible {
+  outline: 2px solid var(--brand-1);
+  outline-offset: 2px;
+}
+
+/**
+ * Área de trabalho — editor e saída como cards do site: fundo branco,
+ * borda de 1px e cantos arredondados sobre o fundo cinza-claro.
+ */
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-divider);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.panel-head {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  background-color: var(--c-bg-alt);
+  border-bottom: 1px solid var(--c-divider);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-1);
+}
+
+#editor {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.codeflask.codeflask--has-line-numbers::before {
+  background-color: var(--c-bg-alt);
+}
+
+#output {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+}
+
+#output:empty::before {
+  content: 'A saída do seu programa aparece aqui.';
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--c-text-3);
+}
+
+.output {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--c-text-1);
+}
+
+/**
+ * Mobile — painéis empilhados e alvos de toque de 44px (mesmo ajuste feito
+ * no site).
+ */
+@media (max-width: 767px) {
+  .topbar {
+    height: 56px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .brand img {
+    height: 28px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  #runBtn,
+  #demoSelector {
+    height: 44px;
+  }
+
+  .output {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 479px) {
+  .brand-name {
+    display: none;
+  }
+
+  #demoSelector {
+    padding: 0 32px 0 14px;
+  }
+
+  #runBtn {
+    padding: 0 16px;
+  }
 }
