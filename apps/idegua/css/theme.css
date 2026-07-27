@@ -25,12 +25,13 @@
 	z-index: 100 !important;
 }
 
-/* No mobile, 17px fica desconfortável; 14px casa com o line-height de 20px
-   padrão do CodeFlask. A regra vem depois das de cima para vencer na cascata. */
+/* No mobile, 17px fica desconfortável; 13px iguala o editor à fonte da saída
+   (.output) e casa com o line-height de 20px padrão do CodeFlask. A regra vem
+   depois das de cima para vencer na cascata. */
 @media (max-width: 767px) {
 	.codeflask__flatten,
 	.codeflask__lines {
-		font-size: 14px !important;
+		font-size: 13px !important;
 	}
 }
 
