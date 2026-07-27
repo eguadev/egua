@@ -25,6 +25,15 @@
 	z-index: 100 !important;
 }
 
+/* No mobile, 17px fica desconfortável; 14px casa com o line-height de 20px
+   padrão do CodeFlask. A regra vem depois das de cima para vencer na cascata. */
+@media (max-width: 767px) {
+	.codeflask__flatten,
+	.codeflask__lines {
+		font-size: 14px !important;
+	}
+}
+
 .codeflask__textarea::selection {
 	background: rgb(59 130 246);
 	color: transparent;
