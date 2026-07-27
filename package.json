@@ -10,7 +10,7 @@
     "index.js"
   ],
   "scripts": {
-    "build-web": "browserify src/web.js -p esmify --s Egua -o ./apps/idegua/js/egua.min.js",
+    "build-web": "node scripts/build-web.mjs",
     "test": "./bin/egua tests/tests.egua"
   },
   "repository": {
@@ -30,7 +30,6 @@
   },
   "homepage": "https://egua.dev",
   "devDependencies": {
-    "browserify": "^17.0.0",
-    "esmify": "^2.1.1"
+    "esbuild": "^0.28.1"
   }
 }

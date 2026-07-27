@@ -85,7 +85,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -110,7 +110,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -140,7 +140,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -168,7 +168,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -201,7 +201,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -228,7 +228,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -253,7 +253,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -280,7 +280,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -325,7 +325,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."
@@ -352,7 +352,7 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            if (callback.constructor.name !== 'EguaFunction') {
+            if (!(callback instanceof EguaFunction)) {
                 throw new RuntimeError(
                     this.token,
                     "Parâmetro inválido. O segundo parâmetro da função, deve ser uma função."

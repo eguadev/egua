@@ -541,7 +541,7 @@ export default class Interpreter {
 
     visitAssignsubscriptExpr(expr) {
         const obj = this.evaluate(expr.obj);
-        const index = this.evaluate(expr.index);
+        let index = this.evaluate(expr.index);
         const value = this.evaluate(expr.value);
 
         if (Array.isArray(obj)) {
