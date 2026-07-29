@@ -15,10 +15,9 @@
     <a href="https://github.com/eguadev/egua/issues" target="_blank">Reportar Bug</a>
     <br />
     <br />
-    <img src="https://img.shields.io/github/issues/eguadev/egua" />
-    <img src="https://img.shields.io/github/stars/eguadev/egua" />
-    <img src="https://img.shields.io/github/forks/eguadev/egua" />
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dw/egua">
     <img src="https://img.shields.io/npm/v/egua">
+    <img alt="Tamanho" src="https://img.shields.io/npm/unpacked-size/egua">
     <img src="https://img.shields.io/github/license/eguadev/egua" />
     <br>
     <a href="https://twitter.com/eguadev" target="_blank"> <img src="https://img.shields.io/badge/-Twitter-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=Twitter" href="https://twitter.com/eguadev">
