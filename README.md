@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/eguadev/egua/main/assets/egua.png" alt="egua" width="auto" height="80px">
 
-  <h3 align="center">Linguagem Egua</h3>
+  <h3 align="center">Linguagem Égua</h3>
 
   <p align="center">
     Linguagem de programação simples e moderna.
@@ -35,7 +35,7 @@
 
 ### No navegador, sem instalar nada
 
-Visite o [IDEgua](https://programar.egua.dev) e comece a programar direto do navegador.
+Visite a [IDEgua](https://programar.egua.dev) e comece a programar direto do navegador.
 
 ### Instalação local (CLI)
 

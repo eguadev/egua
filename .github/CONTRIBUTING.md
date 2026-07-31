@@ -1,95 +1,210 @@
-# Guia de contribuição da Linguagem Egua
+# Guia de contribuição da Linguagem Égua
 
-Olá! Estamos muito felizes que você quer contribuir com nosso projeto. Antes de contribuir, por favor tenha certeza de seguir todas as recomendações e submeter.
+Olá! Que bom que você quer contribuir com a Linguagem Égua.
 
-## Introdução
+A Linguagem Égua é interpretada, tem sintaxe totalmente em português e é voltada ao ensino de programação. O interpretador é escrito em JavaScript e roda em dois ambientes: no Node.js (CLI e REPL) e no navegador, onde é usado pela [IDEgua](https://programar.egua.dev).
 
-O desenvolvimento da linguagem egua, assim como a utilização da linguagem, possui uma estrutura que facilita a contribuição, principalmente em termos de biblioteca e métodos internos da linguagem, entretanto essa facilidade só é garantida a partir de algumas práticas e regras que devem ser seguidas, para facilitar a análise de pull requests e garantir a integridade da linguagem e funcionalidade da linguagem em casa commit, já que prezamos pela entrega continua, onde garantimos que o usuário possua a versão mais recente da linguagem para ser utilizada.
+Este guia explica como o projeto é organizado, como preparar o ambiente e o que esperamos de uma contribuição, seja no núcleo da linguagem, nas bibliotecas, na IDE ou na documentação.
 
-## Montando ambiente
+## O navegador vem primeiro
 
-### Requisitos de sistema
+A Linguagem Égua foi pensada para ser usada principalmente pela IDEgua, direto do navegador, sem instalar nada. Tudo que for implementado precisa funcionar tanto na CLI quanto no navegador, mas o foco é o navegador: quando houver dúvida entre um caminho que favorece um ou outro, o navegador ganha.
 
-- Windows 10 com WSL ou Linux Ubuntu ou Linux mint >= 18.04
-    - [Guia de instalação do WSL no Windows 10](https://docs.microsoft.com/pt-br/windows/wsl/install-win10)
+Na prática, isso significa duas coisas para quem contribui:
 
-- Node.js versão LTS >= 12 [link instalação]
-    - [Guia de instalação do Node.js no WSL ou Linux](https://github.com/nodesource/distributions/blob/master/README.md#deb)
+- Evite depender de recursos que só existem no Node.js (`fs`, `child_process`, etc.). No bundle web esses módulos são trocados por substitutos mínimos (`scripts/shims/`), e a funcionalidade não vai existir na IDEgua.
+- Toda mudança no núcleo ou nas bibliotecas deve ser testada no navegador antes do PR, com `npm run build-web` (veja a seção sobre a IDEgua).
 
-- NPM >= 6
-    > Vale lembrar que ainda não efetuamos testes para garantir o funcionamento do Egua no NPM 7.
+## Antes de escrever código: abra uma issue
 
-- Execute o comando abaixo para instalar as dependências do projeto
-    ```sh
-    npm install
-    ```
+Recomendamos que toda contribuição tenha uma issue atrelada. Descreva na issue o que você pretende fazer e por quê, e espere a discussão acontecer antes de partir para o código. Isso evita a situação mais chata para todo mundo: um PR pronto, com trabalho investido, recusado porque a mudança não faz sentido para a linguagem.
 
-## Como contribuir
+Isso vale especialmente para mudanças de sintaxe e semântica, que afetam quem já ensina e aprende com a Linguagem Égua. Para correções pequenas e óbvias, como um erro de digitação na documentação, pode abrir o PR direto.
 
-### Contribuindo com bibliotecas para a linguagem
+## Visão geral do repositório
 
-Possuímos um vídeo que mostra um exemplo de como efetuar a criação de uma biblioteca:
+Este é um monorepo. A linguagem (pacote npm `egua`) fica na raiz, e as aplicações ficam em `apps/`:
 
-[![](http://img.youtube.com/vi/CZw0-y4Em2U/0.jpg)](http://www.youtube.com/watch?v=CZw0-y4Em2U "")
+| Caminho | O que é | Onde vai parar |
+| --- | --- | --- |
+| `src/` | Núcleo da linguagem: lexer, parser, resolver, interpretador e bibliotecas padrão | Pacote npm `egua` |
+| `bin/egua` | Ponto de entrada do CLI | Pacote npm `egua` |
+| `tests/tests.egua` | Suíte de testes, escrita na própria linguagem | Executada pelo CI |
+| `scripts/build-web.mjs` | Build do bundle da linguagem para o navegador (esbuild) | `apps/idegua/js/egua.min.js` |
+| `apps/idegua/` | IDE online, site estático | [programar.egua.dev](https://programar.egua.dev) (Netlify) |
+| `apps/site/` | Site e documentação, feito com VitePress | [egua.dev](https://egua.dev) (Netlify) |
 
-Palestra sobre a criação de bibliotecas na BrasilJS on the reoad Natal/Belém 2020:
+## Preparando o ambiente
 
-[![](http://img.youtube.com/vi/W2LccJacNXE/0.jpg)](http://www.youtube.com/watch?v=W2LccJacNXE "")
+Você vai precisar de:
 
-### Contribuindo com o core da linguagem
-
-A contribuição com o core da linguagem é uma tarefa mais complexa, pois você deverá ter conhecimento em estruturas de interpretadores.
-
-Portanto temos as seguintes recomendações:
-
-| Artigos | Vídeos |
-|---|---|
-| [Como é desenvolvida uma linguagem de programação?](https://pt.stackoverflow.com/questions/124436/como-%C3%A9-desenvolvida-uma-linguagem-de-programa%C3%A7%C3%A3o#:~:text=Criar%20uma%20linguagem%20de%20programa%C3%A7%C3%A3o,%C3%A9%20algo%20conceitual%2C%20%C3%A9%20abstrata.) | [Tutorial criando uma linguagem de programação em Python](https://www.youtube.com/watch?v=9tSuJzwe9Ok&list=PLP7hn9TNf1CEl8A8jQfZSRYcgUIqBhIJU) |
-| [Criando linguagem de programação em Node.js](https://repl.it/talk/learn/Making-your-own-programming-language-with-NodeJS/45779) | [Criando uma linguagem de programação em JavaScript](https://youtu.be/YpT-GpcHf2g) |
-
-Durante e após o seu desenvolvimento para a contribuição recomendamos sempre executar os testes necessários, sendo eles os da sua alteração e os automatizados. Não se preocupe, esses testes serão executados de maneira automática após o seu commit.
-
-Solicitamos também que você adicione um exemplo da funcionalidade que você implementou no arquivo `tests/tests.egua` para que os testes unitários sejam executados na sua funcionalidade. Vale lemnbrar que sua contribuição também será revisada manualmente pelo time de desenvolvimento da linguagem.
-
-Os comandos de teste são:
+- [Node.js](https://nodejs.org) 18 ou mais recente (o CI usa Node 22)
+- Git
 
 ```sh
-# Execução dos testes unitários
-npm run test
+git clone https://github.com/eguadev/egua.git
+cd egua
+npm ci
 ```
 
-Após o desenvolvimento ser concluído, é necessário ter a build web do projeto, que é feita com o comando: 
+Para executar a sua cópia local do interpretador:
+
+```sh
+# Executa um arquivo .egua
+./bin/egua meu_programa.egua
+
+# Sem argumentos, abre o modo interativo (REPL)
+./bin/egua
+```
+
+Se for mexer no site de documentação:
+
+```sh
+cd apps/site
+npm ci
+npm run dev   # servidor local do VitePress
+```
+
+## Como a linguagem funciona por dentro
+
+O interpretador é do tipo *tree-walking*: o código-fonte passa por um pipeline clássico até ser executado diretamente sobre a árvore sintática, sem compilação intermediária.
+
+```
+código .egua → Lexer → tokens → Parser → AST → Resolver → Interpreter → execução
+```
+
+Mapa dos arquivos em `src/`:
+
+| Arquivo | Responsabilidade |
+| --- | --- |
+| `lexer.js` | Transforma o texto em tokens; é aqui que ficam as palavras reservadas (`se`, `enquanto`, `função`...) |
+| `tokenTypes.js` | Enumeração dos tipos de token |
+| `parser.js` | Monta a árvore sintática (AST) a partir dos tokens |
+| `expr.js` / `stmt.js` | Classes dos nós da AST (expressões e comandos) |
+| `resolver.js` | Resolução de escopos e variáveis antes da execução |
+| `interpreter.js` | Percorre a AST e executa o programa |
+| `environment.js` | Escopos e ambientes de variáveis |
+| `errors.js` | Erros da linguagem (léxicos, sintáticos e de execução) |
+| `structures/` | Objetos de runtime: funções, classes, instâncias, módulos, funções nativas |
+| `lib/globalLib.js` | Funções globais sempre disponíveis (`escreva`, `texto`, `paraCada`, `mapear`, `filtrar`, `ordenar`...) |
+| `lib/importStdlib.js` | Registro das bibliotecas carregáveis com `importar` |
+| `lib/matematica.js`, `textos.js`, `tempo.js`, `requisicao.js` | As bibliotecas padrão em si |
+| `egua.js` | Ponto de entrada no Node.js (CLI e REPL) |
+| `web.js` | Ponto de entrada no navegador (vira o bundle da IDEgua) |
+
+O projeto usa ES Modules (`"type": "module"` no `package.json`).
+
+Se você nunca estudou interpretadores, o livro gratuito [Crafting Interpreters](https://craftinginterpreters.com/), em inglês, é a melhor referência: a arquitetura da Linguagem Égua segue de perto a do interpretador *tree-walking* apresentado lá.
+
+## Formas de contribuir
+
+### Reportando bugs
+
+Abra uma [issue](https://github.com/eguadev/egua/issues) com:
+
+- O menor programa possível na Linguagem Égua que reproduz o problema;
+- O comportamento esperado e o comportamento observado;
+- Onde aconteceu: na IDEgua (qual navegador) ou na CLI (qual versão do Node).
+
+### Bibliotecas padrão
+
+É o caminho mais simples para começar. Uma biblioteca é um módulo JavaScript cujas funções exportadas viram funções da Linguagem Égua. Para criar uma nova:
+
+1. Crie `src/lib/minhabiblioteca.js` exportando funções puras de JavaScript (use as bibliotecas existentes, como `src/lib/textos.js`, de modelo);
+2. Registre-a em `src/lib/importStdlib.js` (adicione o `import` e um novo `case` no `switch`);
+3. Adicione testes em `tests/tests.egua` exercitando as novas funções;
+4. Documente-a em `apps/site/egua/bibliotecas.md`, no mesmo PR.
+
+Depois disso ela já pode ser usada na linguagem:
+
+```
+var b = importar("minhabiblioteca");
+escreva(b.minhaFuncao());
+```
+
+Lembre da regra lá do começo: o mesmo código roda no navegador, e o navegador é o foco. Antes de propor uma biblioteca que dependa de módulos do Node, abra uma issue para discutirmos se ela cabe na linguagem.
+
+Funções globais, as que não precisam de `importar`, ficam em `src/lib/globalLib.js` e seguem a mesma lógica.
+
+### Núcleo da linguagem
+
+Mudanças em sintaxe e semântica geralmente tocam vários pontos do pipeline. Uma palavra-chave nova, por exemplo, costuma envolver:
+
+1. `tokenTypes.js`: o novo tipo de token;
+2. `lexer.js`: a palavra reservada;
+3. `parser.js` (e `expr.js`/`stmt.js`, se houver nó novo de AST): a regra sintática;
+4. `resolver.js`: se envolver escopos ou variáveis;
+5. `interpreter.js`: o comportamento em execução;
+6. `tests/tests.egua`: testes cobrindo o caso feliz e os casos de erro;
+7. `apps/site/egua/`: a página de documentação correspondente.
+
+Mensagens de erro fazem parte da experiência de ensino da linguagem: escreva-as em português claro, pensando em quem está aprendendo a programar.
+
+### IDEgua
+
+A IDE (`apps/idegua/`) é um site estático que consome o bundle da linguagem. Como o navegador é o ambiente principal da Linguagem Égua, testar nele não é opcional: se a sua mudança foi no núcleo ou nas bibliotecas, gere o bundle e abra a IDE localmente.
+
 ```sh
 npm run build-web
+# gera apps/idegua/js/egua.min.js a partir de src/web.js
+
+# sirva a pasta localmente, por exemplo:
+npx serve apps/idegua
 ```
 
-> Sugerimos que você abra o arquivo `index.html` em seu navegador para testar as funcionalidades implementadas por você! 
+O arquivo `egua.min.js` é gerado; não o edite manualmente nem se preocupe em commitá-lo, porque a Netlify roda `npm run build-web` a cada deploy.
 
-Solicitamos também que você atualize a chave `version` do arquivo `package.json`, pois só assim a ferramenta de CD será capaz de implementar suas atualizações em produção.
+### Site e documentação
 
-Por fim, seu PR deve ser efetuado na branch `desenvolvimento` e solicitamos que você abra uma issue no repositório [Docs](https://github.com/eguadev/docs) informando a sua implementação e uma breve explicação para ser adicionado na documentação.
+A documentação vive neste mesmo repositório, em `apps/site/` (VitePress). Correções de texto e novos exemplos são muito bem-vindos, e toda mudança na linguagem deve atualizar a documentação no mesmo PR.
 
-Ao submeter suas alterações para desenvolvimento, a ferramenta de Integração Contínua irá subir o projeto para o ambiente de desenvolvimento que está hospedado no Microsoft Azure: https://blue-meadow-0f18a2410.azurestaticapps.net/
+## Testes
 
+A suíte de testes é escrita na própria Linguagem Égua:
 
-## Resumo
+```sh
+npm test   # executa ./bin/egua tests/tests.egua
+```
 
-De maneira bem resumida eis o que precisa ser feito:
+A suíte imprime `OK!` ou `ERRO!` para cada caso e um contador de erros ao final de cada seção. Erros de sintaxe ou de execução derrubam o processo com código de saída diferente de zero, o que falha o CI.
 
-- [ ] Montar o ambiente.
+Ao contribuir, adicione em `tests/tests.egua` uma função de teste para a sua mudança, seguindo o padrão das existentes (escreve um cabeçalho, exercita a funcionalidade, incrementa o contador de erros em caso de falha), e chame-a no corpo do arquivo.
 
-- [ ] Efetuar as suas alterações.
+## Abrindo o Pull Request
 
-- [ ] Executar os testes unitários.
+1. Se ainda não existe, abra uma issue descrevendo a mudança (veja a seção "Antes de escrever código");
+2. Crie uma branch a partir da `main`;
+3. Faça commits em português, no presente do indicativo (ex.: `Adiciona a função inverter à biblioteca textos`);
+4. Rode `npm test` e, se tocou no núcleo ou nas bibliotecas, `npm run build-web` com teste manual no navegador;
+5. Abra o PR contra a `main`, vinculando a issue e explicando o quê e o porquê da mudança.
 
-- [ ] Executar a build para web do projeto.
+O que acontece depois:
 
-- [ ] Testar localmente suas alterações.
+- O CI (GitHub Actions) roda os testes, o build do bundle e o build do site a cada push;
+- A Netlify gera *deploy previews* do site e da IDE para o PR;
+- Um mantenedor revisa o código; mudanças na linguagem também são avaliadas pelo impacto em quem ensina com ela.
 
-- [ ] Atualizar versão no arquivo `package.json`
+Não altere a versão no `package.json`. O versionamento e a publicação são responsabilidade dos mantenedores: um push de tag dispara o workflow `publish.yml`, que roda os testes e publica no npm via Trusted Publishing, e o merge na `main` publica o site e a IDE automaticamente pela Netlify.
 
-- [ ] Abrir issue no repositório Docs.
+### Checklist
+
+- [ ] Issue aberta e discutida, para mudanças que não sejam triviais;
+- [ ] Ambiente montado (`npm ci`) e `npm test` passando;
+- [ ] Testes da sua mudança adicionados em `tests/tests.egua`;
+- [ ] Testado no navegador (`npm run build-web`), se tocou no núcleo ou nas bibliotecas;
+- [ ] Documentação atualizada em `apps/site/`, se a mudança é visível para quem usa a linguagem;
+- [ ] Versão do `package.json` sem alteração;
+- [ ] PR aberto contra a `main`, com descrição do quê e do porquê.
+
+## Material de apoio
+
+- [Crafting Interpreters](https://craftinginterpreters.com/): livro gratuito sobre a construção de interpretadores; a Linguagem Égua segue essa arquitetura;
+- [Palestra sobre a criação de bibliotecas na Linguagem Égua, na BrasilJS on the Road 2020](http://www.youtube.com/watch?v=W2LccJacNXE) e [vídeo de exemplo](http://www.youtube.com/watch?v=CZw0-y4Em2U). A estrutura do repositório mudou desde a gravação, mas os conceitos continuam valendo.
+
+## Código de conduta
+
+Ao participar, você concorda com o nosso [Código de Conduta](../CODE_OF_CONDUCT.md). Seja gentil: muita gente que chega aqui está escrevendo as primeiras linhas de código da vida.
 
 ## Agradecimentos
 
-Desde já agradecemos de coração pela sua contribuição ao projeto. xD
+Desde já agradecemos de coração pela sua contribuição.

@@ -139,7 +139,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/eguadev'}
+      { icon: 'github', link: 'https://github.com/eguadev/egua'}
     ],
 
     nav: [
