@@ -76,42 +76,6 @@ E execute:
 egua ola.egua
 ```
 
-## Um gostinho da linguagem
-
-```
-// Variáveis, condicionais e repetição
-var contador = 3;
-
-enquanto (contador > 0) {
-  escreva("Contagem: " + texto(contador));
-  contador = contador - 1;
-}
-
-// Funções
-função dobro(valor) {
-  retorna valor * 2;
-}
-
-escreva(dobro(21));
-
-// Classes e herança
-classe Animal {
-  correr() {
-    escreva("Correndo!");
-  }
-}
-
-classe Cachorro herda Animal {
-  latir() {
-    escreva("Au au!");
-  }
-}
-
-var rex = Cachorro();
-rex.correr();
-rex.latir();
-```
-
 ## Bibliotecas padrão
 
 A linguagem inclui bibliotecas nativas, carregadas com `importar`:
