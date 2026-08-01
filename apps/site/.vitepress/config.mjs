@@ -80,7 +80,7 @@ export default defineConfig({
         embedUrl: 'https://www.youtube.com/embed/1hlkRcK0rVc',
         contentUrl: 'https://www.youtube.com/watch?v=1hlkRcK0rVc',
         thumbnailUrl: 'https://i.ytimg.com/vi/1hlkRcK0rVc/hqdefault.jpg',
-        uploadDate: '2023-08-25',
+        uploadDate: '2023-08-25T08:25:51-07:00',
         inLanguage: 'pt-BR'
       })])
     }
