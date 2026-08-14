@@ -6,7 +6,7 @@ description: Como criar e usar funções na linguagem Égua — funções padrã
 
 Funções são blocos de código que você pode chamar de várias partes do programa, sem repetir a mesma lógica toda vez.
 
-Existem dois tipos de funções em égua: funções padrão e funções anônimas.
+Existem dois tipos de funções na linguagem égua: funções padrão e funções anônimas.
 
 ## Função Padrão
 

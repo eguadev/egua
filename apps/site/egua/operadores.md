@@ -4,9 +4,9 @@ description: Guia dos operadores da linguagem Égua — aritméticos, relacionai
 
 # Operadores
 
-Operadores servem para manipular e comparar dados. A égua tem operadores matemáticos, de comparação e lógicos, e eles seguem uma ordem de prioridade que determina como as operações são calculadas.
+Operadores servem para manipular e comparar dados. A linguagem égua tem operadores matemáticos, de comparação e lógicos, e eles seguem uma ordem de prioridade que determina como as operações são calculadas.
 
-Veja os operadores da égua:
+Veja os operadores da linguagem égua:
 
 - `**` - Exponenciação: calcula a potência de um número.
 

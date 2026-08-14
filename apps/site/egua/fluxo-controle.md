@@ -4,15 +4,15 @@ description: Estruturas de fluxo de controle na linguagem Égua — se/senão, e
 
 # Fluxo de Controle
 
-Controle de fluxo é o que determina a ordem em que as instruções rodam. Em égua, você tem estruturas para tomar decisões, repetir blocos de código e lidar com erros.
+Controle de fluxo é o que determina a ordem em que as instruções rodam. Na linguagem égua, você tem estruturas para tomar decisões, repetir blocos de código e lidar com erros.
 
 ## Valores booleanos
 
-Como em qualquer linguagem, valores booleanos guiam o controle de fluxo. Em égua, eles são representados pelos termos "verdadeiro" e "falso": uma instrução como `se` só executa quando a condição é verdadeira. Por exemplo, `se(verdadeiro){}` executa, mas `se(falso){}` não.
+Como em qualquer linguagem, valores booleanos guiam o controle de fluxo. Na linguagem égua, eles são representados pelos termos "verdadeiro" e "falso": uma instrução como `se` só executa quando a condição é verdadeira. Por exemplo, `se(verdadeiro){}` executa, mas `se(falso){}` não.
 
 ## Comparação de igualdade
 
-Para comparar se dois objetos são iguais em Égua, é necessário que sejam do mesmo tipo e tenham o mesmo valor. Essa comparação é avaliada como "verdadeira" se os valores forem iguais, e "falsa" caso contrário. Veja alguns exemplos:
+Para comparar se dois objetos são iguais na linguagem égua, é necessário que sejam do mesmo tipo e tenham o mesmo valor. Essa comparação é avaliada como "verdadeira" se os valores forem iguais, e "falsa" caso contrário. Veja alguns exemplos:
 
 ```js
 1 == 1; // Verdadeiro
@@ -28,7 +28,7 @@ A comparação é baseada apenas na igualdade dos valores.
 
 ## Avaliação da veracidade
 
-Em égua, todos os tipos de dados, exceto "nulo" e "falso", são avaliados como verdadeiros. Veja alguns exemplos:
+Na linguagem égua, todos os tipos de dados, exceto "nulo" e "falso", são avaliados como verdadeiros. Veja alguns exemplos:
 
 ```js
 {}; // Verdadeiro
@@ -64,7 +64,7 @@ verdadeiro ou falso; // Verdadeiro
 
 ## Se - Senão se - Senão
 
-`se`, `senão se` e `senão` controlam o fluxo condicional. `senão se` e `senão` são opcionais, e você pode encadear quantos `senão se` quiser. A égua testa as condições em ordem e executa o primeiro bloco cujo `se` (ou `senão se`) for verdadeiro; se nenhum for, executa o `senão`, quando existir.
+`se`, `senão se` e `senão` controlam o fluxo condicional. `senão se` e `senão` são opcionais, e você pode encadear quantos `senão se` quiser. A linguagem égua testa as condições em ordem e executa o primeiro bloco cujo `se` (ou `senão se`) for verdadeiro; se nenhum for, executa o `senão`, quando existir.
 
 ```js
 // Exemplo: Imprime "sim"

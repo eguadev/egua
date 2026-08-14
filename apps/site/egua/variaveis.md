@@ -26,7 +26,7 @@ escreva(a); // exibe 2
 
 As variáveis também têm escopo: o contexto onde elas existem e podem ser acessadas.
 
-Existem dois tipos de escopo, global e local. No escopo global, a variável pode ser acessada de qualquer parte do programa; no local, só dentro do bloco onde foi declarada. Em égua, um bloco é definido por `{ }`.
+Existem dois tipos de escopo, global e local. No escopo global, a variável pode ser acessada de qualquer parte do programa; no local, só dentro do bloco onde foi declarada. Na linguagem égua, um bloco é definido por `{ }`.
 
 Uma variável do escopo externo pode ser acessada de dentro de um bloco interno, mas o contrário não funciona.
 

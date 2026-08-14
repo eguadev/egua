@@ -4,11 +4,11 @@ description: Programação orientada a objetos na linguagem Égua — criação 
 
 # Classes
 
-A égua suporta orientação a objetos nativamente: classes, objetos, métodos e herança.
+A linguagem égua suporta orientação a objetos nativamente: classes, objetos, métodos e herança.
 
 ## Criando uma classe
 
-Uma classe é uma estrutura que define as características e comportamentos de um objeto. Em Égua, você pode criar uma classe usando a palavra-chave `classe` seguida pelo nome da classe.
+Uma classe é uma estrutura que define as características e comportamentos de um objeto. Na linguagem égua, você pode criar uma classe usando a palavra-chave `classe` seguida pelo nome da classe.
 
 Exemplo:
 ```js
@@ -17,7 +17,7 @@ classe Teste {}
 
 ## Instanciando uma classe
 
-A instância de uma classe é criada através da chamada da classe, criando assim um objeto. Em Égua, para criar uma instância de uma classe, basta chamar o nome da classe seguido de parênteses.
+A instância de uma classe é criada através da chamada da classe, criando assim um objeto. Na linguagem égua, para criar uma instância de uma classe, basta chamar o nome da classe seguido de parênteses.
 
 Exemplo:
 ```js
@@ -29,7 +29,7 @@ escreva(teste); // Saída: "<Teste instância>"
 
 ## Métodos
 
-Os métodos são funções associadas a uma classe que definem os comportamentos do objeto. Em Égua, você pode definir métodos dentro de uma classe sem a palavra-chave `função`. Os métodos podem ser acessados através da instância do objeto usando o operador `.`.
+Os métodos são funções associadas a uma classe que definem os comportamentos do objeto. Na linguagem égua, você pode definir métodos dentro de uma classe sem a palavra-chave `função`. Os métodos podem ser acessados através da instância do objeto usando o operador `.`.
 
 Exemplo:
 ```js
@@ -60,7 +60,7 @@ var teste = Teste(); // Saída: "<Teste instância>"
 
 ## Estado do objeto
 
-O estado de um objeto se refere às variáveis que são atribuídas a ele. Em Égua, você pode definir o estado de um objeto usando a palavra-chave `isto` dentro de um método. Isso permite que cada instância do objeto tenha seu próprio estado.
+O estado de um objeto se refere às variáveis que são atribuídas a ele. Na linguagem égua, você pode definir o estado de um objeto usando a palavra-chave `isto` dentro de um método. Isso permite que cada instância do objeto tenha seu próprio estado.
 
 Exemplo:
 ```js
