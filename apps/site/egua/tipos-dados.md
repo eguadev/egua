@@ -33,9 +33,9 @@ Os números podem ser inteiros ou de ponto flutuante (números com casas decimai
 Exemplo:
 
 ```js
-var numeroInteiro = 3;
+var número_inteiro = 3;
 
-var numeroFlutuante = 8.5;
+var número_flutuante = 8.5;
 ```
 
 ## Listas
@@ -46,7 +46,7 @@ Exemplo:
 
 ```js
 var vetor = [1, "2"];
-var vetorVazio = [];
+var vetor_vazio = [];
 
 escreva([1, "2"][0]); // exibe 1
 escreva(vetor[2]); // sinaliza um erro por estar fora do tamanho do vetor
@@ -90,10 +90,10 @@ O valor "nulo" representa uma estrutura de dados vazia, sem nenhum valor atribu�
 Exemplo:
 
 ```js
-var variavel;
-escreva(variavel); // exibe "nulo" pois não possui valor atribuído
+var variável;
+escreva(variável); // exibe "nulo" pois não possui valor atribuído
 
-var variavelNula = nulo; // também pode ser atribuído explicitamente o valor "nulo"
+var variável_nula = nulo; // também pode ser atribuído explicitamente o valor "nulo"
 ```
 
 ## Booleanos
@@ -103,8 +103,8 @@ Os valores booleanos representam a lógica verdadeiro ou falso. Eles são utiliz
 Exemplo:
 
 ```js
-var variavel1 = verdadeiro;
-var variavel0 = falso;
+var variável1 = verdadeiro;
+var variável0 = falso;
 ```
 
 Compreender e utilizar corretamente esses tipos de dados é fundamental na programação, pois eles são os blocos de construção básicos para o desenvolvimento de programas mais complexos.

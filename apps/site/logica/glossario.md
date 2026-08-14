@@ -24,10 +24,10 @@ Uma expressão é uma combinação de valores, variáveis, operadores e funçõe
 Um operador é um símbolo ou palavra-chave que realiza uma operação em um ou mais valores. Por exemplo, o operador "+" realiza uma adição entre dois valores, e o operador "==" verifica se dois valores são iguais.
 
 ## Condicionais
-As condicionais permitem que o programa tome decisões com base em condições específicas. A estrutura "if-else" é um exemplo comum de condicional, onde um bloco de código é executado se uma condição for verdadeira e outro bloco é executado se a condição for falsa.
+As condicionais permitem que o programa tome decisões com base em condições específicas. A estrutura `se`/`senão` (em outras linguagens, "if-else") é um exemplo comum de condicional, onde um bloco de código é executado se uma condição for verdadeira e outro bloco é executado se a condição for falsa.
 
 ## Loops
-Os loops permitem que um bloco de código seja repetido várias vezes. Por exemplo, o loop "for" executa um conjunto de instruções um número específico de vezes, com base em uma condição. Isso é útil para processar listas de dados ou realizar tarefas repetitivas.
+Os loops permitem que um bloco de código seja repetido várias vezes. Por exemplo, o laço `para` (em outras linguagens, "for") executa um conjunto de instruções um número específico de vezes, com base em uma condição. Isso é útil para processar listas de dados ou realizar tarefas repetitivas.
 
 ## Funções
 As funções são blocos de código reutilizáveis que realizam uma tarefa específica. Elas recebem parâmetros, que são valores de entrada, executam um conjunto de instruções e podem retornar um valor. As funções permitem modularizar o código e facilitar sua manutenção.

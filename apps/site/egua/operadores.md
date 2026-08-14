@@ -58,10 +58,10 @@ Aqui estão os exemplos de operadores em égua:
    var resultado = 2 < 4; // resultado é igual a verdadeiro
    ```
 
-- `==` - Igual a: verifica se dois valores são iguais.
+- `==` - Igual a: verifica se dois valores têm o mesmo tipo e o mesmo valor.
 
    ```js
-   var resultado = 4 == "4"; // resultado é igual a verdadeiro
+   var resultado = 4 == "4"; // resultado é igual a falso, pois os tipos são diferentes
    ```
 
 - `!=` - Diferente de: verifica se dois valores são diferentes.
@@ -86,7 +86,7 @@ Compreender a utilização e a ordem de prioridade dos operadores é essencial p
 
 ### Operadores especiais
 
-Existem outros operadores especieais relacionados a manipulação bit a bit, como:
+Existem outros operadores especiais relacionados a manipulação bit a bit, como:
 
 - `<<` - Deslocamento bit a bit à esquerda;
 - `>>` - Deslocamento bit a bit à direita;

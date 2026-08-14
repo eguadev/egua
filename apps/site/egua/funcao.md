@@ -68,13 +68,13 @@ Nesse exemplo, a função `soma` recebe dois parâmetros `a` e `b` e retorna a s
 Uma função também pode ter um fluxo de execução interrompido por uma instrução `retorna` sem valor. Isso encerra a execução da função imediatamente. Veja um exemplo:
 
 ```js
-função exibeA() {
+função exibe_a() {
   escreva("A");
   retorna;
   escreva("B");
 }
 
-exibeA(); // Saída: A
+exibe_a(); // Saída: A
 ```
 
-Nesse exemplo, a função `exibeA` exibe a letra "A" e, em seguida, a instrução `retorna` interrompe a execução da função, fazendo com que a linha `escreva("B")` nunca seja alcançada.
+Nesse exemplo, a função `exibe_a` exibe a letra "A" e, em seguida, a instrução `retorna` interrompe a execução da função, fazendo com que a linha `escreva("B")` nunca seja alcançada.

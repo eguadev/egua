@@ -8,7 +8,7 @@ Ao aprender a programar em égua, você estará adquirindo uma base sólida de c
 
 Uma das vantagens de começar a programar em égua é que ele possui uma sintaxe simplificada e regras claras. Isso torna mais fácil compreender e implementar algoritmos, permitindo que você se concentre nos conceitos fundamentais sem se preocupar com detalhes complexos da linguagem.
 
-Além disso, a IDEgua (interface online de prgramação da linguagem) oferece um ambiente de desenvolvimento amigável e de fácil acesso. Essa característica é especialmente útil para iniciantes, pois ajuda a entender o fluxo de execução e entender erros de forma mais intuitiva.
+Além disso, a IDEgua (interface online de programação da linguagem) oferece um ambiente de desenvolvimento amigável e de fácil acesso. Essa característica é especialmente útil para iniciantes, pois ajuda a entender o fluxo de execução e entender erros de forma mais intuitiva.
 
 ## Uso online
 A linguagem Egua pode ser executada de maneira online via navegador.

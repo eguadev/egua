@@ -168,6 +168,10 @@ export default defineConfig({
           { text: 'Funções', link: '/egua/funcao' },
           { text: 'Funções Integradas', link: '/egua/funcoes-integradas' },
           { text: 'Bibliotecas', link: '/egua/bibliotecas' },
+          { text: 'Biblioteca matemática', link: '/egua/biblioteca-matematica' },
+          { text: 'Biblioteca textos', link: '/egua/biblioteca-textos' },
+          { text: 'Biblioteca tempo', link: '/egua/biblioteca-tempo' },
+          { text: 'Biblioteca requisição', link: '/egua/biblioteca-requisicao' },
           { text: 'Classes', link: '/egua/classes' }
         ]
       }

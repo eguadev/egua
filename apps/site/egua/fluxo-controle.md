@@ -64,7 +64,7 @@ verdadeiro ou falso; // Verdadeiro
 
 ## Se - Senão se - Senão
 
-A linguagem Égua fornece as instruções `se`, `senão se` e `senão` para controle de fluxo condicional eficiente. As instruções `senão se` e `senão` são opcionais e devem ser anexadas à instrução `se`. Você pode ter apenas uma instrução `senão se` adicional. Cada instrução é seguida por um bloco de código que será executado com base na condição da instrução. O bloco de código de uma instrução `se` é executado se a condição for avaliada como verdadeira. Caso contrário, as instruções `senão se` serão avaliadas em ordem, e se qualquer uma das condições for verdadeira, o bloco de código correspondente será executado. Somente um bloco `senão se` pode ser executado. Se a instrução `se` não for executada e nenhuma instrução `senão se` for executada, o bloco `senão` será executado, se fornecido.
+A linguagem Égua fornece as instruções `se`, `senão se` e `senão` para controle de fluxo condicional eficiente. As instruções `senão se` e `senão` são opcionais e devem ser anexadas à instrução `se`. Você pode encadear quantas instruções `senão se` desejar. Cada instrução é seguida por um bloco de código que será executado com base na condição da instrução. O bloco de código de uma instrução `se` é executado se a condição for avaliada como verdadeira. Caso contrário, as instruções `senão se` serão avaliadas em ordem, e se qualquer uma das condições for verdadeira, o bloco de código correspondente será executado. Somente um bloco `senão se` pode ser executado. Se a instrução `se` não for executada e nenhuma instrução `senão se` for executada, o bloco `senão` será executado, se fornecido.
 
 ```js
 // Exemplo: Imprime "sim"
@@ -82,7 +82,7 @@ se (a == 1) {
   escreva('sem valor correspondente');
 }
 
-// Exemplo: Imprime "sem comparação"
+// Exemplo: Imprime "Sem valor correspondente"
 var a = 3;
 se (a == 1) {
   escreva('correspondente 1');

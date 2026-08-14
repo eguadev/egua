@@ -34,13 +34,13 @@ Os métodos são funções associadas a uma classe que definem os comportamentos
 Exemplo:
 ```js
 classe Teste {
-  testeFunção() {
+  teste_função() {
     escreva("olá");
   }
 }
 
 var teste = Teste();
-teste.testeFunção(); // Saída: "olá"
+teste.teste_função(); // Saída: "olá"
 ```
 
 ## Referência à instância (isto)
@@ -65,14 +65,14 @@ O estado de um objeto se refere às variáveis que são atribuídas a ele. Em É
 Exemplo:
 ```js
 classe Teste {
-  testeFunção() {
+  teste_função() {
     isto.a = 100;
     escreva(isto.a); // Saída: "100"
   }
 }
 
 var teste = Teste();
-teste.testeFunção();
+teste.teste_função();
 ```
 
 ## Construtor
@@ -115,9 +115,7 @@ var thor = Cachorro();
 thor.corre(); // Saída: "correndo"
 ```
 
-Também é possível ch
-
-amar um método pertencente à classe pai na classe filha usando a palavra-chave `super`. Isso permite acessar e executar o código da classe pai.
+Também é possível chamar um método pertencente à classe pai na classe filha usando a palavra-chave `super`. Isso permite acessar e executar o código da classe pai.
 
 Exemplo:
 ```js

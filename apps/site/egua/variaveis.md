@@ -11,7 +11,7 @@ Para declarar uma variável, utilizamos a palavra-chave `var` seguida pelo nome 
 Exemplo de declaração de uma variável com valor inicial atribuído:
 
 ```js
-var variavel = "1";
+var variável = "1";
 ```
 
 Uma das características das variáveis é que seus valores podem ser alterados ao longo do código sem a necessidade de sinalização especial.
