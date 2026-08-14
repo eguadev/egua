@@ -4,9 +4,9 @@ description: Guia dos operadores da linguagem Égua — aritméticos, relacionai
 
 # Operadores
 
-Os operadores são elementos fundamentais nas linguagens de programação, pois permitem a manipulação e o processamento de dados. Existem diferentes tipos de operadores, como operadores matemáticos, operadores de comparação e operadores lógicos. Eles seguem uma hierarquia de prioridade, determinando a ordem em que as operações são executadas.
+Operadores servem para manipular e comparar dados. A égua tem operadores matemáticos, de comparação e lógicos, e eles seguem uma ordem de prioridade que determina como as operações são calculadas.
 
-Aqui estão os exemplos de operadores em égua:
+Veja os operadores da égua:
 
 - `**` - Exponenciação: calcula a potência de um número.
 
@@ -81,8 +81,6 @@ Aqui estão os exemplos de operadores em égua:
    ```js
    var resultado = (5 > 3) ou (2 > 4); // resultado é igual a verdadeiro
    ```
-
-Compreender a utilização e a ordem de prioridade dos operadores é essencial para construir expressões e executar cálculos de forma correta em seus programas.
 
 ### Operadores especiais
 

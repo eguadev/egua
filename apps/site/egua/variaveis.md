@@ -4,9 +4,9 @@ description: Como declarar, atribuir e usar variáveis na linguagem de programa�
 
 # Variáveis
 
-As variáveis são uma das primeiras estruturas de dados que todo programador aprende ao começar a programar. Elas são caracterizadas por terem um nome e armazenarem valores em memória.
+Variáveis são uma das primeiras coisas que todo programador aprende: elas têm um nome e guardam um valor na memória.
 
-Para declarar uma variável, utilizamos a palavra-chave `var` seguida pelo nome desejado e, opcionalmente, podemos atribuir um valor inicial.
+Para declarar uma variável, usa-se a palavra-chave `var` seguida do nome escolhido, com um valor inicial opcional.
 
 Exemplo de declaração de uma variável com valor inicial atribuído:
 
@@ -14,7 +14,7 @@ Exemplo de declaração de uma variável com valor inicial atribuído:
 var variável = "1";
 ```
 
-Uma das características das variáveis é que seus valores podem ser alterados ao longo do código sem a necessidade de sinalização especial.
+O valor de uma variável pode mudar ao longo do código, sem precisar de nenhuma sinalização especial.
 
 Exemplo de alteração de valor de uma variável:
 
@@ -24,11 +24,11 @@ a = "2";
 escreva(a); // exibe 2
 ```
 
-No entanto, é importante ter em mente que as variáveis têm escopo, que é o contexto em que elas são criadas e podem ser utilizadas.
+As variáveis também têm escopo: o contexto onde elas existem e podem ser acessadas.
 
-Escopo é o contexto em que uma variável é definida e pode ser acessada em um programa. O escopo determina onde uma variável ou função é visível e utilizável. Existem escopos global e local. No escopo global, as variáveis podem ser acessadas de qualquer parte do programa. No escopo local, elas só podem ser acessadas dentro do bloco onde foram declaradas. Entender o escopo é importante para organizar e controlar o acesso aos dados em um programa, evitando conflitos e vazamento de variáveis. Em égua escopo é definido por `{ }`
+Existem dois tipos de escopo, global e local. No escopo global, a variável pode ser acessada de qualquer parte do programa; no local, só dentro do bloco onde foi declarada. Em égua, um bloco é definido por `{ }`.
 
-Variáveis declaradas no escopo geral podem ser acessadas por escopos internos, mas o contrário não é possível.
+Uma variável do escopo externo pode ser acessada de dentro de um bloco interno, mas o contrário não funciona.
 
 Exemplo de escopo:
 
@@ -47,7 +47,7 @@ var a = "1";
 }
 ```
 
-Uma característica interessante é que o escopo interno pode alterar variáveis do escopo externo sem a necessidade de uma nova declaração.
+Um bloco interno também pode alterar uma variável do escopo externo, sem precisar declará-la de novo.
 
 Exemplo de alteração de variáveis em escopos:
 
@@ -69,5 +69,3 @@ var a = "1";
 
 escreva(a); // exibe 1
 ```
-
-Entender o conceito de variáveis e escopo é fundamental para o desenvolvimento de programas mais complexos. À medida que você avança na sua jornada de programação, outros tipos de variáveis e escopos também podem ser explorados.

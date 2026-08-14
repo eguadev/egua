@@ -41,6 +41,3 @@ Argumentos são os valores reais passados para uma função quando ela é chamad
 ## Escopo
 O escopo define a visibilidade e acessibilidade de variáveis e funções em diferentes partes do programa. Variáveis e funções podem ter escopo global, sendo acessíveis em todo o programa, ou escopo local, sendo acessíveis apenas em um bloco específico de código.
 
----
-Ter uma compreensão básica desses termos é essencial para iniciar a jornada na programação. À medida que você avança no aprendizado, encontrará mais termos e conceitos que irão expandir seu conhecimento e capacidade de criar soluções mais complexas.
-

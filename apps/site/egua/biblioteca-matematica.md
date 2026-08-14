@@ -50,10 +50,10 @@ escreva(matemática.sen(matemática.pi / 2));
 
 ## Exponenciais e potências
 
-- `matemática.exp(x)` — retorna *e* elevado a `x`.
-- `matemática.log(x)` — retorna o logaritmo natural de `x`.
-- `matemática.potência(base, expoente)` — retorna `base` elevado a `expoente`.
-- `matemática.raizq(x)` — retorna a raiz quadrada de `x`.
+- `matemática.exp(x)`: retorna *e* elevado a `x`.
+- `matemática.log(x)`: retorna o logaritmo natural de `x`.
+- `matemática.potência(base, expoente)`: retorna `base` elevado a `expoente`.
+- `matemática.raizq(x)`: retorna a raiz quadrada de `x`.
 
 ```js
 escreva(matemática.potência(2, 10));

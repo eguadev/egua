@@ -4,7 +4,7 @@ description: Como criar e usar funções na linguagem Égua — funções padrã
 
 # Funções
 
-As funções são blocos de código que podem ser chamados e executados em diferentes partes de um programa. Elas ajudam a organizar o código, evitar repetições e facilitar a reutilização de trechos específicos de lógica.
+Funções são blocos de código que você pode chamar de várias partes do programa, sem repetir a mesma lógica toda vez.
 
 Existem dois tipos de funções em égua: funções padrão e funções anônimas.
 
@@ -38,7 +38,7 @@ Nesse exemplo, usamos uma função anônima como argumento para a função `mape
 
 ## Chamada de Função
 
-Para executar uma função, é necessário realizar a chamada da função. A chamada de função envolve o uso do nome da função seguido por parênteses, e pode incluir argumentos, se a função esperar parâmetros. Veja um exemplo:
+Para chamar uma função, use o nome dela seguido de parênteses, com os argumentos dentro se ela esperar parâmetros. Veja um exemplo:
 
 ```js
 função saudação(nome) {

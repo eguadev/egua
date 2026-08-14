@@ -12,11 +12,11 @@ var textos = importar("textos");
 
 ## Constantes
 
-- `textos.letras_minúsculas` — todas as letras minúsculas de a a z.
-- `textos.letras_maiúsculas` — todas as letras maiúsculas de A a Z.
-- `textos.letras` — todas as letras, minúsculas e maiúsculas.
-- `textos.dígitos` — os dígitos de 0 a 9.
-- `textos.pontuações` — os caracteres de pontuação comuns.
+- `textos.letras_minúsculas`: todas as letras minúsculas de a a z.
+- `textos.letras_maiúsculas`: todas as letras maiúsculas de A a Z.
+- `textos.letras`: todas as letras, minúsculas e maiúsculas.
+- `textos.dígitos`: os dígitos de 0 a 9.
+- `textos.pontuações`: os caracteres de pontuação comuns.
 
 ```js
 escreva(textos.letras_minúsculas);

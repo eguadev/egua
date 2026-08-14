@@ -4,7 +4,7 @@ description: Programação orientada a objetos na linguagem Égua — criação 
 
 # Classes
 
-A linguagem Égua suporta a orientação a objetos de forma nativa, permitindo a criação e manipulação de classes, objetos, métodos e herança.
+A égua suporta orientação a objetos nativamente: classes, objetos, métodos e herança.
 
 ## Criando uma classe
 
@@ -45,7 +45,7 @@ teste.teste_função(); // Saída: "olá"
 
 ## Referência à instância (isto)
 
-Dentro de cada método de instância, você pode usar a palavra-chave `isto` para se referir à instância atual do objeto. Ela é uma referência auto-declarativa que permite acessar o estado e os métodos da instância.
+Dentro de um método, `isto` se refere à instância atual do objeto, o que dá acesso ao estado e aos métodos dela.
 
 Exemplo:
 ```js
@@ -92,7 +92,7 @@ var teste = Teste(); // Saída: "começou"
 
 ## Herança
 
-Em Égua, é possível criar uma classe filha a partir de uma classe pai, herdando seus atributos e métodos. Isso permite reutilizar código existente e adicionar novos atributos e métodos específicos da classe filha.
+Uma classe pode herdar atributos e métodos de uma classe pai, reaproveitando código e adicionando o que for específico da classe filha.
 
 Exemplo:
 ```js
@@ -134,4 +134,4 @@ classe B herda A {
 var a = B("13/12/1981");
 ```
 
-Neste exemplo, a classe `B` herda da classe `A` e chama o método `data` da classe pai usando `super.data(data)` no construtor da classe `B`. Isso permite reutilizar o código existente na classe pai dentro da classe filha.
+Neste exemplo, a classe `B` herda de `A` e chama o método `data` da classe pai com `super.data(data)`, dentro do próprio construtor.

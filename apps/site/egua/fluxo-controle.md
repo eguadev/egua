@@ -4,11 +4,11 @@ description: Estruturas de fluxo de controle na linguagem Égua — se/senão, e
 
 # Fluxo de Controle
 
-A programação envolve o controle de fluxo, que determina a ordem em que as instruções são executadas em um programa. A linguagem de programação égua oferece uma variedade de opções de controle de fluxo que permitem tomar decisões, repetir a execução de blocos de código e lidar com erros.
+Controle de fluxo é o que determina a ordem em que as instruções rodam. Em égua, você tem estruturas para tomar decisões, repetir blocos de código e lidar com erros.
 
 ## Valores booleanos
 
-No controle de fluxo de todas as linguagens de programação, os valores booleanos desempenham um papel importante. Em égua, os valores booleanos são representados pelos termos "verdadeiro" e "falso". O controle de fluxo, como a instrução `se`, será executado somente se a condição for avaliada como verdadeira. Por exemplo, `se(verdadeiro){}` será executado porque a condição é verdadeira, enquanto `se(falso){}` não será executado porque a condição é falsa.
+Como em qualquer linguagem, valores booleanos guiam o controle de fluxo. Em égua, eles são representados pelos termos "verdadeiro" e "falso": uma instrução como `se` só executa quando a condição é verdadeira. Por exemplo, `se(verdadeiro){}` executa, mas `se(falso){}` não.
 
 ## Comparação de igualdade
 
@@ -64,7 +64,7 @@ verdadeiro ou falso; // Verdadeiro
 
 ## Se - Senão se - Senão
 
-A linguagem Égua fornece as instruções `se`, `senão se` e `senão` para controle de fluxo condicional eficiente. As instruções `senão se` e `senão` são opcionais e devem ser anexadas à instrução `se`. Você pode encadear quantas instruções `senão se` desejar. Cada instrução é seguida por um bloco de código que será executado com base na condição da instrução. O bloco de código de uma instrução `se` é executado se a condição for avaliada como verdadeira. Caso contrário, as instruções `senão se` serão avaliadas em ordem, e se qualquer uma das condições for verdadeira, o bloco de código correspondente será executado. Somente um bloco `senão se` pode ser executado. Se a instrução `se` não for executada e nenhuma instrução `senão se` for executada, o bloco `senão` será executado, se fornecido.
+`se`, `senão se` e `senão` controlam o fluxo condicional. `senão se` e `senão` são opcionais, e você pode encadear quantos `senão se` quiser. A égua testa as condições em ordem e executa o primeiro bloco cujo `se` (ou `senão se`) for verdadeiro; se nenhum for, executa o `senão`, quando existir.
 
 ```js
 // Exemplo: Imprime "sim"
@@ -95,7 +95,7 @@ se (a == 1) {
 
 ## Enquanto
 
-A instrução `enquanto` em Égua é usada para criar um loop que executa repetidamente um bloco de código enquanto uma condição específica for avaliada como verdadeira. Antes de cada execução do bloco de código, a condição é verificada para determinar se o bloco deve continuar a ser executado. Se a condição for falsa no início, o bloco nunca será executado.
+`enquanto` repete um bloco de código enquanto a condição for verdadeira. A condição é checada antes de cada repetição; se já começar falsa, o bloco nunca roda.
 
 ```js
 // Exemplo: Loop infinito
@@ -106,7 +106,7 @@ enquanto (verdadeiro) {
 
 ## Para
 
-A instrução `para` é usada para criar um laço que executa um bloco de código um número específico de vezes. Ela possui quatro partes: um inicializador, uma condição, um passo e um corpo. Qualquer uma dessas partes pode ser deixada em branco. O inicializador é executado antes do laço `para`, a condição decide se o corpo deve ser executado, a passo é executada após cada execução do corpo e o corpo contém as instruções a serem repetidas. A instrução `para` é definida com o inicializador, a condição e a passo separados por ponto e vírgula, seguidos pelo bloco de código do corpo.
+`para` repete um bloco um número definido de vezes, com três partes separadas por ponto e vírgula: inicializador, condição e passo. Todas são opcionais. O inicializador roda uma vez, antes do laço; a condição é checada a cada volta; o passo roda depois de cada execução do corpo.
 
 ```js
 // Exemplo: Imprime números de 0 a 4
@@ -125,7 +125,7 @@ para (; verdadeiro; ) {
 
 ## Faça - Enquanto
 
-A instrução `faça - enquanto` é usada para criar um laço que executa um bloco de código pelo menos uma vez e continua a executá-lo enquanto uma condição específica for avaliada como verdadeira. Primeiro, o bloco de código é executado e, em seguida, a condição é verificada. Se a condição for verdadeira, o bloco de código será executado novamente. Se a condição for falsa, o loop será encerrado.
+`faça - enquanto` executa o bloco pelo menos uma vez antes de checar a condição. Se a condição for verdadeira, repete; se for falsa, para.
 
 ```js
 // Exemplo: "sim" é escrito uma vez
@@ -143,7 +143,7 @@ faça {
 
 ## Escolha - Caso
 
-As instruções `escolha` e `caso` são usadas para encadear várias condições e executar diferentes blocos de código com base em uma expressão de seleção. A expressão de seleção é avaliada e comparada aos valores de cada caso. Se houver uma correspondência, o bloco de código correspondente ao caso será executado. Se nenhum caso corresponder, o bloco de código padrão será executado, se fornecido.
+`escolha` compara uma expressão com os valores de cada `caso`, um por um. Quando encontra correspondência, executa aquele bloco; se nenhum bate, executa o `padrão`, quando existir.
 
 ```js
 // Exemplo: Imprime "correspondente à opção 2"
@@ -173,7 +173,7 @@ escolha (2) {
 
 ## Tente - Pegue - Finalmente
 
-A estrutura `tente - pegue - finalmente` é usada para lidar com exceções ou erros que podem ocorrer durante a execução do código. O bloco `pegue` e o bloco `finalmente` são opcionais. Primeiro, o bloco `tente` é executado e, se ocorrer algum erro durante a execução, ele será capturado e o bloco `pegue` será executado. O bloco `tente` garante que os erros não interrompam o programa. Após a tentativa e, se fornecido, a execução do bloco `pegue`, o bloco `finalmente` é executado.
+`tente - pegue - finalmente` lida com erros durante a execução. O bloco `tente` roda primeiro; se der erro, o `pegue` (opcional) entra em ação, e o programa não para por causa disso. O `finalmente` (também opcional) roda por último, sempre.
 
 ```js
 // Exemplo: Imprime "sucesso" e "pronto"
@@ -197,5 +197,3 @@ tente {
   escreva("pronto");
 }
 ```
-
-Essas são as principais instruções de controle de fluxo em Égua. Com o entendimento dessas instruções, você pode criar programas mais complexos e controlar o fluxo de execução de maneira eficiente.

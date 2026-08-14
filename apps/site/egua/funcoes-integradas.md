@@ -4,7 +4,7 @@ description: Funções integradas da linguagem Égua, como aleatório_entre, map
 
 # Funções Integradas
 
-As funções integradas da linguagem égua estão sempre disponíveis, sem precisar de `importar()`. Aqui estão todas elas e suas descrições.
+As funções integradas da linguagem égua estão sempre disponíveis, sem precisar de `importar()`.
 
 ## Escreva
 
@@ -285,4 +285,4 @@ escreva("123" + texto(teste_numero));
 // Saída: 123123
 ```
 
-Essas funções internas são apenas algumas das muitas ferramentas disponíveis no Égua para ajudar na resolução de problemas e manipulação de dados. Para recursos adicionais, como matemática avançada, manipulação de textos, datas e requisições HTTP, veja [Bibliotecas](/egua/bibliotecas).
+Para matemática avançada, manipulação de textos, datas e requisições HTTP, veja as [Bibliotecas](/egua/bibliotecas).
