@@ -1,7 +1,7 @@
 import { RuntimeError } from "../errors.js";
 
 // Retorna uma data completa
-export function tempo () {
+export function agora () {
 	return new Date();
 };
 
@@ -25,7 +25,7 @@ export function horas () {
  * @param {string} dataComoTexto A data a ser convertida como texto, no formato DD/MM/AAAA.
  * @returns A data como um objeto Date to JavaScript.
  */
-export function textoParaData (dataComoTexto) {
+export function texto_para_data (dataComoTexto) {
 	const regex = /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\d\d$/;
 
 	if (typeof dataComoTexto !== 'string' || !regex.test(dataComoTexto)) {
@@ -35,7 +35,16 @@ export function textoParaData (dataComoTexto) {
 		);
 	}
 
+	const [dia, mes, ano] = dataComoTexto.split("/").map(Number);
 	const date = new Date(converterDataPtParaIso(dataComoTexto));
+
+	if (date.getUTCDate() !== dia || date.getUTCMonth() + 1 !== mes || date.getUTCFullYear() !== ano) {
+		throw new RuntimeError(
+			this.token,
+			"Data inválida: '" + dataComoTexto + "' não existe no calendário."
+		);
+	}
+
 	const timezoneOffset = date.getTimezoneOffset();
 
 	return new Date(date.getTime() + timezoneOffset * 60 * 1000);

@@ -5,23 +5,23 @@ escreva("|");
 
 var erros = 0;
 
-função startTest(){
-  escreva(tSesenão());
+função iniciar_testes(){
+  escreva(teste_se_senão());
   escreva("|");
-  escreva(tEnquanto());
+  escreva(teste_enquanto());
   escreva("|");
-  escreva(tPara());
+  escreva(teste_para());
   escreva("|");
-  escreva(tFacaEnquanto());
+  escreva(teste_faca_enquanto());
   escreva("|");
-  escreva(tCasoEscolha());
+  escreva(teste_caso_escolha());
   escreva("|");
-  escreva(tTentePegue());
+  escreva(teste_tente_pegue());
   escreva("|");
-  escreva(tClasse());
+  escreva(teste_classe());
 }
 
-função tSesenão(){
+função teste_se_senão(){
   escreva("----------------------------");
   escreva("Iniciando Teste: Se - Se Não");
   escreva("----------------------------");
@@ -35,7 +35,7 @@ função tSesenão(){
   }
 }
 
-função tEnquanto(){
+função teste_enquanto(){
   escreva("------------------------");
   escreva("Iniciando Teste: Enquanto");
   escreva("------------------------");
@@ -52,7 +52,7 @@ função tEnquanto(){
   escreva(a);
 }
 
-função tPara(){
+função teste_para(){
   escreva("--------------------");
   escreva("Iniciando Teste: Para");
   escreva("--------------------");
@@ -68,7 +68,7 @@ função tPara(){
   }
 }
 
-função tFacaEnquanto(){
+função teste_faca_enquanto(){
   escreva("-----------------------------");
   escreva("Iniciando Teste: Faça - Enquanto");
   escreva("-----------------------------");
@@ -85,7 +85,7 @@ função tFacaEnquanto(){
   }
 }
 
-função tCasoEscolha(){
+função teste_caso_escolha(){
   escreva("--------------------");
   escreva("Iniciando Teste: Caso - Escolha");
   escreva("--------------------");
@@ -97,7 +97,7 @@ função tCasoEscolha(){
   }
 }
 
-função tTentePegue(){
+função teste_tente_pegue(){
   escreva("--------------------");
   escreva("Iniciando Teste: Tente - Pegue");
   escreva("--------------------");
@@ -111,7 +111,7 @@ função tTentePegue(){
   }
 }
 
-função tClasse(){
+função teste_classe(){
   escreva("--------------------");
   escreva("Iniciando Teste: Classe");
   escreva("--------------------");
@@ -126,9 +126,9 @@ função tClasse(){
       escreva("Au Au Au Au");
     }
   }
-  var nomeDoCachorro = Cachorro();
-  nomeDoCachorro.correr();
-  nomeDoCachorro.latir();
+  var nome_do_cachorro = Cachorro();
+  nome_do_cachorro.correr();
+  nome_do_cachorro.latir();
   escreva("Classe: OK!");
   } pegue {
   escreva("Classe: ERRO!");  
@@ -137,7 +137,7 @@ função tClasse(){
   }
 }
 
-startTest();
+iniciar_testes();
 escreva("----------------------------");
 escreva("Teste terminado com " + texto(erros) + " erro(s)!");
 escreva("----------------------------");
@@ -148,287 +148,287 @@ escreva("Testes Internos - Biblioteca Matemática");
 escreva("--------------------------------");
 escreva("|");
 
-var errosM = 0;
+var erros_m = 0;
 
 
-var m = importar("matematica");
+var m = importar("matemática");
 var nula = nulo;
 
 var o = [1,1,2,3,15];
 var p = [2,6,7,10,20];
 
 
-função teste_gerarPontosAbscissa() {
-  var gerarPontosAbscissa = m.gerarPontosAbscissa(2,3);
+função teste_gerar_pontos_abscissa() {
+  var pontos_abscissa = m.gerar_pontos_abscissa(2,3);
 
-  se (gerarPontosAbscissa != nula)
-    escreva (gerarPontosAbscissa);
+  se (pontos_abscissa != nula)
+    escreva (pontos_abscissa);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tfun1R(){
+função teste_fun1r(){
   var fun1R = m.fun1R(2,3);
   
   se (fun1R != nula)
         escreva (fun1R);
       senão {
-        errosM = errosM+1;
-        escreva(errosM);
+        erros_m = erros_m+1;
+        escreva(erros_m);
       }
 }
 
-função tfun2R(){
-  var fun2R = m.fun2R(2,-4,3);
+função teste_fun2r(){
+  var fun2R = m.fun2R(1,-5,6);
   
   se (fun2R != nula)
     escreva (fun2R);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função taprox(){
+função teste_aprox(){
   var aprox = m.aprox(1,10);
   
   se (aprox != nula)
         escreva (aprox);
   senão {
-        errosM = errosM+1;
-        escreva(errosM);
+        erros_m = erros_m+1;
+        escreva(erros_m);
 
     }
 }
 
 
-função tsen(){
+função teste_sen(){
   var sen = m.sen(60);
   
   se (sen != nula)
         escreva (sen);
       senão {
-        errosM = errosM+1;
-        escreva(errosM);
+        erros_m = erros_m+1;
+        escreva(erros_m);
       }
 }
 
-função tcos(){
+função teste_cos(){
   var cos = m.cos(60);
   
   se (cos != nula)
         escreva (cos);
       senão {
-        errosM = errosM+1;
-        escreva(errosM);
+        erros_m = erros_m+1;
+        escreva(erros_m);
       }
 }
 
-função ttan(){
+função teste_tan(){
   var tan = m.tan(60);
 
   se (tan != nula)
     escreva (tan);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tarsen(){
-  var arsen = m.arsen(60);
+função teste_arc_sen(){
+  var arsen = m.arc_sen(60);
 
   se (arsen != nula)
     escreva (arsen);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tarcos(){
+função teste_arcos(){
   var arcos = m.arcos(60);
 
   se (arcos != nula)
     escreva (arcos);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tartan(){
-  var artan = m.artan(60);
+função teste_arc_tan(){
+  var artan = m.arc_tan(60);
 
   se (artan != nula)
     escreva (artan);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função texp(){
+função teste_exp(){
   var exp = m.exp(10);
 
   se (exp != nula)
     escreva (exp);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tlog(){
+função teste_log(){
   var log = m.log(10);
   
   se (log != nula)
     escreva(log);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tpotencia(){
-  var pot = m.potencia(2,3);
+função teste_potência(){
+  var pot = m.potência(2,3);
   
   se (pot != nula)
     escreva(pot);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função traizq(){
+função teste_raizq(){
   var raizq = m.raizq(49);
 
   se (raizq != nula)
     escreva(raizq);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tvmed(){
-  var vmed = m.velocidadeMedia(30,10);
+função teste_velocidade_média(){
+  var vmed = m.velocidade_média(30,10);
 
   se (vmed != nula)
     escreva(vmed);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tdeltas(){
-  var deltas = m.deltaS(10,30);
+função teste_delta_s(){
+  var deltas = m.delta_s(10,30);
 
   se (deltas != nula)
     escreva(deltas);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tdeltat(){
-  var deltat = m.deltaT(10,30);
+função teste_delta_t(){
+  var deltat = m.delta_t(10,30);
 
   se (deltat != nula)
     escreva(deltat);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tacel(){
-  var acel= m.aceleracao(30,0,60,0);
+função teste_aceleração(){
+  var acel= m.aceleração(30,0,60,0);
   
   se (acel != nula)
     escreva(acel);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tmrufh(){
+função teste_mrufh(){
   var mrufh = m.mrufh(0,30,15);
 
   se (mrufh != nula)
     escreva(mrufh);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tmruvvel(){
+função teste_mruv(){
   var mruvvel = m.mruv(0,30,15,2);
 
   se (mruvvel != nula)
     escreva(mruvvel);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tmoda(){
+função teste_moda(){
   var i = [1,2,2,3,4];
-  var modaUm = m.moda(i);
+  var moda_um = m.moda(i);
   var j = [1,2,2,3,3];
-  var modaDois = m.moda(j);
+  var moda_dois = m.moda(j);
   var k = [1,2,3,4,5];
-  var modaTres = m.moda(k);
+  var moda_tres = m.moda(k);
   
-  se (modaUm[0] == 2)
-    escreva(modaUm);
+  se (moda_um[0] == 2)
+    escreva(moda_um);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
-  se (modaDois[0] == 2 e modaDois[1] == 3)
-    escreva(modaDois);
+  se (moda_dois[0] == 2 e moda_dois[1] == 3)
+    escreva(moda_dois);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 
-  se (modaTres)
-    escreva(modaTres);
+  se (moda_tres)
+    escreva(moda_tres);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
 escreva("--------------------------------");
-escreva("Função gerarPontosAbscissa:");
-teste_gerarPontosAbscissa();
+escreva("Função gerar_pontos_abscissa:");
+teste_gerar_pontos_abscissa();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função fun1R:");
-tfun1R();
+teste_fun1r();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função fun2R:");
-tfun2R();
+teste_fun2r();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função aprox:");
-taprox();
+teste_aprox();
 
 escreva("|");
 escreva("--------------------------------");
-escreva("Função numeroOcorrencias():");
-escreva(m.numeroOcorrencias([1, 2, 3, 4, 5], 3));
+escreva("Função número_ocorrências():");
+escreva(m.número_ocorrências([1, 2, 3, 4, 5], 3));
 
 escreva("|");
 escreva("--------------------------------");
@@ -443,70 +443,70 @@ escreva(m.min([1, 2, 3, 4, 5]));
 escreva("|");
 escreva("--------------------------------");
 escreva("Função sen:");
-tsen();
+teste_sen();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função cos:");
-tcos();
+teste_cos();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função tan:");
-ttan();
+teste_tan();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função arsen:");
-tarsen();
+escreva("Função arc_sen:");
+teste_arc_sen();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função arcos:");
-tarcos();
+teste_arcos();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função artan:");
-tartan();
+escreva("Função arc_tan:");
+teste_arc_tan();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função exp:");
-texp();
+teste_exp();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função log:");
-tlog();
+teste_log();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função potencia:");
-tpotencia();
+escreva("Função potência:");
+teste_potência();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função raizq:");
-traizq();
+teste_raizq();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função vmed:");
-tvmed();
+escreva("Função velocidade_média:");
+teste_velocidade_média();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função deltas:");
-tdeltas();
+escreva("Função delta_s:");
+teste_delta_s();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função deltat:");
-tdeltat();
+escreva("Função delta_t:");
+teste_delta_t();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função acel:");
-tacel();
+escreva("Função aceleração:");
+teste_aceleração();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função mruhfh:");
-tmrufh();
+escreva("Função mrufh:");
+teste_mrufh();
 escreva("|");
 escreva("--------------------------------");
-escreva("Função mruvvel:");
-tmruvvel();
+escreva("Função mruv:");
+teste_mruv();
 escreva("--------------------------------");
 escreva("Função moda:");
-tmoda();
+teste_moda();
 escreva("|");
 
 escreva("--------------------------------");
@@ -514,131 +514,131 @@ escreva("Testes Funções Internas - Linguagem Egua");
 escreva("--------------------------------");
 escreva("|");
 
-função ttamanho(){
+função teste_tamanho(){
   var array = [1,2,3];
   var tam = tamanho(array);
 
   se (tam != nula)
     escreva(tam);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função ttexto(){
+função teste_texto(){
   var t = 123;
   var text = texto(t);
 
   se (text != nula)
     escreva(text);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função treal(){
+função teste_real(){
   var n = '123.05';
   var rel = real(n);
 
   se (rel != nula)
     escreva(rel);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tinteiro(){
+função teste_inteiro(){
   var i = '50.56';
   var int = inteiro(i);
 
   se (int != nula)
     escreva(int);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função tordenar(){
+função teste_ordenar(){
   var i = [4,2,1,5,3];
   var ord = ordenar(i);
 
   se (ord != nula)
     escreva(ord);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função taleatorio(){
-  var ran = aleatorio();
+função teste_aleatório(){
+  var ran = aleatório();
   se (ran != nula)
     escreva(ran);
   senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
-função taleatorioEntre(){
-  var ran = aleatorioEntre(3);
+função teste_aleatório_entre(){
+  var ran = aleatório_entre(3);
 
   se (ran < 3) {
     escreva(ran);
   } senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 
-  var ran2 = aleatorioEntre(1,3);
+  var ran2 = aleatório_entre(1,3);
 
   se (ran2 >= 1) {
     se (ran2 < 3) {
       escreva(ran2);
     } senão {
-      errosM = errosM+1;
-      escreva(errosM);
+      erros_m = erros_m+1;
+      escreva(erros_m);
     }
   } senão {
-    errosM = errosM+1;
-    escreva(errosM);
+    erros_m = erros_m+1;
+    escreva(erros_m);
   }
 }
 
 escreva("--------------------------------");
 escreva("Função interna: Tamanho");
-ttamanho();
+teste_tamanho();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Texto");
-ttexto();
+teste_texto();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Real");
-treal();
+teste_real();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Inteiro");
-tinteiro();
+teste_inteiro();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Ordenar");
-tordenar();
+teste_ordenar();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Aleatório");
-taleatorio();
+teste_aleatório();
 escreva("|");
 escreva("--------------------------------");
 escreva("Função interna: Aleatório Entre");
-taleatorioEntre();
+teste_aleatório_entre();
 escreva("|");
 escreva("--------------------------------");
-escreva("Teste terminado com " + texto(errosM) + " erro(s)!");
+escreva("Teste terminado com " + texto(erros_m) + " erro(s)!");
 escreva("----------------------------");
 
 escreva("Testando estado de função e classe");
@@ -657,14 +657,14 @@ classe Animal {
 escreva(Animal);
 escreva("----------------------------");
 
-escreva("Testando paraCada");
+escreva("Testando para_cada");
 var array = [1, 2, 3];
 
 var fn = função(valor){
   escreva(valor);
 };
 
-paraCada(array, fn);
+para_cada(array, fn);
 
 escreva("Testando mapear");
 var array = [1, 2, 3];
@@ -702,14 +702,14 @@ var fn = função(valor){
 
 escreva(encontrar(array, fn));
 
-escreva("Testando encontrarIndice");
+escreva("Testando encontrar_índice");
 var array = [1, 2, 3];
 
 var fn = função(valor){
   retorna valor == 3;
 };
 
-escreva(encontrarIndice(array, fn));
+escreva(encontrar_índice(array, fn));
 
 escreva("Testando encontrar");
 var array = [1, 2, 3];
@@ -720,37 +720,55 @@ var fn = função(valor){
 
 escreva(encontrar(array, fn));
 
-escreva("Testando encontrarIndice");
+escreva("Testando encontrar_índice");
 var array = [1, 2, 3];
 
 var fn = função(valor){
   retorna valor == 3;
 };
 
-escreva(encontrarIndice(array, fn));
+escreva(encontrar_índice(array, fn));
 
-escreva("Testando encontrarUltimo");
+escreva("Testando encontrar_último");
 var array = [1, 2, 3];
 
 var fn = função(valor){
   retorna valor > 1;
 };
 
-escreva(encontrarUltimo(array, fn));
+escreva(encontrar_último(array, fn));
 
-escreva("Testando encontrarUltimoIndice");
+escreva("Testando encontrar_último_índice");
 var array = [1, 2, 3];
 
 var fn = função(valor){
   retorna valor > 1;
 };
 
-escreva(encontrarUltimoIndice(array, fn));
+escreva(encontrar_último_índice(array, fn));
 
-escreva("Testando incluido");
+escreva("Testando encontrar_último (sem correspondência, deve ser nulo)");
+var array_sem_match = [1, 2, 3];
+var fn_sem_match = função(valor){
+  retorna valor > 10;
+};
+se (encontrar_último(array_sem_match, fn_sem_match) == nulo) {
+  escreva("TESTE: encontrar_último sem correspondência: passou!");
+} senão {
+  erros_m = erros_m + 1;
+  escreva("TESTE: encontrar_último sem correspondência: falhou!");
+}
+se (encontrar_último_índice(array_sem_match, fn_sem_match) == -1) {
+  escreva("TESTE: encontrar_último_índice sem correspondência: passou!");
+} senão {
+  erros_m = erros_m + 1;
+  escreva("TESTE: encontrar_último_índice sem correspondência: falhou!");
+}
+
+escreva("Testando incluído");
 var array = [1, 2, 3];
 
-escreva(incluido(array, 3));
+escreva(incluído(array, 3));
 
 escreva("Testando algum");
 var array = [1, 2, 3];
@@ -782,27 +800,27 @@ var erros_t = 0;
 var nula = nulo;
 var texto_teste = "Programação simples e moderna em português";
 
-função checa_minusculas()  {
+função checa_minúsculas()  {
   var esperado = "abcdefghijklmnopqrstuvwxyz";
-  var obtido = t.letras_minusculas;
+  var obtido = t.letras_minúsculas;
 
   se (obtido != esperado) {
-    escreva("TESTE: letras_minusculas: falhou!");
+    escreva("TESTE: letras_minúsculas: falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: letras_minusculas: passou!");
+  escreva("TESTE: letras_minúsculas: passou!");
 }
 
-função checa_maiusculas()  {
+função checa_maiúsculas()  {
   var esperado = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var obtido = t.letras_maiusculas;
+  var obtido = t.letras_maiúsculas;
   se (obtido != esperado) {
-    escreva("TESTE: letras_maiusculas: falhou!");
+    escreva("TESTE: letras_maiúsculas: falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: letras_maiusculas: passou!");
+  escreva("TESTE: letras_maiúsculas: passou!");
 }
 
 função checa_letras(){
@@ -818,75 +836,75 @@ função checa_letras(){
   escreva("TESTE: letras: passou!");
 }
 
-função checa_digitos(){
+função checa_dígitos(){
   var esperado = "0123456789";
-  var obtido = t.digitos;
+  var obtido = t.dígitos;
 
   se (obtido != esperado) {
-    escreva("TESTE: digitos: falhou!");
+    escreva("TESTE: dígitos: falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: digitos: passou!");
+  escreva("TESTE: dígitos: passou!");
 }
 
-função checa_pontuacoes(){
+função checa_pontuações(){
   var esperado = '!"'+"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-  var obtido = t.pontuacoes;
+  var obtido = t.pontuações;
 
   se (obtido != esperado) {
-    escreva("TESTE: pontuacoes: falhou!");
+    escreva("TESTE: pontuações: falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: pontuacoes: passou!");
+  escreva("TESTE: pontuações: passou!");
 }
 
-função testa_maiusculo(){
+função testa_maiúsculo(){
   var esperado = "PROGRAMAÇÃO SIMPLES E MODERNA EM PORTUGUÊS";
-  var  obtido = t.maiusculo(texto_teste);
+  var  obtido = t.maiúsculo(texto_teste);
 
   se (obtido != esperado) {
-    escreva("TESTE: função maiusculo(): falhou!");
+    escreva("TESTE: função maiúsculo(): falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-   escreva("TESTE: função maiusculo(): passou!");
+   escreva("TESTE: função maiúsculo(): passou!");
 }
 
-função testa_minusculo(){
+função testa_minúsculo(){
   var esperado = "programação simples e moderna em português";
-  var  obtido = t.minusculo(texto_teste);
+  var  obtido = t.minúsculo(texto_teste);
 
   se (obtido != esperado) {
-    escreva("TESTE: função minusculo(): falhou!");
+    escreva("TESTE: função minúsculo(): falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função minusculo(): passou!");
+  escreva("TESTE: função minúsculo(): passou!");
 }
 
-função testa_contem(){
+função testa_contém(){
   var esperado = verdadeiro;
-  var  obtido = t.contem(texto_teste, "simples");
+  var  obtido = t.contém(texto_teste, "simples");
     
   se (obtido != esperado) {
-    escreva("TESTE: função contem(): falhou!");
+    escreva("TESTE: função contém(): falhou!");
     escreva("| esperado: '" + texto(esperado) + "'");
     escreva("| obtido: '" + texto(obtido) + "'");
     erros_t = erros_t + 1;
     retorna;
   }
 
-  escreva("TESTE: função contem(): passou!");
+  escreva("TESTE: função contém(): passou!");
 }
 
 função testa_formate(){
@@ -1007,14 +1025,14 @@ função testa_apara(){
   escreva("TESTE: função apara(): passou!");
 }
 
-checa_minusculas();
-checa_maiusculas();
+checa_minúsculas();
+checa_maiúsculas();
 checa_letras();
-checa_digitos();
-checa_pontuacoes();
-testa_maiusculo();
-testa_minusculo();
-testa_contem();
+checa_dígitos();
+checa_pontuações();
+testa_maiúsculo();
+testa_minúsculo();
+testa_contém();
 testa_formate();
 testa_dividir();
 testa_tamanho();
@@ -1024,30 +1042,30 @@ testa_busca();
 testa_apara();
 
 // Testes das novas funções da biblioteca textos
-função testa_caractereEm() {
-  var obtido = t.caractereEm("egua", 1);
+função testa_caractere_em() {
+  var obtido = t.caractere_em("egua", 1);
   var esperado = "g";
   se (obtido != esperado) {
-    escreva("TESTE: função caractereEm(): falhou!");
+    escreva("TESTE: função caractere_em(): falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função caractereEm(): passou!");
+  escreva("TESTE: função caractere_em(): passou!");
 }
 
-função testa_codigoEm() {
-  var obtido = t.codigoEm("A", 0);
+função testa_código_em() {
+  var obtido = t.código_em("A", 0);
   var esperado = 65;
   se (obtido != esperado) {
-    escreva("TESTE: função codigoEm(): falhou!");
+    escreva("TESTE: função código_em(): falhou!");
     escreva("| esperado: '" + texto(esperado) + "'");
     escreva("| obtido: '" + texto(obtido) + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função codigoEm(): passou!");
+  escreva("TESTE: função código_em(): passou!");
 }
 
 função testa_fatiar() {
@@ -1063,71 +1081,99 @@ função testa_fatiar() {
   escreva("TESTE: função fatiar(): passou!");
 }
 
-função testa_comecaCom() {
-  var obtido = t.comecaCom("egua linguagem", "egua");
+função testa_começa_com() {
+  var obtido = t.começa_com("egua linguagem", "egua");
   se (obtido != verdadeiro) {
-    escreva("TESTE: função comecaCom(): falhou!");
+    escreva("TESTE: função começa_com(): falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  var obtido2 = t.comecaCom("egua linguagem", "python");
+  var obtido2 = t.começa_com("egua linguagem", "python");
   se (obtido2 != falso) {
-    escreva("TESTE: função comecaCom() (negativo): falhou!");
+    escreva("TESTE: função começa_com() (negativo): falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função comecaCom(): passou!");
+  escreva("TESTE: função começa_com(): passou!");
 }
 
-função testa_terminaCom() {
-  var obtido = t.terminaCom("linguagem egua", "egua");
+função testa_termina_com() {
+  var obtido = t.termina_com("linguagem egua", "egua");
   se (obtido != verdadeiro) {
-    escreva("TESTE: função terminaCom(): falhou!");
+    escreva("TESTE: função termina_com(): falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  var obtido2 = t.terminaCom("linguagem egua", "python");
+  var obtido2 = t.termina_com("linguagem egua", "python");
   se (obtido2 != falso) {
-    escreva("TESTE: função terminaCom() (negativo): falhou!");
+    escreva("TESTE: função termina_com() (negativo): falhou!");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função terminaCom(): passou!");
+  escreva("TESTE: função termina_com(): passou!");
 }
 
-função testa_preenchaInicio() {
-  var obtido = t.preenchaInicio("42", 5, "0");
+função testa_preencha_início() {
+  var obtido = t.preencha_início("42", 5, "0");
   var esperado = "00042";
   se (obtido != esperado) {
-    escreva("TESTE: função preenchaInicio(): falhou!");
+    escreva("TESTE: função preencha_início(): falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função preenchaInicio(): passou!");
+  escreva("TESTE: função preencha_início(): passou!");
 }
 
-função testa_preenchaFim() {
-  var obtido = t.preenchaFim("42", 5, ".");
+função testa_preencha_fim() {
+  var obtido = t.preencha_fim("42", 5, ".");
   var esperado = "42...";
   se (obtido != esperado) {
-    escreva("TESTE: função preenchaFim(): falhou!");
+    escreva("TESTE: função preencha_fim(): falhou!");
     escreva("| esperado: '" + esperado + "'");
     escreva("| obtido: '" + obtido + "'");
     erros_t = erros_t + 1;
     retorna;
   }
-  escreva("TESTE: função preenchaFim(): passou!");
+  escreva("TESTE: função preencha_fim(): passou!");
 }
 
-testa_caractereEm();
-testa_codigoEm();
+função testa_substituir_tudo() {
+  var obtido = t.substituir_tudo("banana", "a", "o");
+  var esperado = "bonono";
+  se (obtido != esperado) {
+    escreva("TESTE: função substituir_tudo(): falhou!");
+    escreva("| esperado: '" + esperado + "'");
+    escreva("| obtido: '" + obtido + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função substituir_tudo(): passou!");
+}
+
+função testa_busca_caracteres_especiais() {
+  var obtido = t.busca("preco: (5.00)", "(5");
+  var esperado = 7;
+  se (obtido != esperado) {
+    escreva("TESTE: função busca() com caracteres especiais: falhou!");
+    escreva("| esperado: '" + texto(esperado) + "'");
+    escreva("| obtido: '" + texto(obtido) + "'");
+    erros_t = erros_t + 1;
+    retorna;
+  }
+  escreva("TESTE: função busca() com caracteres especiais: passou!");
+}
+
+testa_caractere_em();
+testa_código_em();
 testa_fatiar();
-testa_comecaCom();
-testa_terminaCom();
-testa_preenchaInicio();
-testa_preenchaFim();
+testa_começa_com();
+testa_termina_com();
+testa_preencha_início();
+testa_preencha_fim();
+testa_substituir_tudo();
+testa_busca_caracteres_especiais();
 
 // Exemplo: Imprime "correspondente à opção 2"
 escolha (1) {
@@ -1164,54 +1210,198 @@ escreva("|");
 
 var erros_r = 0;
 
-função testa_requisicao_modulo() {
-  var r = importar("requisicao");
+função testa_requisição_módulo() {
+  var r = importar("requisição");
 
   se (r == nulo) {
-    escreva("TESTE: modulo requisicao: falhou ao importar!");
+    escreva("TESTE: módulo requisição: falhou ao importar!");
     erros_r = erros_r + 1;
     retorna;
   }
-  escreva("TESTE: modulo requisicao: importado com sucesso!");
+  escreva("TESTE: módulo requisição: importado com sucesso!");
 }
 
-função testa_requisicao_funcoes() {
-  var r = importar("requisicao");
+função testa_requisição_funções() {
+  var r = importar("requisição");
 
-  var fnObter = r.obter;
-  se (fnObter == nulo) {
-    escreva("TESTE: requisicao.obter: nao encontrado!");
+  var fn_obter = r.obter;
+  se (fn_obter == nulo) {
+    escreva("TESTE: requisição.obter: nao encontrado!");
     erros_r = erros_r + 1;
     retorna;
   }
 
-  var fnEnviar = r.enviar;
-  se (fnEnviar == nulo) {
-    escreva("TESTE: requisicao.enviar: nao encontrado!");
+  var fn_enviar = r.enviar;
+  se (fn_enviar == nulo) {
+    escreva("TESTE: requisição.enviar: nao encontrado!");
     erros_r = erros_r + 1;
     retorna;
   }
 
-  var fnAtualizar = r.atualizar;
-  se (fnAtualizar == nulo) {
-    escreva("TESTE: requisicao.atualizar: nao encontrado!");
+  var fn_atualizar = r.atualizar;
+  se (fn_atualizar == nulo) {
+    escreva("TESTE: requisição.atualizar: nao encontrado!");
     erros_r = erros_r + 1;
     retorna;
   }
 
-  var fnExcluir = r.excluir;
-  se (fnExcluir == nulo) {
-    escreva("TESTE: requisicao.excluir: nao encontrado!");
+  var fn_excluir = r.excluir;
+  se (fn_excluir == nulo) {
+    escreva("TESTE: requisição.excluir: nao encontrado!");
     erros_r = erros_r + 1;
     retorna;
   }
 
-  escreva("TESTE: funcoes obter, enviar, atualizar, excluir: OK!");
+  escreva("TESTE: funções obter, enviar, atualizar, excluir: OK!");
 }
 
-testa_requisicao_modulo();
-testa_requisicao_funcoes();
+testa_requisição_módulo();
+testa_requisição_funções();
 
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_r) + " erro(s)!");
+escreva("----------------------------");
+
+escreva("--------------------------------");
+escreva("Testes Internos - Biblioteca Tempo");
+escreva("--------------------------------");
+escreva("|");
+
+var tp = importar("tempo");
+var erros_tp = 0;
+
+função testa_tempo_agora() {
+  var obtido = tp.agora();
+  se (obtido == nulo) {
+    escreva("TESTE: tempo.agora(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.agora(): passou!");
+}
+
+função testa_tempo_segundos_minutos_horas() {
+  var s = tp.segundos();
+  var mi = tp.minutos();
+  var h = tp.horas();
+  se (s == nulo ou mi == nulo ou h == nulo) {
+    escreva("TESTE: tempo.segundos/minutos/horas(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.segundos/minutos/horas(): passou!");
+}
+
+função testa_texto_para_data_válida() {
+  var data = tp.texto_para_data("15/06/2024");
+  se (data == nulo) {
+    escreva("TESTE: tempo.texto_para_data() com data válida: falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.texto_para_data() com data válida: passou!");
+}
+
+função testa_texto_para_data_inválida() {
+  tente {
+    tp.texto_para_data("31/02/2024");
+    escreva("TESTE: tempo.texto_para_data() rejeita data inexistente: falhou!");
+    erros_tp = erros_tp + 1;
+  } pegue {
+    escreva("TESTE: tempo.texto_para_data() rejeita data inexistente: passou!");
+  }
+}
+
+testa_tempo_agora();
+testa_tempo_segundos_minutos_horas();
+testa_texto_para_data_válida();
+testa_texto_para_data_inválida();
+
+escreva("----------------------------");
+escreva("  terminado com " + texto(erros_tp) + " erro(s)!");
+escreva("----------------------------");
+
+escreva("--------------------------------");
+escreva("Testes de Regressão - Bugs Corrigidos");
+escreva("--------------------------------");
+escreva("|");
+
+var erros_reg = 0;
+
+função testa_tamanho_texto_numérico() {
+  var obtido = tamanho("5");
+  se (obtido != 1) {
+    escreva("TESTE: tamanho('5') retorna 1: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: tamanho('5') retorna 1: passou!");
+}
+
+função testa_aleatório_entre_zero() {
+  var obtido = aleatório_entre(0, 5);
+  se (obtido == nulo) {
+    escreva("TESTE: aleatório_entre(0, 5): falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: aleatório_entre(0, 5): passou!");
+}
+
+função testa_reduzir_padrão_falsy() {
+  var array = [1, 2, 3];
+  var fn = função(total, valor) { retorna total + valor; };
+  var obtido = reduzir(array, fn, 0);
+  se (obtido != 6) {
+    escreva("TESTE: reduzir com padrão 0: falhou!");
+    escreva("| esperado: '6'");
+    escreva("| obtido: '" + texto(obtido) + "'");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: reduzir com padrão 0: passou!");
+}
+
+função testa_incluído_estrito() {
+  var array = [1, 2, 3];
+  var obtido = incluído(array, "1");
+  se (obtido != falso) {
+    escreva("TESTE: incluído() com igualdade estrita: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: incluído() com igualdade estrita: passou!");
+}
+
+função testa_mediana_regressão() {
+  var obtido = m.mediana([5, 1, 3, 2, 4]);
+  se (obtido != 3) {
+    escreva("TESTE: mediana([5,1,3,2,4]): falhou!");
+    escreva("| esperado: '3'");
+    escreva("| obtido: '" + texto(obtido) + "'");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: mediana([5,1,3,2,4]): passou!");
+}
+
+função testa_aprox_vetor() {
+  var obtido = m.aprox([1.2345, 2.3456], 2);
+  se (obtido == nulo) {
+    escreva("TESTE: aprox() com vetor: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: aprox() com vetor: passou!");
+}
+
+testa_tamanho_texto_numérico();
+testa_aleatório_entre_zero();
+testa_reduzir_padrão_falsy();
+testa_incluído_estrito();
+testa_mediana_regressão();
+testa_aprox_vetor();
+
+escreva("----------------------------");
+escreva("  terminado com " + texto(erros_reg) + " erro(s)!");
 escreva("----------------------------");

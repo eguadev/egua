@@ -30,12 +30,12 @@ export default function checkStdLib(name) {
     switch (name) {
         case "tempo":
             return loadModule("tempo", tempo);
-        case "matematica":
-            return loadModule("matematica", matematica);
+        case "matemática":
+            return loadModule("matemática", matematica);
         case "textos":
             return loadModule("textos", textos);
-        case "requisicao":
-            return loadModule("requisicao", requisicao);
+        case "requisição":
+            return loadModule("requisição", requisicao);
     }
     return null;
 }

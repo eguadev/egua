@@ -15,12 +15,12 @@ import { RuntimeError } from "../errors.js";
 /**
  * Conjunto de todas as letras minúsculas
  */
-export const letras_minusculas = "abcdefghijklmnopqrstuvwxyz";
+export const letras_minúsculas = "abcdefghijklmnopqrstuvwxyz";
 
 /**
  * Conjunto de todas as letras maiúsculas
  */
-export const letras_maiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+export const letras_maiúsculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /**
  * Conjunto de todas as letras
@@ -30,12 +30,12 @@ export const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 /**
  * Conjunto de todos os dígitos
  */
-export const digitos = "0123456789";
+export const dígitos = "0123456789";
 
 /**
  * Conjunto de pontuações
  */
-export const pontuacoes = '!"' + "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+export const pontuações = '!"' + "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 // Funções de Manipulação de textos.
 
@@ -45,7 +45,7 @@ export const pontuacoes = '!"' + "#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
  * @param {string} texto  o texto a ser convertido.
  * @return {string} a string convertida.
  */
-export function maiusculo(texto) {
+export function maiúsculo(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -61,7 +61,7 @@ export function maiusculo(texto) {
  * @param {string} texto  o texto a ser convertido.
  * @return {string} a string convertida.
  */
-export function minusculo(texto) {
+export function minúsculo(texto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -78,7 +78,7 @@ export function minusculo(texto) {
  * @param {string} subtexto  o subtexto a ser procurado.
  * @return {boolean} verdadeiro se o texto possui o subtexto falso caso contrário.
  */
-export function contem(texto, subtexto) {
+export function contém(texto, subtexto) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
@@ -204,12 +204,15 @@ export function repita(texto, contador = 0) {
 }
 
 /**
- * Substitui em um texto fornecido o padrão indicado por um novo valor.
+ * Substitui em um texto fornecido a primeira ocorrência do padrão indicado por um novo valor.
  *
- * @param {string} texto o texto para obter o tamanho.
- * @param {string} texto_buscado o texto ou expressão regular para ser substituído.
+ * Note que apenas a primeira ocorrência é substituída. Para substituir todas as
+ * ocorrências, use `substituir_tudo`.
+ *
+ * @param {string} texto o texto original.
+ * @param {string} texto_buscado o texto literal a ser substituído.
  * @param {string} novo_texto o novo texto para substituição.
- * @return {string} um novo texto com os valores substituídos.
+ * @return {string} um novo texto com a primeira ocorrência substituída.
  */
 export function substituir(texto, texto_buscado, novo_texto) {
     if (typeof texto !== "string") {
@@ -231,10 +234,37 @@ export function substituir(texto, texto_buscado, novo_texto) {
 }
 
 /**
- *  Busca um subtexto em um texto.
+ * Substitui em um texto fornecido todas as ocorrências do padrão indicado por um novo valor.
  *
  * @param {string} texto o texto original.
- * @param {string} texto_buscado o texto que deve ser buscado ou expressão regular.
+ * @param {string} texto_buscado o texto literal a ser substituído.
+ * @param {string} novo_texto o novo texto para substituição.
+ * @return {string} um novo texto com todas as ocorrências substituídas.
+ */
+export function substituir_tudo(texto, texto_buscado, novo_texto) {
+    if (typeof texto !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O parâmetro passado deve ser um texto"
+        );
+    }
+    if (typeof texto_buscado !== "string") {
+        throw new RuntimeError(
+            this.token,
+            "O padrão passado deve ser um texto"
+        );
+    }
+    if (typeof novo_texto !== "string") {
+        throw new RuntimeError(this.token, "O novo valor deve ser um texto");
+    }
+    return texto.split(texto_buscado).join(novo_texto);
+}
+
+/**
+ *  Busca um subtexto literal em um texto.
+ *
+ * @param {string} texto o texto original.
+ * @param {string} texto_buscado o texto literal que deve ser buscado.
  *
  * @returns {number} o índice da primeira ocorrência no texto fornecido ou -1 caso contrário.
  */
@@ -251,7 +281,7 @@ export function busca(texto, texto_buscado) {
             "O padrão passado deve ser um texto"
         );
     }
-    return texto.search(texto_buscado);
+    return texto.indexOf(texto_buscado);
 }
 
 /**
@@ -277,17 +307,17 @@ export function apara(texto) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {string} o caractere na posicao informada.
  */
-export function caractereEm(texto, posicao) {
+export function caractere_em(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em caractereEm(texto, posicao)."
+            "O parâmetro 'texto' deve ser um texto em caractere_em(texto, posicao)."
         );
     }
     if (typeof posicao !== "number") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'posicao' deve ser um numero em caractereEm(texto, posicao)."
+            "O parâmetro 'posicao' deve ser um numero em caractere_em(texto, posicao)."
         );
     }
     return texto.charAt(posicao);
@@ -300,17 +330,17 @@ export function caractereEm(texto, posicao) {
  * @param {number} posicao a posicao do caractere (inicia em 0).
  * @returns {number} o codigo Unicode do caractere.
  */
-export function codigoEm(texto, posicao) {
+export function código_em(texto, posicao) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em codigoEm(texto, posicao)."
+            "O parâmetro 'texto' deve ser um texto em código_em(texto, posicao)."
         );
     }
     if (typeof posicao !== "number") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'posicao' deve ser um numero em codigoEm(texto, posicao)."
+            "O parâmetro 'posicao' deve ser um numero em código_em(texto, posicao)."
         );
     }
     return texto.charCodeAt(posicao);
@@ -347,17 +377,17 @@ export function fatiar(texto, inicio, fim) {
  * @param {string} prefixo o prefixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto comeca com o prefixo.
  */
-export function comecaCom(texto, prefixo) {
+export function começa_com(texto, prefixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em comecaCom(texto, prefixo)."
+            "O parâmetro 'texto' deve ser um texto em começa_com(texto, prefixo)."
         );
     }
     if (typeof prefixo !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'prefixo' deve ser um texto em comecaCom(texto, prefixo)."
+            "O parâmetro 'prefixo' deve ser um texto em começa_com(texto, prefixo)."
         );
     }
     return texto.startsWith(prefixo);
@@ -370,17 +400,17 @@ export function comecaCom(texto, prefixo) {
  * @param {string} sufixo o sufixo a ser verificado.
  * @returns {boolean} verdadeiro se o texto termina com o sufixo.
  */
-export function terminaCom(texto, sufixo) {
+export function termina_com(texto, sufixo) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em terminaCom(texto, sufixo)."
+            "O parâmetro 'texto' deve ser um texto em termina_com(texto, sufixo)."
         );
     }
     if (typeof sufixo !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'sufixo' deve ser um texto em terminaCom(texto, sufixo)."
+            "O parâmetro 'sufixo' deve ser um texto em termina_com(texto, sufixo)."
         );
     }
     return texto.endsWith(sufixo);
@@ -394,17 +424,17 @@ export function terminaCom(texto, sufixo) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-export function preenchaInicio(texto, tamanho, preenchimento) {
+export function preencha_início(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em preenchaInicio(texto, tamanho, preenchimento)."
+            "O parâmetro 'texto' deve ser um texto em preencha_início(texto, tamanho, preenchimento)."
         );
     }
     if (typeof tamanho !== "number") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'tamanho' deve ser um numero em preenchaInicio(texto, tamanho, preenchimento)."
+            "O parâmetro 'tamanho' deve ser um numero em preencha_início(texto, tamanho, preenchimento)."
         );
     }
     if (preenchimento === undefined) {
@@ -413,7 +443,7 @@ export function preenchaInicio(texto, tamanho, preenchimento) {
     if (typeof preenchimento !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'preenchimento' deve ser um texto em preenchaInicio(texto, tamanho, preenchimento)."
+            "O parâmetro 'preenchimento' deve ser um texto em preencha_início(texto, tamanho, preenchimento)."
         );
     }
     return texto.padStart(tamanho, preenchimento);
@@ -427,17 +457,17 @@ export function preenchaInicio(texto, tamanho, preenchimento) {
  * @param {string} preenchimento o caractere de preenchimento (padrao: " ").
  * @returns {string} o texto preenchido.
  */
-export function preenchaFim(texto, tamanho, preenchimento) {
+export function preencha_fim(texto, tamanho, preenchimento) {
     if (typeof texto !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'texto' deve ser um texto em preenchaFim(texto, tamanho, preenchimento)."
+            "O parâmetro 'texto' deve ser um texto em preencha_fim(texto, tamanho, preenchimento)."
         );
     }
     if (typeof tamanho !== "number") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'tamanho' deve ser um numero em preenchaFim(texto, tamanho, preenchimento)."
+            "O parâmetro 'tamanho' deve ser um numero em preencha_fim(texto, tamanho, preenchimento)."
         );
     }
     if (preenchimento === undefined) {
@@ -446,7 +476,7 @@ export function preenchaFim(texto, tamanho, preenchimento) {
     if (typeof preenchimento !== "string") {
         throw new RuntimeError(
             this.token,
-            "O parâmetro 'preenchimento' deve ser um texto em preenchaFim(texto, tamanho, preenchimento)."
+            "O parâmetro 'preenchimento' deve ser um texto em preencha_fim(texto, tamanho, preenchimento)."
         );
     }
     return texto.padEnd(tamanho, preenchimento);

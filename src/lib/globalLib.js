@@ -7,7 +7,7 @@ import EguaClass from "../structures/class.js";
 export default function loadGlobalLib (interpreter, globals) {
     // Retorna um número aleatório entre 0 e 1.
     globals.defineVar(
-        "aleatorio",
+        "aleatório",
         new StandardFn(1, function () {
             return Math.random();
         })
@@ -16,9 +16,9 @@ export default function loadGlobalLib (interpreter, globals) {
     // Retorna um número aleatório de acordo com o parâmetro passado.
     // MIN(inclusivo) - MAX(exclusivo)
     globals.defineVar(
-        "aleatorioEntre",
+        "aleatório_entre",
         new StandardFn(1, function (min, max) {
-            if (!arguments[0]) {
+            if (arguments.length === 0) {
                 throw new RuntimeError(
                     this.token,
                     "A função recebe ao menos um parâmetro"
@@ -76,7 +76,7 @@ export default function loadGlobalLib (interpreter, globals) {
     );
 
     globals.defineVar(
-        "paraCada",
+        "para_cada",
         new StandardFn(1, function (array, callback) {
             if (!Array.isArray(array)) {
                 throw new RuntimeError(
@@ -175,10 +175,12 @@ export default function loadGlobalLib (interpreter, globals) {
                 );
             }
 
-            let provisorio = padrao;
+            let provisorio;
             let inicio = 0;
 
-            if (!provisorio) {
+            if (arguments.length >= 3) {
+                provisorio = padrao;
+            } else {
                 provisorio = array[0];
                 inicio = 1;
             }
@@ -219,7 +221,7 @@ export default function loadGlobalLib (interpreter, globals) {
     );
 
     globals.defineVar(
-        "encontrarUltimo",
+        "encontrar_último",
         new StandardFn(1, function (array, callback) {
             if (!Array.isArray(array)) {
                 throw new RuntimeError(
@@ -240,11 +242,13 @@ export default function loadGlobalLib (interpreter, globals) {
                     return array[index];
                 }
             }
+
+            return null;
         })
     );
 
     globals.defineVar(
-        "encontrarIndice",
+        "encontrar_índice",
         new StandardFn(1, function (array, callback) {
             if (!Array.isArray(array)) {
                 throw new RuntimeError(
@@ -271,7 +275,7 @@ export default function loadGlobalLib (interpreter, globals) {
     );
 
     globals.defineVar(
-        "encontrarUltimoIndice",
+        "encontrar_último_índice",
         new StandardFn(1, function (array, callback) {
             if (!Array.isArray(array)) {
                 throw new RuntimeError(
@@ -292,11 +296,13 @@ export default function loadGlobalLib (interpreter, globals) {
                     return index;
                 }
             }
+
+            return -1;
         })
     );
 
     globals.defineVar(
-        "incluido",
+        "incluído",
         new StandardFn(1, function (array, valor) {
             if (!Array.isArray(array)) {
                 throw new RuntimeError(
@@ -306,7 +312,7 @@ export default function loadGlobalLib (interpreter, globals) {
             }
 
             for (let index = 0; index < array.length; ++index) {
-                if (array[index] == valor) {
+                if (array[index] === valor) {
                     return true;
                 }
             }
@@ -409,7 +415,7 @@ export default function loadGlobalLib (interpreter, globals) {
     globals.defineVar(
         "tamanho",
         new StandardFn(1, function (obj) {
-            if (!isNaN(obj)) {
+            if (typeof obj === "number") {
                 throw new RuntimeError(
                     this.token,
                     "Não é possível encontrar o tamanho de um número."
@@ -449,6 +455,15 @@ export default function loadGlobalLib (interpreter, globals) {
     globals.defineVar(
         "texto",
         new StandardFn(1, function (value) {
+            if (value === null || value === undefined) {
+                return "nulo";
+            }
+            if (typeof value === "boolean") {
+                return value ? "verdadeiro" : "falso";
+            }
+            if (typeof value === "object" && !Array.isArray(value)) {
+                return "<dicionário>";
+            }
             return `${value}`;
         })
     );

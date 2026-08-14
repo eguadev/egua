@@ -50,7 +50,7 @@ var opcoes = {\n\
 var req = mod.request(opcoes, function(res) {\n\
     var corpo = "";\n\
     res.on("data", function(c) { corpo += c; });\n\
-    res.on("end", function() { console.log(corpo); });\n\
+    res.on("end", function() { console.log(JSON.stringify({ status: res.statusCode, corpo: corpo })); });\n\
 });\n\
 req.on("error", function(e) { console.error("ERRO:" + e.message); process.exit(1); });\n\
 if (dados) req.write(dados);\n\
@@ -67,10 +67,21 @@ req.end();\n\
         throw new Error(msg);
     }
 
+    let resposta;
     try {
-        return JSON.parse(resultado.stdout.trim());
+        resposta = JSON.parse(resultado.stdout.trim());
     } catch (e) {
-        return resultado.stdout.trim();
+        throw new Error("Resposta inesperada do servidor.");
+    }
+
+    if (resposta.status < 200 || resposta.status >= 300) {
+        throw new Error("Erro na requisicao: status " + resposta.status);
+    }
+
+    try {
+        return JSON.parse(resposta.corpo);
+    } catch (e) {
+        return resposta.corpo;
     }
 }
 

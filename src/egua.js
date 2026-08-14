@@ -89,10 +89,7 @@ export default class Egua {
     }
 
     runtimeError(error) {
-        console.log(error)
-        console.log(error.message)
-        const line = error.token.line;
-        if (error.token && line) {
+        if (error.token && error.token.line) {
             if (this.fileName)
                 console.error(
                     `Erro: [Arquivo: ${this.fileName}] [Linha: ${error.token.line}] ${error.message}`

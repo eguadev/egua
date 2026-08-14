@@ -763,7 +763,7 @@ export default class Interpreter {
     }
 
     stringify(objeto) {
-        if (objeto === null) return "nulo";
+        if (objeto === null || objeto === undefined) return "nulo";
         if (typeof objeto === "boolean") {
             return objeto ? "verdadeiro" : "falso";
         }
