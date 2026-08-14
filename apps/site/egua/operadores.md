@@ -84,14 +84,15 @@ Veja os operadores da linguagem égua:
 
 ### Operadores especiais
 
-Existem outros operadores especiais relacionados a manipulação bit a bit, como:
+Existem também operadores para manipulação bit a bit. São menos comuns no dia a dia de quem está começando, mas ficam aqui para consulta:
 
-- `<<` - Deslocamento bit a bit à esquerda;
-- `>>` - Deslocamento bit a bit à direita;
-- `&` - e bit a bit;
+- `<<` - desloca os bits para a esquerda;
+- `>>` - desloca os bits para a direita;
+- `&` - E bit a bit;
 - `^` - Ou exclusivo bit a bit;
-- `|` - Ou bit a bit;
-- `em` - em;
+- `|` - Ou bit a bit.
+
+O operador `em` (que verifica se um valor está contido em outro) está documentado em [Fluxo de Controle](/egua/fluxo-controle).
 
 ### Prioridade dos operadores
 

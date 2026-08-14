@@ -4,7 +4,7 @@ description: Programação orientada a objetos na linguagem Égua — criação 
 
 # Classes
 
-A linguagem égua suporta orientação a objetos nativamente: classes, objetos, métodos e herança.
+Orientação a objetos é uma forma de organizar código: em vez de espalhar dados e funções soltos, você agrupa o que pertence junto dentro de uma classe. A linguagem égua suporta isso nativamente, com classes, objetos, métodos e herança.
 
 ## Criando uma classe
 
@@ -17,7 +17,7 @@ classe Teste {}
 
 ## Instanciando uma classe
 
-A instância de uma classe é criada através da chamada da classe, criando assim um objeto. Na linguagem égua, para criar uma instância de uma classe, basta chamar o nome da classe seguido de parênteses.
+Uma instância é um objeto criado a partir de uma classe. Para criar uma, chame o nome da classe seguido de parênteses, como se fosse uma função.
 
 Exemplo:
 ```js

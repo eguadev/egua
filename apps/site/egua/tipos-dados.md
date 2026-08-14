@@ -11,7 +11,7 @@ Veja os tipos de dados da linguagem égua.
 
 ## Texto
 
-O texto é utilizado para representar sequências de caracteres e é delimitado por aspas duplas (`" "`) ou aspas simples (`' '`). Podemos acessar caracteres individuais em uma string utilizando a notação de índice.
+Texto é uma sequência de caracteres, delimitada por aspas duplas (`" "`) ou aspas simples (`' '`). Dá para pegar um caractere específico usando colchetes com a posição desejada, começando em 0. Um índice negativo conta a partir do fim: `-1` é o último caractere, `-2` o penúltimo, e assim por diante.
 
 Exemplo:
 
@@ -19,8 +19,8 @@ Exemplo:
 var texto = "abc";
 var texto2 = 'abc';
 
-escreva("abc"[0]); // exibe "a"
-escreva(texto[-1]); // exibe "c"
+escreva("abc"[0]); // exibe "a" (primeiro caractere)
+escreva(texto[-1]); // exibe "c" (último caractere)
 ```
 
 
@@ -38,9 +38,7 @@ var número_flutuante = 8.5;
 
 ## Listas
 
-As listas são coleções ordenadas de elementos. Elas são declaradas entre colchetes (`[]`) e os elementos são separados por vírgulas. Podemos acessar os elementos de uma lista utilizando a notação de índice.
-
-Exemplo:
+Listas (também chamadas de vetores) são coleções ordenadas de elementos, declaradas entre colchetes (`[]`) e com os elementos separados por vírgula. Assim como no texto, dá para acessar um elemento pela posição, começando em 0.
 
 ```js
 var vetor = [1, "2"];
@@ -48,36 +46,40 @@ var vetor_vazio = [];
 
 escreva([1, "2"][0]); // exibe 1
 escreva(vetor[2]); // sinaliza um erro por estar fora do tamanho do vetor
+```
 
+Ler uma posição que não existe sinaliza um erro, mas escrever numa posição além do fim do vetor funciona: a égua completa os espaços vazios com `nulo`.
+
+```js
 var vetor = [1, "2"];
 vetor[1] = 3;
-escreva(vetor); // exibe [1, 3]
+escreva(vetor); // exibe [1, 3] (troca o valor na posição 1)
 
 var vetor = [1, "2"];
 vetor[2] = 3;
-escreva(vetor); // exibe [1, 2, 3]
+escreva(vetor); // exibe [1, 2, 3] (posição seguinte, o vetor cresce em 1)
 
 var vetor = [1, "2"];
 vetor[3] = 3;
-escreva(vetor); // exibe [1, 2, nulo, 3]
+escreva(vetor); // exibe [1, 2, nulo, 3] (pula a posição 2, que vira nulo)
 ```
 
 ## Dicionários
 
-Os dicionários são estruturas de dados que associam valores a chaves únicas. Eles são úteis quando precisamos armazenar informações em pares chave-valor. Cada chave é única e mapeada para um valor correspondente.
+Dicionários guardam valores associados a chaves, em pares chave-valor. Diferente da lista, que usa posições numéricas, o dicionário usa as chaves que você escolher para acessar cada valor.
 
 Exemplo:
 
 ```js
-var dicionario = {}; // declaração de dicionário vazio
-dicionario = {'a': 'b'}; // atribuição de um dicionário à variável
+var dicionario = {}; // dicionário vazio
+dicionario = {'a': 'b'}; // dicionário com a chave 'a' e valor 'b'
 escreva(dicionario['a']); // exibe 'b'
 
 var dicionario = {};
-dicionario['a'] = 'b'; // retorna um novo dicionário {'a': 'b'}
+dicionario['a'] = 'b'; // adiciona a chave 'a' com valor 'b'
 var dicionario = {'a': 1};
 
-dicionario['a'] = 2; // retorna um novo dicionário {'a': 2}
+dicionario['a'] = 2; // troca o valor da chave 'a' para 2
 escreva(dicionario['a']);
 ```
 

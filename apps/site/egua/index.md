@@ -28,9 +28,7 @@ escreva("Olá, Mundo!");
 O código usa a função `escreva()` para exibir a mensagem. Ao executar, a tela mostra "Olá, Mundo!": o primeiro programa antes de partir para conceitos mais avançados.
 
 ## Comentários
-Comentários são trechos de texto para adicionar explicações ou notas ao código. O interpretador os ignora durante a execução.
-
-- Comentários de linha única: começam com `//` e valem para uma linha de código.
+Comentários são trechos de texto para adicionar explicações ou notas ao código. O interpretador os ignora durante a execução. Em égua, um comentário começa com `//` e vale até o fim da linha.
 
 Exemplo:
 ```js

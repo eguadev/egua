@@ -11,15 +11,15 @@ A lógica de programação gira em torno de algoritmos: sequências de passos qu
 
 Alguns conceitos ajudam a desenvolver essa lógica:
 
-1. Sequência: A sequência é a ordem em que as instruções são executadas. Cada instrução é executada uma após a outra, seguindo uma ordem específica.
+1. Sequência: as instruções rodam em ordem, uma depois da outra.
 
-2. Decisão: A tomada de decisão envolve o uso de condicionais para verificar se uma determinada condição é verdadeira ou falsa. Com base no resultado, o programa pode executar diferentes conjuntos de instruções.
+2. Decisão: o programa verifica se uma condição é verdadeira ou falsa e escolhe o que fazer a partir disso.
 
-3. Repetição: A repetição é usada para executar um conjunto de instruções várias vezes. Ela permite que tarefas sejam automatizadas e que dados sejam processados de forma eficiente.
+3. Repetição: um conjunto de instruções roda várias vezes, o que evita repetir o mesmo código à mão para cada item.
 
-4. Decomposição: A decomposição envolve dividir um problema complexo em partes menores e mais gerenciáveis. Cada parte pode ser resolvida individualmente, simplificando o processo de solução como um todo.
+4. Decomposição: um problema grande é dividido em partes menores, mais fáceis de resolver uma de cada vez.
 
-5. Padrões de solução: Existem padrões comuns de solução para problemas recorrentes. Conhecer esses padrões pode ajudar na resolução mais eficiente de problemas, como o uso de loops para iterar sobre uma lista de elementos.
+5. Padrões de solução: alguns problemas se repetem de formas parecidas, e vale a pena reconhecer soluções já conhecidas para eles, como usar um loop para percorrer uma lista de elementos.
 
 Resolver um problema bem passa por entendê-lo, identificar as entradas e saídas necessárias e planejar os passos para chegar lá.
 

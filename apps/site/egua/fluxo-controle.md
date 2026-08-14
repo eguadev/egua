@@ -21,10 +21,8 @@ nulo == nulo; // Verdadeiro
 
 "1" == "2"; // Falso
 1 == 2; // Falso
-1 == "1"; // Falso
+1 == "1"; // Falso (tipos diferentes: número e texto)
 ```
-
-A comparação é baseada apenas na igualdade dos valores.
 
 ## Avaliação da veracidade
 
@@ -36,7 +34,6 @@ Na linguagem égua, todos os tipos de dados, exceto "nulo" e "falso", são avali
 verdadeiro; // Verdadeiro
 []; // Verdadeiro
 
-1 == '1'; // Falso devido à avaliação de falso
 nulo; // Falso
 falso; // Falso
 ```
