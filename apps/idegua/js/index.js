@@ -1,6 +1,7 @@
 const outputDiv = document.getElementById("output");
 const runButton = document.getElementById("runBtn");
 const demoSelector = document.getElementById("demoSelector");
+const exportButton  = document.getElementById('exportBtn');
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
@@ -34,6 +35,12 @@ const editor = new CodeFlask("#editor", {
   defaultTheme: false
 });
 
+function updateExportButton() {
+  exportButton.disabled = editor.getCode().trim().length === 0;
+}
+
+editor.onUpdate(updateExportButton);
+
 clearOutput();
 
 const demoKeys = Object.keys(demos);
@@ -62,6 +69,8 @@ if (queryCode !== undefined) {
   loadDemo(demoKeys[0]);
 }
 
+updateExportButton();
+
 const runCode = function() {
   const egua = new Egua.Egua();
 
@@ -78,3 +87,25 @@ runButton.addEventListener("click", function() {
   clearOutput();
   runCode();
 });
+
+
+function downloadCode() {
+  const code = editor.getCode();
+
+  if (code.trim().length === 0) return;
+
+  const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "programa.egua";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+exportButton.addEventListener("click", downloadCode);
+
