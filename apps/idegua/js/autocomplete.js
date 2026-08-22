@@ -90,6 +90,29 @@ const wordAtCursor = (text, cursor) => {
 };
 
 /**
+ * Busca sugestões para a palavra na posição do cursor.
+ *
+ * @param {string} text Conteúdo completo do editor.
+ * @param {number} cursor Posição atual do cursor.
+ * @param {boolean} force Inclui resultados quando ainda não há uma palavra.
+ * @returns {{ prefix: { text: string, start: number }, results: Suggestion[] }}
+ */
+function getSuggestions(text, cursor, force = false) {
+  const prefix = wordAtCursor(text, cursor);
+  if (!force && !prefix.text) return { prefix, results: [] };
+
+  const query = normalize(prefix.text);
+  const results = entries
+    .filter(({ label }) => {
+      const candidate = normalize(label);
+      return candidate.startsWith(query) && candidate !== query;
+    })
+    .slice(0, MAX_RESULTS);
+
+  return { prefix, results };
+}
+
+/**
  * Indica se o cursor está em código, e não em uma string ou comentário de linha.
  *
  * @param {string} text Conteúdo completo do editor.
@@ -120,13 +143,13 @@ function createAutocomplete(editor) {
   const textarea = editor.elTextarea;
   const wrapper = editor.elWrapper;
   const popup = document.createElement("div");
+  const measurementContext = document.createElement("canvas").getContext("2d");
   const popupId = "idegua-autocomplete";
-  let results = [];
-  let selected = 0;
-  let prefix = { text: "", start: 0 };
-  let visible = false;
-  let suppressUntilNewWord = false;
-  let insertedEnd = -1;
+  const state = {
+    results: [],
+    selected: 0,
+    prefix: { text: "", start: 0 },
+  };
 
   popup.id = popupId;
   popup.className = "idegua-autocomplete";
@@ -138,7 +161,6 @@ function createAutocomplete(editor) {
   textarea.setAttribute("aria-expanded", "false");
 
   function close() {
-    visible = false;
     popup.hidden = true;
     textarea.setAttribute("aria-expanded", "false");
     textarea.removeAttribute("aria-activedescendant");
@@ -154,10 +176,8 @@ function createAutocomplete(editor) {
     const paddingLeft = parseFloat(style.paddingLeft) || 10;
     const paddingTop = parseFloat(style.paddingTop) || 10;
     const lineNumber = (valueBeforeCursor.match(/\n/g) || []).length;
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    context.font = `${style.fontWeight} ${fontSize}px ${style.fontFamily}`;
-    const textWidth = context.measureText(line).width;
+    measurementContext.font = `${style.fontWeight} ${fontSize}px ${style.fontFamily}`;
+    const textWidth = measurementContext.measureText(line).width;
     const textareaRect = textarea.getBoundingClientRect();
     const wrapperRect = wrapper.getBoundingClientRect();
     let left = textareaRect.left - wrapperRect.left + paddingLeft + textWidth - textarea.scrollLeft;
@@ -170,30 +190,28 @@ function createAutocomplete(editor) {
       top = Math.max(8, top - popupHeight - lineHeight);
     }
     popup.style.left = `${left}px`;
-    popup.style.top = `${top}px`; 
+    popup.style.top = `${top}px`;
   }
 
   function render() {
     popup.innerHTML = "";
-    results.forEach((entry, index) => {
+    state.results.forEach((entry, index) => {
       const option = document.createElement("div");
       const optionId = `${popupId}-option-${index}`;
       option.id = optionId;
+      option.dataset.index = index;
       option.className = "idegua-autocomplete__option";
       option.setAttribute("role", "option");
-      option.setAttribute("aria-selected", String(index === selected));
-      if (index === selected) option.classList.add("is-selected");
+      option.setAttribute("aria-selected", String(index === state.selected));
+      if (index === state.selected) option.classList.add("is-selected");
       option.innerHTML = `<div class="idegua-autocomplete__title"><code></code><span></span></div><div class="idegua-autocomplete__description"></div>`;
       option.querySelector("code").textContent = entry.label;
       option.querySelector("span").textContent = entry.kind;
       option.querySelector(".idegua-autocomplete__description").textContent = entry.description;
-      option.addEventListener("pointerdown", (event) => event.preventDefault());
-      option.addEventListener("click", () => choose(index));
       popup.appendChild(option);
     });
-    textarea.setAttribute("aria-activedescendant", `${popupId}-option-${selected}`);
+    textarea.setAttribute("aria-activedescendant", `${popupId}-option-${state.selected}`);
     popup.hidden = false;
-    visible = true;
     textarea.setAttribute("aria-expanded", "true");
     position();
   }
@@ -201,71 +219,79 @@ function createAutocomplete(editor) {
   function show(force) {
     const cursor = textarea.selectionStart;
     if (textarea.selectionStart !== textarea.selectionEnd || !isCodeContext(textarea.value, cursor)) return close();
-    prefix = wordAtCursor(textarea.value, cursor);
-    if (!force && (!prefix.text || suppressUntilNewWord)) return close();
-    const normalizedPrefix = normalize(prefix.text);
-    results = entries.filter((entry) => normalize(entry.label).startsWith(normalizedPrefix)).slice(0, MAX_RESULTS);
-    selected = 0;
-    if (!results.length) return close();
+    const suggestions = getSuggestions(textarea.value, cursor, force);
+    state.prefix = suggestions.prefix;
+    state.results = suggestions.results;
+    state.selected = 0;
+    if (!state.results.length) return close();
     render();
   }
 
   function choose(index) {
-    const entry = results[index];
+    const entry = state.results[index];
     if (!entry) return;
     const cursor = textarea.selectionStart;
-    const before = textarea.value.slice(0, prefix.start);
+    const before = textarea.value.slice(0, state.prefix.start);
     const after = textarea.value.slice(cursor);
     editor.updateCode(before + entry.insertText + after);
-    const caret = prefix.start + entry.insertText.length - (entry.kind === "função" ? 1 : 0);
+    const caret = state.prefix.start + entry.insertText.length - (entry.kind === "função" ? 1 : 0);
     textarea.selectionStart = caret;
     textarea.selectionEnd = caret;
-    insertedEnd = prefix.start + entry.insertText.length;
-    suppressUntilNewWord = true;
     close();
     textarea.focus();
+  }
+
+  function consume(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
   }
 
   textarea.addEventListener("keydown", (event) => {
     const force = (event.ctrlKey || event.metaKey) && event.code === "Space";
     if (force && isCodeContext(textarea.value, textarea.selectionStart)) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      suppressUntilNewWord = false;
+      consume(event);
       show(true);
       return;
     }
-    if (!visible) return;
-    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      selected = (selected + (event.key === "ArrowDown" ? 1 : -1) + results.length) % results.length;
-      render();
-    } else if (event.key === "Enter" || event.key === "Tab") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      choose(selected);
-    } else if (event.key === "Escape") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      close();
-    } else if (["ArrowLeft", "ArrowRight", "Home", "End", "PageUp", "PageDown"].includes(event.key)) {
-      close();
+    if (popup.hidden) return;
+
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowUp":
+        consume(event);
+        state.selected = (state.selected + (event.key === "ArrowDown" ? 1 : -1) + state.results.length) % state.results.length;
+        render();
+        break;
+      case "Enter":
+      case "Tab":
+        consume(event);
+        choose(state.selected);
+        break;
+      case "Escape":
+        consume(event);
+        close();
+        break;
+      case "ArrowLeft":
+      case "ArrowRight":
+      case "Home":
+      case "End":
+      case "PageUp":
+      case "PageDown":
+        close();
+        break;
     }
   }, true);
 
-  textarea.addEventListener("input", () => {
-    const current = wordAtCursor(textarea.value, textarea.selectionStart);
-    // Apagar a sugestão aceita (inclusive com Ctrl+A) inicia uma nova palavra.
-    if (suppressUntilNewWord && (!textarea.value || current.start >= insertedEnd)) {
-      suppressUntilNewWord = false;
-    }
-    requestAnimationFrame(() => show(false));
+  popup.addEventListener("pointerdown", (event) => event.preventDefault());
+  popup.addEventListener("click", (event) => {
+    const option = event.target.closest("[data-index]");
+    if (option) choose(Number(option.dataset.index));
   });
 
+  textarea.addEventListener("input", () => requestAnimationFrame(() => show(false)));
   textarea.addEventListener("click", () => close());
   textarea.addEventListener("blur", () => setTimeout(close, 100));
-  textarea.addEventListener("scroll", () => visible && position());
-  window.addEventListener("resize", () => visible && position());
-  window.addEventListener("orientationchange", () => visible && position());
+  textarea.addEventListener("scroll", () => !popup.hidden && position());
+  window.addEventListener("resize", () => !popup.hidden && position());
+  window.addEventListener("orientationchange", () => !popup.hidden && position());
 }
