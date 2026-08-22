@@ -187,6 +187,67 @@ body {
   min-height: 0;
 }
 
+.idegua-autocomplete {
+  position: absolute;
+  z-index: 200;
+  max-height: min(320px, calc(100% - 16px));
+  overflow-y: auto;
+  background: var(--c-bg);
+  border: 1px solid rgba(60, 60, 67, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(60, 60, 67, 0.16);
+  color: var(--c-text-1);
+  font-family: var(--font-sans);
+}
+
+.idegua-autocomplete__option {
+  min-height: 52px;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--c-divider);
+  user-select: none;
+}
+
+.idegua-autocomplete__option:last-child {
+  border-bottom: 0;
+}
+
+.idegua-autocomplete__option.is-selected {
+  background: rgba(255, 75, 85, 0.13);
+}
+
+.idegua-autocomplete__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.idegua-autocomplete__title code {
+  overflow: hidden;
+  color: var(--c-text-1);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.idegua-autocomplete__title span {
+  color: var(--brand-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.idegua-autocomplete__description {
+  margin-top: 3px;
+  color: var(--c-text-2);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .codeflask.codeflask--has-line-numbers::before {
   background-color: var(--c-bg-alt);
 }
@@ -242,6 +303,16 @@ body {
 
   .output {
     font-size: 13px;
+  }
+
+  .idegua-autocomplete {
+    max-width: calc(100% - 16px);
+    max-height: min(280px, calc(100% - 16px));
+  }
+
+  .idegua-autocomplete__option {
+    min-height: 44px;
+    padding: 8px 10px;
   }
 }
 

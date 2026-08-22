@@ -34,6 +34,8 @@ const editor = new CodeFlask("#editor", {
   defaultTheme: false
 });
 
+createAutocomplete(editor);
+
 clearOutput();
 
 const demoKeys = Object.keys(demos);
