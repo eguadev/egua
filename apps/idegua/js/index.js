@@ -2,6 +2,7 @@ const outputDiv = document.getElementById("output");
 const runButton = document.getElementById("runBtn");
 const demoSelector = document.getElementById("demoSelector");
 const exportButton  = document.getElementById('exportBtn');
+const fileName = document.getElementById("fileName");
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
@@ -44,8 +45,9 @@ editor.onUpdate(updateExportButton);
 clearOutput();
 
 const demoKeys = Object.keys(demos);
-function loadDemo(name) {
+function loadDemo(name, updateName = true) {
   editor.updateCode(demos[name]);
+  if (updateName) fileName.textContent = `${name.toLowerCase()}.egua`;
 }
 
 demoKeys.forEach((demo, index) => {
@@ -65,8 +67,9 @@ let queryCode = getQueryVariable("code");
 if (queryCode !== undefined) {
   editor.updateCode(decodeURI(queryCode));
   demoSelector.value = "custom";
+  fileName.textContent = "programa.egua";
 } else {
-  loadDemo(demoKeys[0]);
+  loadDemo(demoKeys[0], false);
 }
 
 updateExportButton();
@@ -99,7 +102,8 @@ function downloadCode() {
   const link = document.createElement("a");
 
   link.href = url;
-  link.download = "programa.egua";
+  const name = fileName.textContent.trim() || "programa.egua";
+  link.download = name.endsWith(".egua") ? name : `${name}.egua`;
   document.body.appendChild(link);
   link.click();
   link.remove();
@@ -109,3 +113,14 @@ function downloadCode() {
 
 exportButton.addEventListener("click", downloadCode);
 
+fileName.addEventListener("blur", () => {
+  const name = fileName.textContent.trim();
+  fileName.textContent = name || "programa.egua";
+});
+
+fileName.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    fileName.blur();
+  }
+});
