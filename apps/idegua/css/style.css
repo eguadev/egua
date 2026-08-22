@@ -97,6 +97,7 @@ body {
  * alternativo cinza-suave.
  */
 #runBtn,
+#exportBtn,
 #demoSelector {
   height: 40px;
   border: 1px solid transparent;
@@ -105,7 +106,7 @@ body {
   font-family: var(--font-sans);
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.25s, color 0.25s;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 #runBtn {
@@ -113,6 +114,30 @@ body {
   color: #ffffff;
   font-weight: 600;
 }
+
+#exportBtn {
+  background-color: var(--c-bg);
+  border-color: var(--c-divider);
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
+#exportBtn:hover {
+  background-color: var(--c-gray-soft);
+  border-color: rgba(60, 60, 67, 0.2);
+}
+
+#exportBtn:active {
+  background-color: var(--c-gray-soft-hover);
+}
+
+#exportBtn:disabled {
+  background-color: #eeeeF1;
+  border-color: rgba(60, 60, 67, 0.08);
+  color: rgba(60, 60, 67, 0.42);  
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
 
 #runBtn:hover {
   background-color: var(--brand-2);
@@ -140,6 +165,7 @@ body {
 }
 
 #runBtn:focus-visible,
+#exportBtn:focus-visible,
 #demoSelector:focus-visible {
   outline: 2px solid var(--brand-1);
   outline-offset: 2px;
@@ -236,6 +262,7 @@ body {
   }
 
   #runBtn,
+  #exportBtn,
   #demoSelector {
     height: 44px;
   }
