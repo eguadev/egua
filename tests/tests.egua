@@ -1739,3 +1739,70 @@ testa_atributos_com_valores_falsy();
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_reg) + " erro(s)!");
 escreva("----------------------------");
+
+escreva("--------------------------------");
+escreva("Testes Internos - Biblioteca Arquivos");
+escreva("--------------------------------");
+escreva("|");
+
+var arq = importar("arquivos");
+var erros_arq = 0;
+
+função testa_arquivos_existe() {
+  se (arq.existe("package.json") != verdadeiro) {
+    escreva("TESTE: arquivos.existe('package.json'): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  se (arq.existe("arquivo_inexistente.txt") != falso) {
+    escreva("TESTE: arquivos.existe('arquivo_inexistente.txt'): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  escreva("TESTE: arquivos.existe(): passou!");
+}
+
+função testa_arquivos_salvar_leia_remova() {
+  arq.salvar("teste_temporario.txt", "conteudo de teste");
+  se (arq.existe("teste_temporario.txt") != verdadeiro) {
+    escreva("TESTE: arquivos.salvar(): falhou ao criar arquivo!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  var conteudo = arq.leia("teste_temporario.txt");
+  se (conteudo != "conteudo de teste") {
+    escreva("TESTE: arquivos.leia(): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  arq.remova("teste_temporario.txt");
+  se (arq.existe("teste_temporario.txt") != falso) {
+    escreva("TESTE: arquivos.remova(): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  escreva("TESTE: arquivos.salvar/leia/remova(): passou!");
+}
+
+função testa_arquivos_listar() {
+  var itens = arq.listar(".");
+  se (itens == nulo) {
+    escreva("TESTE: arquivos.listar(): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  se (tamanho(itens) == 0) {
+    escreva("TESTE: arquivos.listar(): falhou!");
+    erros_arq = erros_arq + 1;
+    retorna;
+  }
+  escreva("TESTE: arquivos.listar(): passou!");
+}
+
+testa_arquivos_existe();
+testa_arquivos_salvar_leia_remova();
+testa_arquivos_listar();
+
+escreva("----------------------------");
+escreva("  terminado com " + texto(erros_arq) + " erro(s)!");
+escreva("----------------------------");
