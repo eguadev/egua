@@ -1317,6 +1317,83 @@ testa_tempo_segundos_minutos_horas();
 testa_texto_para_data_válida();
 testa_texto_para_data_inválida();
 
+função testa_tempo_dia() {
+  var obtido = tp.dia();
+  se (obtido == nulo ou obtido < 1 ou obtido > 31) {
+    escreva("TESTE: tempo.dia(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.dia(): passou!");
+}
+
+função testa_tempo_mes() {
+  var obtido = tp.mes();
+  se (obtido == nulo ou obtido < 1 ou obtido > 12) {
+    escreva("TESTE: tempo.mes(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.mes(): passou!");
+}
+
+função testa_tempo_ano() {
+  var obtido = tp.ano();
+  se (obtido == nulo ou obtido < 2024) {
+    escreva("TESTE: tempo.ano(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.ano(): passou!");
+}
+
+função testa_tempo_dia_da_semana() {
+  var obtido = tp.dia_da_semana();
+  var dias_validos = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+  var valido = falso;
+  para (var i = 0; i < tamanho(dias_validos); i = i + 1) {
+    se (obtido == dias_validos[i]) {
+      valido = verdadeiro;
+    }
+  }
+  se (valido != verdadeiro) {
+    escreva("TESTE: tempo.dia_da_semana(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.dia_da_semana(): passou!");
+}
+
+função testa_tempo_formate_data() {
+  var data = tp.texto_para_data("15/06/2024");
+  var obtido = tp.formate_data(data, "DD/MM/AAAA");
+  se (obtido != "15/06/2024") {
+    escreva("TESTE: tempo.formate_data(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.formate_data(): passou!");
+}
+
+função testa_tempo_diferenca() {
+  var data1 = tp.texto_para_data("01/01/2024");
+  var data2 = tp.texto_para_data("11/01/2024");
+  var obtido = tp.diferenca(data1, data2);
+  se (obtido != 10) {
+    escreva("TESTE: tempo.diferenca(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.diferenca(): passou!");
+}
+
+testa_tempo_dia();
+testa_tempo_mes();
+testa_tempo_ano();
+testa_tempo_dia_da_semana();
+testa_tempo_formate_data();
+testa_tempo_diferenca();
+
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_tp) + " erro(s)!");
 escreva("----------------------------");
