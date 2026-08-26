@@ -1322,6 +1322,223 @@ escreva("  terminado com " + texto(erros_tp) + " erro(s)!");
 escreva("----------------------------");
 
 escreva("--------------------------------");
+escreva("Testes Internos - Expansão Matemática");
+escreva("--------------------------------");
+escreva("|");
+
+var erros_mat = 0;
+
+função testa_arredondar() {
+  var obtido = m.arredondar(4.5);
+  se (obtido != 5) {
+    escreva("TESTE: arredondar(4.5): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  var obtido2 = m.arredondar(4.3);
+  se (obtido2 != 4) {
+    escreva("TESTE: arredondar(4.3): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: arredondar(): passou!");
+}
+
+função testa_teto() {
+  var obtido = m.teto(4.2);
+  se (obtido != 5) {
+    escreva("TESTE: teto(4.2): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: teto(): passou!");
+}
+
+função testa_absoluto() {
+  var obtido = m.absoluto(-7);
+  se (obtido != 7) {
+    escreva("TESTE: absoluto(-7): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  var obtido2 = m.absoluto(5);
+  se (obtido2 != 5) {
+    escreva("TESTE: absoluto(5): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: absoluto(): passou!");
+}
+
+função testa_sinal() {
+  se (m.sinal(-5) != -1) {
+    escreva("TESTE: sinal(-5): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  se (m.sinal(0) != 0) {
+    escreva("TESTE: sinal(0): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  se (m.sinal(5) != 1) {
+    escreva("TESTE: sinal(5): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: sinal(): passou!");
+}
+
+função testa_raiz_cubica() {
+  var obtido = m.raiz_cubica(27);
+  se (obtido != 3) {
+    escreva("TESTE: raiz_cubica(27): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: raiz_cubica(): passou!");
+}
+
+função testa_log_base2() {
+  var obtido = m.log_base2(8);
+  se (obtido != 3) {
+    escreva("TESTE: log_base2(8): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: log_base2(): passou!");
+}
+
+função testa_log_base10() {
+  var obtido = m.log_base10(100);
+  se (obtido != 2) {
+    escreva("TESTE: log_base10(100): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: log_base10(): passou!");
+}
+
+função testa_sen_hiperbolico() {
+  var obtido = m.sen_hiperbolico(0);
+  se (obtido != 0) {
+    escreva("TESTE: sen_hiperbolico(0): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: sen_hiperbolico(): passou!");
+}
+
+função testa_cos_hiperbolico() {
+  var obtido = m.cos_hiperbolico(0);
+  se (obtido != 1) {
+    escreva("TESTE: cos_hiperbolico(0): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: cos_hiperbolico(): passou!");
+}
+
+função testa_tan_hiperbolico() {
+  var obtido = m.tan_hiperbolico(0);
+  se (obtido != 0) {
+    escreva("TESTE: tan_hiperbolico(0): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: tan_hiperbolico(): passou!");
+}
+
+função testa_fatorial() {
+  se (m.fatorial(0) != 1) {
+    escreva("TESTE: fatorial(0): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  se (m.fatorial(5) != 120) {
+    escreva("TESTE: fatorial(5): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  tente {
+    m.fatorial(-1);
+    escreva("TESTE: fatorial(-1) deveria lançar erro: falhou!");
+    erros_mat = erros_mat + 1;
+  } pegue {
+    escreva("TESTE: fatorial(-1) lança erro: passou!");
+  }
+  escreva("TESTE: fatorial(): passou!");
+}
+
+função testa_eh_par() {
+  se (m.eh_par(4) != verdadeiro) {
+    escreva("TESTE: eh_par(4): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  se (m.eh_par(3) != falso) {
+    escreva("TESTE: eh_par(3): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: eh_par(): passou!");
+}
+
+função testa_eh_impar() {
+  se (m.eh_impar(3) != verdadeiro) {
+    escreva("TESTE: eh_impar(3): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  se (m.eh_impar(4) != falso) {
+    escreva("TESTE: eh_impar(4): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: eh_impar(): passou!");
+}
+
+função testa_somatorio() {
+  var obtido = m.somatorio([1, 2, 3, 4]);
+  se (obtido != 10) {
+    escreva("TESTE: somatorio([1,2,3,4]): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: somatorio(): passou!");
+}
+
+função testa_produto() {
+  var obtido = m.produto([2, 3, 4]);
+  se (obtido != 24) {
+    escreva("TESTE: produto([2,3,4]): falhou!");
+    erros_mat = erros_mat + 1;
+    retorna;
+  }
+  escreva("TESTE: produto(): passou!");
+}
+
+testa_arredondar();
+testa_teto();
+testa_absoluto();
+testa_sinal();
+testa_raiz_cubica();
+testa_log_base2();
+testa_log_base10();
+testa_sen_hiperbolico();
+testa_cos_hiperbolico();
+testa_tan_hiperbolico();
+testa_fatorial();
+testa_eh_par();
+testa_eh_impar();
+testa_somatorio();
+testa_produto();
+
+escreva("----------------------------");
+escreva("  terminado com " + texto(erros_mat) + " erro(s)!");
+escreva("----------------------------");
+
+escreva("--------------------------------");
 escreva("Testes de Regressão - Bugs Corrigidos");
 escreva("--------------------------------");
 escreva("|");
