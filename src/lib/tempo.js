@@ -128,17 +128,20 @@ export function formate_data(data, formato) {
  * @param {Date} data2 A segunda data.
  * @returns A diferença em dias (valor absoluto).
  */
-export function diferenca(data1, data2) {
+export function diferença(data1, data2) {
 	if (!(data1 instanceof Date) || !(data2 instanceof Date)) {
 		throw new RuntimeError(
 			this.token,
-			"Ambos os parâmetros devem ser datas em tempo.diferenca(data1, data2)."
+			"Ambos os parâmetros devem ser datas em tempo.diferença(data1, data2)."
 		);
 	}
 
 	const diffMs = Math.abs(data2.getTime() - data1.getTime());
 	return Math.floor(diffMs / (1000 * 60 * 60 * 24));
 }
+
+// Mantido para compatibilidade com a grafia publicada na versão 1.3.14.
+export const diferenca = diferença;
 
 /**
  * Pausa a execução por um tempo determinado.

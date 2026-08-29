@@ -83,17 +83,21 @@ escreva(tempo.formate_data(data, "AAAA-MM-DD"));
 // Saída: 2024-12-25
 ```
 
-## diferenca
+## diferença
 
-`tempo.diferenca(data1, data2)` retorna a diferença absoluta, em dias inteiros, entre duas datas. A ordem das datas não altera o resultado.
+`tempo.diferença(data1, data2)` retorna a diferença absoluta, em dias inteiros, entre duas datas. A ordem das datas não altera o resultado.
 
 ```js
 var inicio = tempo.texto_para_data("01/01/2024");
 var fim = tempo.texto_para_data("11/01/2024");
 
-escreva(tempo.diferenca(inicio, fim));
+escreva(tempo.diferença(inicio, fim));
 // Saída: 10
 ```
+
+::: info Compatibilidade
+A grafia `tempo.diferenca()` continua disponível para programas escritos na versão 1.3.14. Em novos códigos, prefira `tempo.diferença()`.
+:::
 
 ## pausa
 

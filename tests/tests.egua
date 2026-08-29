@@ -1375,16 +1375,21 @@ função testa_tempo_formate_data() {
   escreva("TESTE: tempo.formate_data(): passou!");
 }
 
-função testa_tempo_diferenca() {
+função testa_tempo_diferença() {
   var data1 = tp.texto_para_data("01/01/2024");
   var data2 = tp.texto_para_data("11/01/2024");
-  var obtido = tp.diferenca(data1, data2);
+  var obtido = tp.diferença(data1, data2);
   se (obtido != 10) {
-    escreva("TESTE: tempo.diferenca(): falhou!");
+    escreva("TESTE: tempo.diferença(): falhou!");
     erros_tp = erros_tp + 1;
     retorna;
   }
-  escreva("TESTE: tempo.diferenca(): passou!");
+  se (tp.diferenca(data1, data2) != obtido) {
+    escreva("TESTE: alias tempo.diferenca(): falhou!");
+    erros_tp = erros_tp + 1;
+    retorna;
+  }
+  escreva("TESTE: tempo.diferença(): passou!");
 }
 
 testa_tempo_dia();
@@ -1392,7 +1397,7 @@ testa_tempo_mes();
 testa_tempo_ano();
 testa_tempo_dia_da_semana();
 testa_tempo_formate_data();
-testa_tempo_diferenca();
+testa_tempo_diferença();
 
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_tp) + " erro(s)!");
