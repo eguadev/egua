@@ -42,6 +42,8 @@ function updateExportButton() {
 
 editor.onUpdate(updateExportButton);
 
+createAutocomplete(editor);
+
 clearOutput();
 
 const demoKeys = Object.keys(demos);
