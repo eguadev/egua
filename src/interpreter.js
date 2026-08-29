@@ -444,7 +444,7 @@ export default class Interpreter {
         let totalFolder = path.dirname(totalPath);
         let filename = path.basename(totalPath);
 
-        let data = checkStdLib(relativePath);
+        let data = checkStdLib(relativePath, this);
         if (data !== null) return data;
 
         try {

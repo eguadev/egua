@@ -5,6 +5,7 @@ import * as tempo from "./tempo.js";
 import * as matematica from "./matematica.js";
 import * as textos from "./textos.js";
 import * as requisicao from "./requisicao.js";
+import criar_biblioteca_testes from "./testes/index.js";
 
 function loadModule(moduleName, moduleData) {
     const newModule = new EguaModule(moduleName);
@@ -26,7 +27,7 @@ function loadModule(moduleName, moduleData) {
     return newModule;
 }
 
-export default function checkStdLib(name) {
+export default function checkStdLib(name, interpreter) {
     switch (name) {
         case "tempo":
             return loadModule("tempo", tempo);
@@ -36,6 +37,8 @@ export default function checkStdLib(name) {
             return loadModule("textos", textos);
         case "requisição":
             return loadModule("requisição", requisicao);
+        case "testes":
+            return loadModule("testes", criar_biblioteca_testes(interpreter));
     }
     return null;
 }

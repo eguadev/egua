@@ -1,0 +1,149 @@
+var testes = importar("testes");
+
+var descreva = testes.descreva;
+var teste = testes.teste;
+var esperado_que = testes.esperado_que;
+var antes_de_tudo = testes.antes_de_tudo;
+var antes_de_cada = testes.antes_de_cada;
+var depois_de_cada = testes.depois_de_cada;
+var depois_de_tudo = testes.depois_de_tudo;
+
+função rejeita_resultados_vazios() {
+    tente {
+        testes.resultados();
+    } pegue {
+        retorna verdadeiro;
+    }
+    retorna falso;
+}
+
+var rejeitou_resultados_vazios = rejeita_resultados_vazios();
+
+descreva("Validações da biblioteca de testes", função() {
+    função rejeita_correspondencia_fora_de_teste() {
+        tente {
+            esperado_que(1).seja(1);
+        } pegue {
+            retorna verdadeiro;
+        }
+        retorna falso;
+    }
+
+    função rejeita_descricao_vazia() {
+        tente {
+            descreva("", função() {});
+        } pegue {
+            retorna verdadeiro;
+        }
+        retorna falso;
+    }
+
+    função rejeita_teste_sem_funcao() {
+        tente {
+            teste("sem função", nulo);
+        } pegue {
+            retorna verdadeiro;
+        }
+        retorna falso;
+    }
+
+    var rejeitou_correspondencia_fora_de_teste = rejeita_correspondencia_fora_de_teste();
+    var rejeitou_descricao_vazia = rejeita_descricao_vazia();
+    var rejeitou_teste_sem_funcao = rejeita_teste_sem_funcao();
+
+    teste("rejeita usos inválidos", função() {
+        esperado_que(rejeitou_correspondencia_fora_de_teste).seja_verdadeiro();
+        esperado_que(rejeitou_descricao_vazia).seja_verdadeiro();
+        esperado_que(rejeitou_teste_sem_funcao).seja_verdadeiro();
+        esperado_que(rejeitou_resultados_vazios).seja_verdadeiro();
+    });
+});
+
+descreva("Correspondências básicas", função() {
+    teste("compara valores iguais", função() {
+        esperado_que(2 + 2).seja(4);
+    });
+
+    teste("compara valores diferentes", função() {
+        esperado_que("égua").não_seja("cavalo");
+    });
+
+    teste("verifica valor verdadeiro", função() {
+        esperado_que(3 > 2).seja_verdadeiro();
+    });
+
+    teste("verifica valor falso", função() {
+        esperado_que(3 < 2).seja_falso();
+    });
+
+    teste("verifica valor não nulo", função() {
+        esperado_que("valor").não_nulo();
+    });
+
+    teste("valida chamada de função", função() {
+        função soma(a, b) {
+            retorna a + b;
+        }
+
+        esperado_que(soma(2, 3)).seja(5);
+    });
+});
+
+descreva("Correspondências numéricas e estruturais", função() {
+    teste("compara números próximos", função() {
+        esperado_que(0.1 + 0.2).seja_próximo(0.3);
+        esperado_que(1.004).seja_próximo(1, 2);
+    });
+
+    teste("compara vetores", função() {
+        esperado_que([1, [2, 3], verdadeiro])
+            .seja_objeto([1, [2, 3], verdadeiro]);
+    });
+
+    teste("compara dicionários", função() {
+        esperado_que({"nome": "Égua", "dados": {"versão": 1}})
+            .seja_objeto({"nome": "Égua", "dados": {"versão": 1}});
+
+        esperado_que({"nome": "Égua", "versão": 1})
+            .seja_objeto({"versão": 1, "nome": "Égua"});
+    });
+});
+
+descreva("Modificador não", função() {
+    teste("inverte correspondências com o modificador não", função() {
+        esperado_que(2).não.seja(3);
+        esperado_que(falso).não.seja_verdadeiro();
+        esperado_que(nulo).não.não_nulo();
+        esperado_que(1).não.seja_próximo(2);
+        esperado_que([1, 2]).não.seja_objeto([2, 1]);
+        esperado_que("égua").não.não.seja("égua");
+    });
+});
+
+descreva("Ganchos", função() {
+    var conjunto_iniciado = falso;
+    var teste_preparado = falso;
+
+    antes_de_tudo(função() {
+        conjunto_iniciado = verdadeiro;
+    });
+
+    antes_de_cada(função() {
+        teste_preparado = verdadeiro;
+    });
+
+    depois_de_cada(função() {
+        teste_preparado = falso;
+    });
+
+    depois_de_tudo(função() {
+        esperado_que(teste_preparado).seja_falso();
+    });
+
+    teste("executa ganchos do conjunto", função() {
+        esperado_que(conjunto_iniciado).seja_verdadeiro();
+        esperado_que(teste_preparado).não.seja_falso();
+    });
+});
+
+escreva(testes.resultados());
