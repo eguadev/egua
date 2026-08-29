@@ -35,7 +35,7 @@
 
 ### No navegador, sem instalar nada
 
-Visite a [IDEgua](https://programar.egua.dev) e comece a programar direto do navegador.
+Visite a [IDEgua](https://programar.egua.dev) e comece a programar direto do navegador. O editor sugere palavras-chave e funções enquanto você digita; use `Ctrl` + `Espaço` (ou `Command` + `Espaço` no macOS) para abrir as sugestões manualmente.
 
 ### Instalação local (CLI)
 

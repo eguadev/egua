@@ -1,10 +1,10 @@
 ---
-description: Biblioteca matemática da linguagem Égua — trigonometria, estatística, funções afim e quadrática, e cinemática, com exemplos de código.
+description: Biblioteca matemática da linguagem Égua — operações numéricas, trigonometria, estatística, funções afim e quadrática, e cinemática, com exemplos de código.
 ---
 
 # Biblioteca matemática
 
-A biblioteca `matemática` fornece funções matemáticas, trigonométricas, estatísticas e de cinemática. Para usá-la, importe-a primeiro:
+A biblioteca `matemática` fornece operações numéricas, funções trigonométricas, estatísticas e de cinemática. Para usá-la, importe-a primeiro:
 
 ```js
 var matemática = importar("matemática");
@@ -52,12 +52,50 @@ escreva(matemática.sen(matemática.pi / 2));
 
 - `matemática.exp(x)`: retorna *e* elevado a `x`.
 - `matemática.log(x)`: retorna o logaritmo natural de `x`.
+- `matemática.log_base2(x)`: retorna o logaritmo de `x` na base 2.
+- `matemática.log_base10(x)`: retorna o logaritmo de `x` na base 10.
 - `matemática.potência(base, expoente)`: retorna `base` elevado a `expoente`.
 - `matemática.raizq(x)`: retorna a raiz quadrada de `x`.
+- `matemática.raiz_cubica(x)`: retorna a raiz cúbica de `x`.
 
 ```js
 escreva(matemática.potência(2, 10));
 // Saída: 1024
+```
+
+## Arredondamento e sinal
+
+- `matemática.arredondar(valor)`: arredonda para o inteiro mais próximo.
+- `matemática.teto(valor)`: retorna o menor inteiro maior ou igual ao valor.
+- `matemática.min_aprox(valor)`: retorna o maior inteiro menor ou igual ao valor.
+- `matemática.absoluto(valor)`: retorna o valor sem sinal.
+- `matemática.sinal(valor)`: retorna `-1`, `0` ou `1`, de acordo com o sinal do valor.
+
+```js
+escreva(matemática.arredondar(4.5)); // 5
+escreva(matemática.teto(4.2));       // 5
+escreva(matemática.absoluto(-7));    // 7
+escreva(matemática.sinal(-7));       // -1
+```
+
+## Funções hiperbólicas
+
+`matemática.sen_hiperbolico(x)`, `matemática.cos_hiperbolico(x)` e `matemática.tan_hiperbolico(x)` calculam, respectivamente, o seno, o cosseno e a tangente hiperbólicos de `x`.
+
+```js
+escreva(matemática.sen_hiperbolico(0)); // 0
+escreva(matemática.cos_hiperbolico(0)); // 1
+escreva(matemática.tan_hiperbolico(0)); // 0
+```
+
+## Fatorial e paridade
+
+`matemática.fatorial(n)` calcula o fatorial de um número inteiro maior ou igual a zero. `matemática.eh_par(n)` e `matemática.eh_impar(n)` informam se um número é par ou ímpar.
+
+```js
+escreva(matemática.fatorial(5)); // 120
+escreva(matemática.eh_par(4));   // verdadeiro
+escreva(matemática.eh_impar(4)); // falso
 ```
 
 ## Função Afim e Quadrática
@@ -154,6 +192,18 @@ escreva(matemática.média([2, 4, 6]));
 // Saída: 4
 ```
 
+### somatorio / produto
+
+`matemática.somatorio(vetor)` soma todos os números de um vetor. `matemática.produto(vetor)` multiplica todos eles. O vetor deve conter ao menos um item, e todos os itens precisam ser números.
+
+```js
+escreva(matemática.somatorio([1, 2, 3, 4]));
+// Saída: 10
+
+escreva(matemática.produto([2, 3, 4]));
+// Saída: 24
+```
+
 ## Cinemática
 
 ### velocidade_média
@@ -198,15 +248,4 @@ escreva(matemática.mrufh(0, 30, 5));
 ```js
 escreva(matemática.mruv(0, 5, 2));
 // Saída: [0, 2, 4, 6, 8]
-```
-
-## Outras funções
-
-### min_aprox
-
-`matemática.min_aprox(valor)` retorna o maior número inteiro menor ou igual a `valor` (arredondamento para baixo).
-
-```js
-escreva(matemática.min_aprox(4.9));
-// Saída: 4
 ```

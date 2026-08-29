@@ -33,6 +33,27 @@
 	.codeflask__lines {
 		font-size: 13px !important;
 	}
+
+	.codeflask--has-line-numbers .codeflask__textarea {
+		width: calc(100% - 32px) !important;
+	}
+
+	.codeflask--has-line-numbers .codeflask__flatten {
+		left: 32px !important;
+	}
+
+	.codeflask__lines {
+		width: 32px !important;
+		padding-right: 3px;
+	}
+
+	.codeflask.codeflask--has-line-numbers {
+		padding-left: 32px !important;
+	}
+
+	.codeflask.codeflask--has-line-numbers::before {
+		width: 32px !important;
+	}
 }
 
 .codeflask__textarea::selection {

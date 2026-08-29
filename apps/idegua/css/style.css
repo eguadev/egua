@@ -198,6 +198,8 @@ body {
   box-shadow: 0 8px 20px rgba(60, 60, 67, 0.16);
   color: var(--c-text-1);
   font-family: var(--font-sans);
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 
 .idegua-autocomplete__option {
@@ -306,13 +308,22 @@ body {
   }
 
   .idegua-autocomplete {
-    max-width: calc(100% - 16px);
-    max-height: min(280px, calc(100% - 16px));
+    max-width: calc(100% - 40px);
+    max-height: min(196px, calc(100% - 16px));
   }
 
   .idegua-autocomplete__option {
-    min-height: 44px;
-    padding: 8px 10px;
+    min-height: 40px;
+    padding: 9px 10px;
+    touch-action: manipulation;
+  }
+
+  .idegua-autocomplete__description {
+    display: none;
+  }
+
+  .idegua-autocomplete__option.is-selected .idegua-autocomplete__description {
+    display: block;
   }
 }
 

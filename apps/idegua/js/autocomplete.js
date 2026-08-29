@@ -14,6 +14,7 @@
  */
 
 const MAX_RESULTS = 8;
+const MIN_QUERY_LENGTH = 2;
 
 /** @type {Suggestion[]} */
 const entries = [
@@ -99,7 +100,10 @@ const wordAtCursor = (text, cursor) => {
  */
 function getSuggestions(text, cursor, force = false) {
   const prefix = wordAtCursor(text, cursor);
-  if (!force && !prefix.text) return { prefix, results: [] };
+  const previousCharacter = text[prefix.start - 1];
+  if (previousCharacter === "." || (!force && prefix.text.length < MIN_QUERY_LENGTH)) {
+    return { prefix, results: [] };
+  }
 
   const query = normalize(prefix.text);
   const results = entries
@@ -182,7 +186,11 @@ function createAutocomplete(editor) {
     const wrapperRect = wrapper.getBoundingClientRect();
     let left = textareaRect.left - wrapperRect.left + paddingLeft + textWidth - textarea.scrollLeft;
     let top = textareaRect.top - wrapperRect.top + paddingTop + (lineNumber + 1) * lineHeight - textarea.scrollTop;
-    const width = Math.min(360, Math.max(220, wrapper.clientWidth - 16));
+    const textareaInset = textareaRect.left - wrapperRect.left;
+    const mobileWidth = wrapper.clientWidth - textareaInset - 8;
+    const width = window.matchMedia("(max-width: 767px)").matches
+      ? Math.min(320, Math.max(180, mobileWidth))
+      : Math.min(360, Math.max(220, wrapper.clientWidth - 16));
     popup.style.width = `${width}px`;
     const popupHeight = popup.offsetHeight;
     left = Math.max(8, Math.min(left, wrapper.clientWidth - width - 8));
@@ -214,6 +222,13 @@ function createAutocomplete(editor) {
     popup.hidden = false;
     textarea.setAttribute("aria-expanded", "true");
     position();
+
+    const activeOption = popup.children[state.selected];
+    if (activeOption.offsetTop < popup.scrollTop) {
+      popup.scrollTop = activeOption.offsetTop;
+    } else if (activeOption.offsetTop + activeOption.offsetHeight > popup.scrollTop + popup.clientHeight) {
+      popup.scrollTop = activeOption.offsetTop + activeOption.offsetHeight - popup.clientHeight;
+    }
   }
 
   function show(force) {
