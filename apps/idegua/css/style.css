@@ -211,6 +211,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: var(--c-text-1);
+  white-space: pre-wrap;
 }
 
 /**

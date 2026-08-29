@@ -83,6 +83,24 @@ var nomeDoCachorro = Cachorro();
 nomeDoCachorro.correr();
 nomeDoCachorro.latir();`
 
+const Testes = `var testes = importar("testes");
+
+testes.descreva("Calculadora", função() {
+  testes.teste("soma dois números", função() {
+    testes.esperado_que(2 + 3).seja(5);
+  });
+
+  testes.teste("compara números próximos", função() {
+    testes.esperado_que(0.1 + 0.2).seja_próximo(0.3);
+  });
+
+  testes.teste("compara vetores", função() {
+    testes.esperado_que([1, 2, 3]).seja_objeto([1, 2, 3]);
+  });
+});
+
+escreva(testes.resultados());`
+
 const demos = {
   Exemplos,
   OlaMundo,
@@ -90,5 +108,6 @@ const demos = {
   Condicional,
   Repetição,
   Função,
-  Classe
+  Classe,
+  Testes,
 }
