@@ -525,3 +525,276 @@ export function min_aprox(value) {
 
   return Math.floor(value);
 }
+
+/* OPERAÇÕES MATEMÁTICAS */
+
+/**
+ * Arredonda um número para o inteiro mais próximo.
+ * @param {número} valor O número a ser arredondado.
+ * @returns O inteiro mais próximo.
+ */
+export function arredondar(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para arredondar(valor)."
+    );
+
+  return Math.round(valor);
+}
+
+/**
+ * Retorna o menor inteiro maior ou igual ao valor.
+ * @param {número} valor O número a ser arredondado para cima.
+ * @returns O menor inteiro maior ou igual ao valor.
+ */
+export function teto(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para teto(valor)."
+    );
+
+  return Math.ceil(valor);
+}
+
+/**
+ * Retorna o valor absoluto de um número.
+ * @param {número} valor O número.
+ * @returns O valor absoluto (sem sinal).
+ */
+export function absoluto(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para absoluto(valor)."
+    );
+
+  return Math.abs(valor);
+}
+
+/**
+ * Retorna o sinal de um número: -1, 0 ou 1.
+ * @param {número} valor O número.
+ * @returns -1 se negativo, 0 se zero, 1 se positivo.
+ */
+export function sinal(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para sinal(valor)."
+    );
+
+  return Math.sign(valor);
+}
+
+/**
+ * Retorna a raiz cúbica de um número.
+ * @param {número} valor O número.
+ * @returns A raiz cúbica do valor.
+ */
+export function raiz_cubica(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para raiz_cubica(valor)."
+    );
+
+  return Math.cbrt(valor);
+}
+
+/**
+ * Retorna o logaritmo de base 2 de um número.
+ * @param {número} valor O número (deve ser positivo).
+ * @returns O logaritmo de base 2.
+ */
+export function log_base2(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para log_base2(valor)."
+    );
+
+  return Math.log2(valor);
+}
+
+/**
+ * Retorna o logaritmo de base 10 de um número.
+ * @param {número} valor O número (deve ser positivo).
+ * @returns O logaritmo de base 10.
+ */
+export function log_base10(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para log_base10(valor)."
+    );
+
+  return Math.log10(valor);
+}
+
+/* FUNÇÕES HIPERBÓLICAS */
+
+/**
+ * Retorna o seno hiperbólico de um número.
+ * @param {número} valor O número.
+ * @returns O seno hiperbólico.
+ */
+export function sen_hiperbolico(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para sen_hiperbolico(valor)."
+    );
+
+  return Math.sinh(valor);
+}
+
+/**
+ * Retorna o cosseno hiperbólico de um número.
+ * @param {número} valor O número.
+ * @returns O cosseno hiperbólico.
+ */
+export function cos_hiperbolico(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para cos_hiperbolico(valor)."
+    );
+
+  return Math.cosh(valor);
+}
+
+/**
+ * Retorna a tangente hiperbólica de um número.
+ * @param {número} valor O número.
+ * @returns A tangente hiperbólica.
+ */
+export function tan_hiperbolico(valor) {
+  if (isNaN(valor) || valor === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para tan_hiperbolico(valor)."
+    );
+
+  return Math.tanh(valor);
+}
+
+/* FUNÇÕES CUSTOMIZADAS */
+
+/**
+ * Calcula o fatorial de um número inteiro não negativo.
+ * @param {inteiro} n O número (deve ser >= 0).
+ * @returns O fatorial de n.
+ */
+export function fatorial(n) {
+  if (isNaN(n) || n === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para fatorial(n)."
+    );
+
+  if (!Number.isInteger(n))
+    throw new RuntimeError(
+      this.token,
+      "O parâmetro deve ser um inteiro em fatorial(n)."
+    );
+
+  if (n < 0)
+    throw new RuntimeError(
+      this.token,
+      "O parâmetro deve ser maior ou igual a zero em fatorial(n)."
+    );
+
+  let resultado = 1;
+  for (let i = 2; i <= n; i++) {
+    resultado *= i;
+  }
+  return resultado;
+}
+
+/**
+ * Verifica se um número é par.
+ * @param {inteiro} n O número.
+ * @returns Verdadeiro se o número for par.
+ */
+export function eh_par(n) {
+  if (isNaN(n) || n === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para eh_par(n)."
+    );
+
+  return n % 2 === 0;
+}
+
+/**
+ * Verifica se um número é ímpar.
+ * @param {inteiro} n O número.
+ * @returns Verdadeiro se o número for ímpar.
+ */
+export function eh_impar(n) {
+  if (isNaN(n) || n === null)
+    throw new RuntimeError(
+      this.token,
+      "Você deve prover um número para eh_impar(n)."
+    );
+
+  return n % 2 !== 0;
+}
+
+/* FUNÇÕES DE VETOR */
+
+/**
+ * Calcula a soma de todos os elementos de um vetor.
+ * @param {número[]} vetor Um vetor de números.
+ * @returns A soma de todos os elementos.
+ */
+export function somatorio(vetor) {
+  if (!Array.isArray(vetor))
+    throw new RuntimeError(
+      this.token,
+      "Parâmetro `vetor` deve ser um vetor, em somatorio(vetor)."
+    );
+
+  if (vetor.length === 0)
+    throw new RuntimeError(
+      this.token,
+      "Vetor vazio. Você deve fornecer ao menos um valor ao vetor em somatorio(vetor)."
+    );
+
+  if (vetor.some((v) => typeof v !== "number"))
+    throw new RuntimeError(
+      this.token,
+      "Todos os elementos de `vetor` devem ser numéricos, em somatorio(vetor)."
+    );
+
+  return vetor.reduce((acumulador, atual) => acumulador + atual, 0);
+}
+
+/**
+ * Calcula o produto de todos os elementos de um vetor.
+ * @param {número[]} vetor Um vetor de números.
+ * @returns O produto de todos os elementos.
+ */
+export function produto(vetor) {
+  if (!Array.isArray(vetor))
+    throw new RuntimeError(
+      this.token,
+      "Parâmetro `vetor` deve ser um vetor, em produto(vetor)."
+    );
+
+  if (vetor.length === 0)
+    throw new RuntimeError(
+      this.token,
+      "Vetor vazio. Você deve fornecer ao menos um valor ao vetor em produto(vetor)."
+    );
+
+  if (vetor.some((v) => typeof v !== "number"))
+    throw new RuntimeError(
+      this.token,
+      "Todos os elementos de `vetor` devem ser numéricos, em produto(vetor)."
+    );
+
+  return vetor.reduce((acumulador, atual) => acumulador * atual, 1);
+}
