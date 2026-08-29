@@ -85,21 +85,82 @@ nomeDoCachorro.latir();`
 
 const Testes = `var testes = importar("testes");
 
-testes.descreva("Calculadora", função() {
-  testes.teste("soma dois números", função() {
-    testes.esperado_que(2 + 3).seja(5);
+var descreva = testes.descreva;
+var resultados = testes.resultados;
+
+// Código que queremos testar.
+classe Calculadora {
+  construtor() {
+    isto.resultado = 0;
+  }
+
+  somar(a, b) {
+    isto.resultado = a + b;
+    retorna isto.resultado;
+  }
+
+  subtrair(a, b) {
+    isto.resultado = a - b;
+    retorna isto.resultado;
+  }
+
+  multiplicar(a, b) {
+    isto.resultado = a * b;
+    retorna isto.resultado;
+  }
+
+  dividir(a, b) {
+    isto.resultado = a / b;
+    retorna isto.resultado;
+  }
+}
+
+// Agrupamos testes relacionados dentro de um conjunto.
+descreva("Calculadora", função() {
+  // Funções usadas pelos testes deste conjunto.
+  var teste = testes.teste;
+  var esperado_que = testes.esperado_que;
+  var antes_de_cada = testes.antes_de_cada;
+
+  var calculadora = nulo;
+
+  // Cada teste começa com uma nova calculadora.
+  antes_de_cada(função() {
+    calculadora = Calculadora();
   });
 
-  testes.teste("compara números próximos", função() {
-    testes.esperado_que(0.1 + 0.2).seja_próximo(0.3);
+  teste("soma dois números", função() {
+    esperado_que(calculadora.somar(10, 5)).seja(15);
   });
 
-  testes.teste("compara vetores", função() {
-    testes.esperado_que([1, 2, 3]).seja_objeto([1, 2, 3]);
+  teste("subtrai dois números", função() {
+    esperado_que(calculadora.subtrair(10, 4)).seja(6);
+  });
+
+  teste("multiplica dois números", função() {
+    esperado_que(calculadora.multiplicar(4, 3)).seja(12);
+  });
+
+  teste("divide dois números", função() {
+    esperado_que(calculadora.dividir(10, 4)).seja(2.5);
+  });
+
+  // Útil para comparar resultados com casas decimais.
+  teste("compara resultados decimais", função() {
+    esperado_que(calculadora.dividir(1, 3)).seja_próximo(0.33, 2);
+  });
+
+  // Também podemos verificar o estado de um objeto.
+  teste("guarda o último resultado", função() {
+    calculadora.somar(20, 5);
+
+    esperado_que(calculadora.resultado).seja(25);
   });
 });
 
-escreva(testes.resultados());`
+// Exibe o relatório final.
+escreva(resultados());`;
+
 
 const demos = {
   Exemplos,
@@ -110,4 +171,4 @@ const demos = {
   Função,
   Classe,
   Testes,
-}
+};
