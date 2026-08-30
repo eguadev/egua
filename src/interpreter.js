@@ -471,7 +471,7 @@ export default class Interpreter {
 
         console.log("Exported: ", exported)
         console.log("Dict: ", isDict(exported))
-        
+
         if (isDict(exported)) {
             let newModule = new EguaModule();
 
@@ -711,11 +711,11 @@ export default class Interpreter {
     visitGetExpr(expr) {
         const object = this.evaluate(expr.object);
         if (object instanceof EguaInstance) {
-            return object.get(expr.name) || null;
+            return object.get(expr.name) ?? null;
         } else if (object.constructor === Object) {
-            return object[expr.name.lexeme] || null;
+            return object[expr.name.lexeme] ?? null;
         } else if (object instanceof EguaModule) {
-            return object[expr.name.lexeme] || null;
+            return object[expr.name.lexeme] ?? null;
         }
 
         throw new RuntimeError(

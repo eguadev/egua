@@ -1694,12 +1694,47 @@ função testa_aprox_vetor() {
   escreva("TESTE: aprox() com vetor: passou!");
 }
 
+função testa_atributos_com_valores_falsy() {
+  classe ExemploClasse {
+    construtor() {
+      isto.zero = 0;
+      isto.lógico = falso;
+      isto.vazio = "";
+    }
+  }
+
+  var exemplo = ExemploClasse();
+  var dicionário = {
+    "zero": 0,
+    "lógico": falso,
+    "vazio": ""
+  };
+
+  se (exemplo.zero != 0 ou dicionário.zero != 0) {
+    escreva("TESTE: atributo/propriedade com 0: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  se (exemplo.lógico != falso ou dicionário.lógico != falso) {
+    escreva("TESTE: atributo/propriedade com falso: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  se (exemplo.vazio != "" ou dicionário.vazio != "") {
+    escreva("TESTE: atributo/propriedade com texto vazio: falhou!");
+    erros_reg = erros_reg + 1;
+    retorna;
+  }
+  escreva("TESTE: atributos e propriedades preservam valores falsy: passou!");
+}
+
 testa_tamanho_texto_numérico();
 testa_aleatório_entre_zero();
 testa_reduzir_padrão_falsy();
 testa_incluído_estrito();
 testa_mediana_regressão();
 testa_aprox_vetor();
+testa_atributos_com_valores_falsy();
 
 escreva("----------------------------");
 escreva("  terminado com " + texto(erros_reg) + " erro(s)!");
