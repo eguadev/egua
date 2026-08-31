@@ -28,12 +28,19 @@
     <div class="topbar-actions">
       <select id="demoSelector" aria-label="Escolher exemplo"></select>
       <button id="runBtn">Executar</button>
+      <button id="exportBtn">Baixar Código</button>
     </div>
   </header>
 
   <main class="workspace">
     <section class="panel">
-      <h2 class="panel-head">Editor</h2>
+      <div class="panel-head">
+        <h2>Editor</h2>
+        <span class="file-name-control">
+          <span id="fileName" class="file-name" contenteditable="true" spellcheck="false" role="textbox"
+            aria-label="Nome do arquivo">programa.egua</span>
+        </span>
+      </div>
       <div id="editor"></div>
     </section>
     <section class="panel">
