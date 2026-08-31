@@ -20,5 +20,6 @@ O código acima importa a biblioteca "tempo" e chama `agora()` para exibir a dat
 - [textos](/egua/biblioteca-textos): manipulação de textos, como busca, substituição e formatação.
 - [tempo](/egua/biblioteca-tempo): data e hora atuais, e conversão de texto para data.
 - [requisição](/egua/biblioteca-requisicao): requisições HTTP (GET, POST, PUT, DELETE).
+- [testes](/egua/biblioteca-testes): asserções e execução de testes escritos em Égua.
 
 Usar bibliotecas prontas economiza o trabalho de escrever tudo do zero.

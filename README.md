@@ -91,6 +91,7 @@ escreva(m.raizq(16)); // 4
 | `textos` | Manipulação de textos (maiúsculas, divisão, substituição, etc.) |
 | `tempo` | Data e hora do sistema |
 | `requisicao` | Requisições HTTP (`obter`, `enviar`, `atualizar`, `excluir`) |
+| `testes` | Asserções e execução de testes escritos em Égua |
 
 Também há funções globais sempre disponíveis, como `escreva`, `texto`, `paraCada`, `mapear`, `filtrar` e `ordenar`. A referência completa está na [documentação](https://egua.dev/egua).
 

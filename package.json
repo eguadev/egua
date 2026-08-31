@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build-web": "node scripts/build-web.mjs",
-    "test": "./bin/egua tests/tests.egua"
+    "test": "./bin/egua tests/tests.egua && ./bin/egua tests/teste_testes.egua"
   },
   "repository": {
     "type": "git",

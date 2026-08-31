@@ -175,7 +175,8 @@ export default defineConfig({
               { text: 'matemática', link: '/egua/biblioteca-matematica' },
               { text: 'textos', link: '/egua/biblioteca-textos' },
               { text: 'tempo', link: '/egua/biblioteca-tempo' },
-              { text: 'requisição', link: '/egua/biblioteca-requisicao' }
+              { text: 'requisição', link: '/egua/biblioteca-requisicao' },
+              { text: 'testes', link: '/egua/biblioteca-testes' }
             ]
           },
           { text: 'Classes', link: '/egua/classes' }
